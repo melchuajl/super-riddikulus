@@ -21,9 +21,9 @@ const SpellTypes = () => {
     return (
         <View>
             <Text style={{fontWeight:'700'}}>Spell Types</Text>
-            <Text>Type: {JSON.stringify(firstSpell.type)}</Text>
-            <Text>Name: {JSON.stringify(firstSpell.name)}</Text>
-            <Text>Incantation: {JSON.stringify(firstSpell.incantation)}</Text>
+            <Text>Type: {firstSpell.type}</Text>
+            <Text>Name: {firstSpell.name}</Text>
+            <Text>Incantation: {firstSpell.incantation}</Text>
         </View>
     );
 
