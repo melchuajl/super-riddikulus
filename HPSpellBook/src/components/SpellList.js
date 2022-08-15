@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { View, Text, ScrollView } from 'react-native';
 import uuid from 'react-native-uuid';
 
-const SpellTypes = () => {
+const SpellList = () => {
 
     const [spellList, setSpellList] = useState([]);
 
@@ -35,4 +35,4 @@ const SpellTypes = () => {
 
 }
 
-export default SpellTypes; 
+export default SpellList; 
