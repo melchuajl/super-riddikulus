@@ -1,29 +1,35 @@
 import API from "../../API";
 import { useEffect, useState } from "react";
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
+import uuid from 'react-native-uuid';
 
-const getSpellList = () => {
+const SpellTypes = () => {
 
-    const [firstSpell, setFirstSpell] = useState([]);
+    const [spellList, setSpellList] = useState([]);
 
-    const getSpellTypes = async () => {
+    const getSpellList = async () => {
         const { status, data } = await API.get('/Spells');
-        const firstSpell = data;
+        const spellList = data;
+
         if (status === 200) {
-            setFirstSpell(firstSpell);     
+            setSpellList(spellList);     
         }
     }
 
     useEffect(() => {
-        getSpellTypes();
+        getSpellList();
     }, []);
 
     return (
         <View>
-            <Text style={{fontWeight:'700'}}>Spell Types</Text>
-            <Text>Type: {firstSpell.type}</Text>
-            <Text>Name: {firstSpell.name}</Text>
-            <Text>Incantation: {firstSpell.incantation}</Text>
+            <ScrollView >
+                {spellList.filter(spell => spell.type === 'Curse').map(filteredSpell => (
+                        <ScrollView key = {uuid.v4()}>
+                        <Text>{filteredSpell.name}</Text>
+                        </ScrollView>
+                ))  
+                }
+            </ScrollView>
         </View>
     );
 
