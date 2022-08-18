@@ -1,11 +1,14 @@
 import API from "../../API";
-import { useEffect, useState} from "react";
-import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { useEffect, useState } from "react";
+import { View, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import styles from "../styles/FarhanStyle";
-import detailsBg from "../../assets/detailsbg.png";
+import detailsBg from "../../assets/individualSpellBG.png";
+import spellScroll from "../../assets/kraftpaper.png";
+import disco from '../../assets/circle3.gif';
 import { useFonts } from 'expo-font';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
+import TTS from "./TTS";
 
 
 const IndividualSpell = (props) => {
@@ -13,7 +16,7 @@ const IndividualSpell = (props) => {
     const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
-      });
+    });
     const [spellList, setSpellList] = useState([]);
     const uniqueSpellName = props.uniqueSpell;
 
@@ -33,35 +36,39 @@ const IndividualSpell = (props) => {
     }, []);
 
     console.log('spellName', uniqueSpellName)
-      
-      if (!fontsLoaded) {
+
+    if (!fontsLoaded) {
         return null;
-      }
+    }
 
 
     return (
         <View style={styles.container}>
-            <ImageBackground 
+            <ImageBackground
                 source={detailsBg}
                 resizeMode="cover"
-                style= {styles.image}>
-                    <View style={styles.box}>
-            <Text style={styles.magicText}>{filteredSpell[0] ? filteredSpell[0].name : 'Nil'}</Text>
-            </View>
-            <View style={styles.scroll}>
-            <Text style={styles.text}>Type :{"\n"}{filteredSpell[0] ? filteredSpell[0].type : 'Nil'}</Text>
-            <Text style={styles.text}>Effect :{"\n"}{filteredSpell[0] ? filteredSpell[0].effect : 'Nil'}</Text>
-            <Text style={styles.text}>INCANTATION:{"\n"}{filteredSpell[0] ? filteredSpell[0].incantation : 'Nil'}</Text>
-            <Text style={styles.text}>LIGHT: {"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
-            </View>
-            <View style={styles.return}>
-                <TouchableOpacity  onPress={() => {navigation.navigate('SpellList', {spellType: filteredSpell[0].type})}}> 
-                <Text style={styles.magicText2}>Return to list</Text> 
-                </TouchableOpacity>
-            </View>
+                style={styles.image}>
+                <Image source={disco}
+                    style={styles.disco} />
+                <Image source={spellScroll}
+                    style={styles.spellScroll} />
+                <View style={styles.box}>
+                    <Text style={styles.magicText}>{filteredSpell[0] ? filteredSpell[0].name : 'Nil'}</Text>
+                </View>
+                <View style={styles.scroll}>
+                    <Text style={styles.text}>Type :{"\n"}{filteredSpell[0] ? filteredSpell[0].type : 'Nil'}</Text>
+                    <Text style={styles.text}>Effect :{"\n"}{filteredSpell[0] ? filteredSpell[0].effect : 'Nil'}</Text>
+                    <Text style={styles.text}>INCANTATION:{"\n"}{filteredSpell[0] ? filteredSpell[0].incantation : 'Nil'} <TTS incantation={filteredSpell[0] ? filteredSpell[0].incantation : null} /></Text>
+                    <Text style={styles.text}>LIGHT: {"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
+                </View>
+                <View style={styles.return}>
+                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
+                        <Text style={styles.magicText2}>Return to list</Text>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         </View>
-    ); 
+    );
 }
 
 export default IndividualSpell; 

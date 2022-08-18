@@ -1,7 +1,9 @@
 import API from '../../API';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { SafeAreaView, Text, View, ScrollView } from 'react-native';
+import { SafeAreaView, Text, View, ScrollView, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import styles from '../styles/FarhanStyle';
+import bgImage from '../../assets/bgImage1.png';
 
 const Search = () => {
 
@@ -49,13 +51,6 @@ const Search = () => {
         }
     };
 
-    // const getItem = (event) => {
-    //     console.log(event._dispatchInstances._debugOwner.child.memoizedProps.children);
-    //     const name = event._dispatchInstances._debugOwner.child.memoizedProps.children;
-    //     const item = data.filter(spell => spell.name === name);
-    //     alert('Effect : ' + item.effect + "\n" + 'Incantation : ' + item.incantation);
-    // };
-
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ScrollView>
@@ -64,7 +59,7 @@ const Search = () => {
                         <View key={index}>
                             <Text
                                 style={{ fontSize: 18, marginTop: 10, marginLeft: 20 }}
-                                onPress={() => navigation.navigate('TTS')}>
+                                onPress={() => navigation.navigate('IndividualSpell', {name: item.name})}>
                                 {item.name}
                             </Text>
                         </View>

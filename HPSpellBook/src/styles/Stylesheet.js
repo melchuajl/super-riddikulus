@@ -1,8 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
-
-//Trying to fix the background image to fit full screen under bg, can remove if not needed
-const win = Dimensions.get('window');
-const ratio = win.height/844
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -12,11 +8,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     bg: {
-        width: 390 * ratio,
-        height: win.height,
-        // resizeMode: 'contain',
-        // justifyContent: 'center',
-        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'center',
+        height: 844,
+        resizeMode: 'contain'
     },
     bar1: { 
         position: 'absolute',
@@ -26,8 +21,8 @@ const styles = StyleSheet.create({
         margin: 10,
         width: 211,
         height: 39,
-        top: 150,
-        left: -116
+        top: 185,
+        left: 89
     },
     bar2: {
         position: 'absolute',
@@ -37,8 +32,8 @@ const styles = StyleSheet.create({
         margin: 10,
         width: 211,
         height: 39,
-        top: 200,
-        left: -116
+        top: 258,
+        left: 89
     },
     bar3: {
         position: 'absolute',
@@ -48,8 +43,8 @@ const styles = StyleSheet.create({
         margin: 10,
         width: 211,
         height: 39,
-        top: 250,
-        left: -116
+        top: 330,
+        left: 89
     },
     bar4: {
         position: 'absolute',
@@ -59,8 +54,8 @@ const styles = StyleSheet.create({
         margin: 10,
         width: 211,
         height: 39,
-        top: 300,
-        left: -116
+        top: 403,
+        left: 89
     },
     bar5: {
         position: 'absolute',
@@ -70,8 +65,8 @@ const styles = StyleSheet.create({
         margin: 10,
         width: 211,
         height: 39,
-        top: 350,
-        left: -116
+        top: 475,
+        left: 89
     },
     bar6: {
         position: 'absolute',
@@ -81,8 +76,8 @@ const styles = StyleSheet.create({
         margin: 10,
         width: 211,
         height: 39,
-        top: 400,
-        left: -116
+        top: 548 ,
+        left: 89
     },
     text: {
         color: 'white',
@@ -94,4 +89,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default styles; 
+export default styles;

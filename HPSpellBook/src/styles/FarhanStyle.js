@@ -72,8 +72,7 @@ const styles = StyleSheet.create({
         left: 48,
         top: 159,
         width: 278,
-        height: 561,
-
+        height: 561
     },
 
     listContainer2: {
@@ -110,6 +109,7 @@ const styles = StyleSheet.create({
         color: '#000000',
         marginTop: 15,
         fontFamily: "CroissantOne",
+        letterSpacing: -0.3
       },
 
     box: {
@@ -173,10 +173,34 @@ const styles = StyleSheet.create({
 
     magicText3: {
         color: '#000000',
-        fontSize: 12,
+        fontSize: 14,
+        lineHeight: 17,
+        letterSpacing: -0.3,
+        fontFamily: "CroissantOne"
+    },
+
+    welcomeText: {
+        position: 'absolute',
+        top: 681,
+        left: 110,
+        height: 304,
+        width: 800,
         fontFamily: "CroissantOne",
     },
     
+    disco: {
+        position: 'absolute',
+        width: 90,
+        height: 70,
+        top: 45,
+        left: 150,
+    }, 
+
+    spellScroll: {
+        position: 'absolute', 
+        top: 108,
+        left: 10
+    }
 
 });
 
