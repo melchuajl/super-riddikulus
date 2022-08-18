@@ -1,32 +1,87 @@
-import API from "../../API";
-import { useEffect, useState } from "react";
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import { useFonts } from 'expo-font';
 
-const SpellTypes = () => {
+import styles from "../styles/Stylesheet";
+import bgBar from "../../assets/categorybar.png";
+import bgImage from "../../assets/bgImage.png";
 
-    const [firstSpell, setFirstSpell] = useState([]);
+const SpellTypes = (props) => {
 
-    const getSpellTypes = async () => {
-        const { status, data } = await API.get('/Spells');
-        const firstSpell = data[0];
-        if (status === 200) {
-            setFirstSpell(firstSpell);     
-        }
-    }
+    //For the Croissant Font
+    const [fontsLoaded] = useFonts({
+        'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
+      });
+      if (!fontsLoaded) {
+        return null;
+      }
 
-    useEffect(() => {
-        getSpellTypes();
-    }, []);
+    //For parent container
+    const click = props.result;
 
     return (
         <View>
-            <Text style={{fontWeight:'700'}}>Spell Types</Text>
-            <Text>Type: {firstSpell.type}</Text>
-            <Text>Name: {firstSpell.name}</Text>
-            <Text>Incantation: {firstSpell.incantation}</Text>
+
+            <ImageBackground
+                style={styles.bg}
+                source={bgImage}>
+
+                <TouchableOpacity
+                    onPress={() => click.setSpellType('Transfiguration')}>
+                    <ImageBackground
+                        source={bgBar}
+                        style={styles.bar1}>
+                        <Text style={styles.text}>TRANSFIGURATION</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => click.setSpellType('Charm')}>
+                    <ImageBackground
+                        source={bgBar}
+                        style={styles.bar2}>
+                        <Text style={styles.text}>CHARM</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => click.setSpellType('Jinx')}>
+                    <ImageBackground
+                        source={bgBar}
+                        style={styles.bar3}>
+                        <Text style={styles.text}>JINX</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => click.setSpellType('Hex')}>
+                    <ImageBackground
+                        source={bgBar}
+                        style={styles.bar4}>
+                        <Text style={styles.text}>HEX</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => click.setSpellType('Counter Spell')}>
+                    <ImageBackground
+                        source={bgBar}
+                        style={styles.bar5}>
+                        <Text style={styles.text}>COUNTER-SPELL</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => click.setSpellType('Healing Spell')}>
+                    <ImageBackground
+                        source={bgBar}
+                        style={styles.bar6}>
+                        <Text style={styles.text}>HEALING SPELL</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+
+            </ImageBackground>
         </View>
     );
-
 }
 
 export default SpellTypes; 
