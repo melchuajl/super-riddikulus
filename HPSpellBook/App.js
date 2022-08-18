@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import MainScreen from './src/screens/MainScreen';
 import TTS from './src/components/TTS';
 import SpellTypeScreen from './src/screens/SpellTypeScreen';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
