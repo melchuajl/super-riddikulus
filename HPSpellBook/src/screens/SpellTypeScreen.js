@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity } from 'react-native';
+import { useState } from "react";
+import { View } from 'react-native';
 import SpellTypes from "../components/SpellTypes";
 
 const SpellTypeScreen = () => {
@@ -14,7 +14,6 @@ const SpellTypeScreen = () => {
             }}/>
         </View>
     );
-
 }
 
 export default SpellTypeScreen; 
