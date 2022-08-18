@@ -12,12 +12,12 @@ const Stack = createNativeStackNavigator();
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Welcome' screenOptions={{ headerStyle: { backgroundColor: 'papayawhip' } }}>
+            <Stack.Navigator initialRouteName='Welcome'>
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ headerShown: false }} />
-                <Stack.Screen name='Search' component={Search} screenOptions={{ headerShown: false }} />
+                <Stack.Screen name='Search' component={Search} options={{statusBarTranslucent: true}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

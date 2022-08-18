@@ -18,7 +18,7 @@ const SpellList = (props) => {
     const click = props.result;
     const spellTypeDisplay = props.spellType;
     const [spellList, setSpellList] = useState([]);
-    const [spellType, setSpellType] = useState('');
+    const [spellType, setSpellType] = useState([]);
 
     const [fontsLoaded] = useFonts({
         'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
@@ -44,14 +44,7 @@ const SpellList = (props) => {
     useEffect(() => {
         getSpellList();
         setSpellType(route.params ? route.params.spellType : spellType);
-
-        if (props.spellType === "CounterSpell") {
-            setSpellType(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'])
-        }
-
     }, [spellTypeDisplay, fontsLoaded]);
-
-
 
     if (!fontsLoaded) {
         return null;
@@ -59,8 +52,8 @@ const SpellList = (props) => {
 
     const Item = ({ title }) => (
         <View style={styles.item}>
-            <TouchableOpacity style={styles.title} onPress={() => {/* click.setUniqueSpell(title) */; navigation.navigate('IndividualSpell', { name: title }) }}>
-                <Text style={styles.magicText3}>{/* {'\u25CF'}  */}{title}</Text>
+            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualSpell', { name: title }) }}>
+                <Text style={styles.magicText3}>{title}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -77,7 +70,7 @@ const SpellList = (props) => {
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
-                    <Text style={styles.header}>{spellType}</Text>
+                    <Text style={styles.header}>{(spellType == 'Transfiguration' || 'Charm' || 'Jinx' || 'Hex' || 'HealingSpell') ? spellType : spellType[0]}</Text>
                     <View style={styles.divider3}></View>
                     <View style={styles.divider4}></View>
                 </ImageBackground>

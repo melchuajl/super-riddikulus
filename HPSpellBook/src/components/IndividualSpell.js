@@ -11,14 +11,13 @@ import { useNavigation } from '@react-navigation/native';
 import TTS from "./TTS";
 
 
-const IndividualSpell = (props) => {
+const IndividualSpell = () => {
 
     const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
     });
     const [spellList, setSpellList] = useState([]);
-    const uniqueSpellName = props.uniqueSpell;
 
     const getSpellList = async () => {
         const { status, data } = await API.get('/Spells');
@@ -35,15 +34,13 @@ const IndividualSpell = (props) => {
         getSpellList();
     }, []);
 
-    console.log('spellName', uniqueSpellName)
-
     if (!fontsLoaded) {
         return null;
     }
 
 
     return (
-        <View style={styles.container}>
+        <View style={{ flex: 1 }}>
             <ImageBackground
                 source={detailsBg}
                 resizeMode="cover"
@@ -56,10 +53,18 @@ const IndividualSpell = (props) => {
                     <Text style={styles.magicText}>{filteredSpell[0] ? filteredSpell[0].name : 'Nil'}</Text>
                 </View>
                 <View style={styles.scroll}>
-                    <Text style={styles.text}>Type :{"\n"}{filteredSpell[0] ? filteredSpell[0].type : 'Nil'}</Text>
-                    <Text style={styles.text}>Effect :{"\n"}{filteredSpell[0] ? filteredSpell[0].effect : 'Nil'}</Text>
-                    <Text style={styles.text}>INCANTATION:{"\n"}{filteredSpell[0] ? filteredSpell[0].incantation : 'Nil'} <TTS incantation={filteredSpell[0] ? filteredSpell[0].incantation : null} /></Text>
-                    <Text style={styles.text}>LIGHT: {"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
+                    <Text style={styles.text}>Type:
+                        <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].type : 'Nil'}</Text>
+                    </Text>
+                    <Text style={styles.text}>Effect:
+                        <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].effect : 'Nil'}</Text>
+                    </Text>
+                    <Text style={styles.text}>Incantation:
+                        <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].incantation : 'Nil'} <TTS incantation={filteredSpell[0] ? filteredSpell[0].incantation : null} /></Text>
+                    </Text>
+                    <Text style={styles.text}>Light:
+                        <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
+                    </Text>
                 </View>
                 <View style={styles.return}>
                     <TouchableOpacity onPress={() => { navigation.goBack() }}>

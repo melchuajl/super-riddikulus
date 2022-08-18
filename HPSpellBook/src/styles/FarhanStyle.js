@@ -1,8 +1,5 @@
 import { Dimensions, StyleSheet,} from "react-native";
-
-
-const win = Dimensions.get('window');
-const ratio = win.height/844
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     container: {
@@ -14,8 +11,7 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         justifyContent: 'center',
-        width: 390,
-        height: 844,
+        height: windowHeight,
     },
 
     divider: {

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { SafeAreaView, Text, View, ScrollView, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/FarhanStyle';
-import bgImage from '../../assets/bgImage1.png';
+import backgroundImg from '../../assets/bgImage1.png';
 
 const Search = () => {
 
@@ -21,12 +21,13 @@ const Search = () => {
 
     useEffect(() => {
         getSpells();
-    }, []);
+    }, [navigation]);
 
     const navigation = useNavigation();
 
     useLayoutEffect(() => {
         navigation.setOptions({
+            headerTransparent: true,
             headerSearchBarOptions: {
                 placeholder: "Search",
                 onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
@@ -34,7 +35,7 @@ const Search = () => {
                 value: search
             }
         })
-    }, [navigation])
+    }, [])
 
     const searchFilterFunction = (text) => {
         if (text) {
@@ -52,21 +53,28 @@ const Search = () => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <ScrollView>
-                {filteredData.map((item, index) => {
-                    return (
-                        <View key={index}>
-                            <Text
-                                style={{ fontSize: 18, marginTop: 10, marginLeft: 20 }}
-                                onPress={() => navigation.navigate('IndividualSpell', {name: item.name})}>
-                                {item.name}
-                            </Text>
-                        </View>
-                    )
-                })}
-            </ScrollView>
-        </SafeAreaView>
+        <View style={{flex: 1}}>
+            <ImageBackground
+                source={backgroundImg}
+                resizeMode="cover"
+                style={styles.image}>
+                <SafeAreaView>
+                    <ScrollView>
+                        {filteredData.map((item, index) => {
+                            return (
+                                <View key={index}>
+                                    <Text
+                                        style={[styles.magicText3, {marginLeft: 40, marginVertical: 10}]}
+                                        onPress={() => navigation.navigate('IndividualSpell', { name: item.name })}>
+                                        {item.name}
+                                    </Text>
+                                </View>
+                            )
+                        })}
+                    </ScrollView>
+                </SafeAreaView>
+            </ImageBackground>
+        </View>
     );
 };
 
