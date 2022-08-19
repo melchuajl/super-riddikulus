@@ -1,6 +1,6 @@
 import API from "../../API";
 import { useEffect, useState } from "react";
-import { View, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
+import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import styles from "../styles/FarhanStyle";
 import detailsBg from "../../assets/individualSpellBG.png";
 import spellScroll from "../../assets/kraftpaper.png";
@@ -32,6 +32,7 @@ const IndividualSpell = () => {
 
     return (
         <View style={{ flex: 1 }}>
+            <StatusBar barStyle="light-content" />
             <ImageBackground
                 source={detailsBg}
                 resizeMode="cover"
