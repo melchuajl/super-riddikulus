@@ -28,7 +28,7 @@ const SpellList = (props) => {
         }
     }
 
-    console.log('spellType in SpellList:', spellType);
+    console.log('spellType 1', spellType);
     spellList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
 
     const filteredList = spellList.filter(spell => {
@@ -38,8 +38,14 @@ const SpellList = (props) => {
     useEffect(() => {
         getSpellList();
         setSpellType(route.params ? route.params.spellType : spellType);
+
     }, [spellTypeDisplay]);
 
+    if (spellType === "CounterSpell") {
+        setSpellType(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration']) 
+     }   
+
+    console.log('spellType 2', spellType);
     const Item = ({ title }) => (
         <View style={styles.item}>
             <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualSpell', { name: title }) }}>
@@ -60,7 +66,7 @@ const SpellList = (props) => {
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
-                    <Text style={styles.header}>{spellType}</Text>
+                    <Text style={styles.header}>{route.params.spellType}</Text>
                     <View style={styles.divider3}></View>
                     <View style={styles.divider4}></View>
                 </ImageBackground>

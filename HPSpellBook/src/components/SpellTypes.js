@@ -84,7 +84,7 @@ const SpellTypes = (props) => {
                 <TouchableOpacity
                     onPress={() => {
                         click.setSpellType('CounterSpell');
-                        navigation.navigate('SpellList', { spellType: ['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'] })
+                        navigation.navigate('SpellList', { spellType: 'CounterSpell' /* ['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'] */ })
                     }}
                 >
                     <ImageBackground
