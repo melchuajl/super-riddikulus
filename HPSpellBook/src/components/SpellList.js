@@ -77,7 +77,7 @@ const SpellList = (props) => {
                         showsVerticalScrollIndicator={false}
                         data={filteredList}
                         renderItem={({ item }) => { return <Item title={item.name} /> }}
-                        keyExtractor={item => /* item.id */ uuid.v4()}
+                        keyExtractor={item => uuid.v4()}
                         numColumns={2}>
                     </FlatList>
                 </View>
