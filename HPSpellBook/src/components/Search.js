@@ -59,12 +59,12 @@ const Search = () => {
                 resizeMode="cover"
                 style={styles.image}>
                 <SafeAreaView>
-                    <ScrollView>
+                    <ScrollView style={{marginBottom: 50}}>
                         {filteredData.map((item, index) => {
                             return (
                                 <View key={index}>
                                     <Text
-                                        style={[styles.magicText3, {marginLeft: 40, marginVertical: 10}]}
+                                        style={[styles.magicText3, {marginLeft: 75, marginVertical: 10}]}
                                         onPress={() => navigation.navigate('IndividualSpell', { name: item.name })}>
                                         {item.name}
                                     </Text>

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         fontSize: 16,
         lineHeight: 23,
-    },
+    }
 });
 
 export default styles;

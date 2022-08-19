@@ -144,12 +144,11 @@ const styles = StyleSheet.create({
     return2: {
         position: 'absolute',
         height: 29,
-        width: 180,
+        width: 190,
         left: 105,
         top: 751,
         justifyContent: "center", 
         alignItems: "center",
-/*         borderColor: '#FFFFFF', */
         borderWidth: 1,
         fontFamily: "CroissantOne",
     },
