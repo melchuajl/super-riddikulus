@@ -13,7 +13,7 @@ const WelcomeScreen = () => {
     async function playSound() {
     const {sound} = await Audio.Sound.createAsync(
         require('../../assets/audio/HP-theme-Marimba.mp3'),
-        { shouldPlay: true}
+        /* { shouldPlay: true} */
     );
     setSound(sound);
 
@@ -71,7 +71,8 @@ const WelcomeScreen = () => {
                 source={welcome}
                 style={styles.image}>
                 <TouchableOpacity
-                    onPress={() => { navigation.navigate('SpellTypes') }}
+                    onPress={() => {
+                    navigation.navigate('SpellTypes');{Audio.setIsEnabledAsync(false)}}}
                     hitSlop={{ top: 1000, bottom: 1000, left: 1000, right: 1000 }}>
                     <Animated.View style={{opacity: fadeAnim}}>
                         <Text style={styles.welcomeText}>Tap Anywhere To Begin</Text>
