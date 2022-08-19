@@ -1,13 +1,13 @@
 import { TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as Speech from 'expo-speech'
 
 const TTS = (props) => {
 
     return (
-        <View style={{alignItems: 'center'}}>
-            <TouchableOpacity onPress={() => Speech.speak(props.incantation)} >
-                <Icon name="sound" size={30} />
+        <View>
+            <TouchableOpacity onPress={() => Speech.speak(props.incantation)}>
+                <Icon name={props.icon} size={18} />
             </TouchableOpacity>
         </View>
     )

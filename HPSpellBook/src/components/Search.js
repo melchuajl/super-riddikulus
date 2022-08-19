@@ -1,38 +1,29 @@
 import API from '../../API';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { SafeAreaView, Text, View, ScrollView } from 'react-native';
+import { SafeAreaView, Text, View, ScrollView, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import styles from '../styles/FarhanStyle';
+import backgroundImg from '../../assets/bgImage1.png';
 
 const Search = () => {
 
+    const navigation = useNavigation();
     const [search, setSearch] = useState([]);
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
     const getSpells = async () => {
         const { status, data } = await API.get('/Spells');
+        const sortedSpells = data.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
         if (status === 200) {
-            setFilteredData(data);
-            setData(data);
+            setFilteredData(sortedSpells);
+            setData(sortedSpells);
         }
     }
 
     useEffect(() => {
         getSpells();
     }, []);
-
-    const navigation = useNavigation();
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerSearchBarOptions: {
-                placeholder: "Search",
-                onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
-                onClear: (event) => searchFilterFunction(''),
-                value: search
-            }
-        })
-    }, [navigation])
 
     const searchFilterFunction = (text) => {
         if (text) {
@@ -49,29 +40,41 @@ const Search = () => {
         }
     };
 
-    // const getItem = (event) => {
-    //     console.log(event._dispatchInstances._debugOwner.child.memoizedProps.children);
-    //     const name = event._dispatchInstances._debugOwner.child.memoizedProps.children;
-    //     const item = data.filter(spell => spell.name === name);
-    //     alert('Effect : ' + item.effect + "\n" + 'Incantation : ' + item.incantation);
-    // };
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTransparent: true,
+            headerSearchBarOptions: {
+                placeholder: "Search",
+                onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
+                onClear: () => searchFilterFunction(''),
+                value: search
+            }
+        })
+    }, [search])
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <ScrollView>
-                {filteredData.map((item, index) => {
-                    return (
-                        <View key={index}>
-                            <Text
-                                style={{ fontSize: 18, marginTop: 10, marginLeft: 20 }}
-                                onPress={() => navigation.navigate('TTS')}>
-                                {item.name}
-                            </Text>
-                        </View>
-                    )
-                })}
-            </ScrollView>
-        </SafeAreaView>
+        <View style={{flex: 1}}>
+            <ImageBackground
+                source={backgroundImg}
+                resizeMode="cover"
+                style={styles.image}>
+                <SafeAreaView>
+                    <ScrollView>
+                        {filteredData.map((item, index) => {
+                            return (
+                                <View key={index}>
+                                    <Text
+                                        style={[styles.magicText3, {marginLeft: 40, marginVertical: 10}]}
+                                        onPress={() => navigation.navigate('IndividualSpell', { name: item.name })}>
+                                        {item.name}
+                                    </Text>
+                                </View>
+                            )
+                        })}
+                    </ScrollView>
+                </SafeAreaView>
+            </ImageBackground>
+        </View>
     );
 };
 
