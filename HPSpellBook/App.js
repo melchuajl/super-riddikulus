@@ -17,7 +17,7 @@ export default function App() {
                 <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ headerShown: false }} />
-                <Stack.Screen name='Search' component={Search} options={{statusBarTranslucent: true}}/>
+                <Stack.Screen name='Search' component={Search} />
             </Stack.Navigator>
         </NavigationContainer>
     );

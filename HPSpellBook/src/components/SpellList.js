@@ -6,7 +6,6 @@ import styles from "../styles/FarhanStyle";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar1 from '../../assets/categorybar1.png'
 import dividerImg from '../../assets/Divider.png';
-import { useFonts } from 'expo-font';
 import uuid from 'react-native-uuid';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
@@ -15,14 +14,9 @@ import { useRoute } from "@react-navigation/native";
 const SpellList = (props) => {
     const route = useRoute();
     const navigation = useNavigation();
-    const click = props.result;
     const spellTypeDisplay = props.spellType;
     const [spellList, setSpellList] = useState([]);
-    const [spellType, setSpellType] = useState([]);
-
-    const [fontsLoaded] = useFonts({
-        'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
-    });
+    const [spellType, setSpellType] = useState('');
 
     const getSpellList = async () => {
         const { status, data } = await API.get('/Spells');
@@ -44,11 +38,7 @@ const SpellList = (props) => {
     useEffect(() => {
         getSpellList();
         setSpellType(route.params ? route.params.spellType : spellType);
-    }, [spellTypeDisplay, fontsLoaded]);
-
-    if (!fontsLoaded) {
-        return null;
-    }
+    }, [spellTypeDisplay]);
 
     const Item = ({ title }) => (
         <View style={styles.item}>
@@ -70,7 +60,7 @@ const SpellList = (props) => {
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
-                    <Text style={styles.header}>{(spellType == 'Transfiguration' || 'Charm' || 'Jinx' || 'Hex' || 'HealingSpell') ? spellType : spellType[0]}</Text>
+                    <Text style={styles.header}>{spellType}</Text>
                     <View style={styles.divider3}></View>
                     <View style={styles.divider4}></View>
                 </ImageBackground>

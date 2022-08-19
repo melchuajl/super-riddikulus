@@ -9,9 +9,9 @@ const SpellTypeScreen = () => {
     return (
         <View>
             <SpellTypes result={{
-            spellType: spellType,
-            setSpellType: setSpellType
-            }}/>
+                spellType: spellType,
+                setSpellType: setSpellType
+            }} />
         </View>
     );
 }

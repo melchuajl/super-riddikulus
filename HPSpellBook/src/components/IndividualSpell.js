@@ -60,7 +60,8 @@ const IndividualSpell = () => {
                         <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].effect : 'Nil'}</Text>
                     </Text>
                     <Text style={styles.text}>Incantation:
-                        <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].incantation : 'Nil'} <TTS incantation={filteredSpell[0] ? filteredSpell[0].incantation : null} /></Text>
+                        <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] && filteredSpell[0].incantation ? filteredSpell[0].incantation : 'Nil'} </Text> 
+                        <TTS icon={filteredSpell[0] && filteredSpell[0].incantation ? "volume-up" : null} incantation={filteredSpell[0] ? filteredSpell[0].incantation : null} />
                     </Text>
                     <Text style={styles.text}>Light:
                         <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>

@@ -14,10 +14,10 @@ const SpellTypes = (props) => {
     //For the Croissant Font
     const [fontsLoaded] = useFonts({
         'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
-      });
-      if (!fontsLoaded) {
+    });
+    if (!fontsLoaded) {
         return null;
-      }
+    }
 
     //For parent container
     const click = props.result;
@@ -30,9 +30,11 @@ const SpellTypes = (props) => {
                 source={bgImage}>
 
                 <TouchableOpacity
-                    onPress={() => {click.setSpellType('Transfiguration');
-                        navigation.navigate('SpellList', {spellType: 'Transfiguration'})}}
-                        >
+                    onPress={() => {
+                        click.setSpellType('Transfiguration');
+                        navigation.navigate('SpellList', { spellType: 'Transfiguration' })
+                    }}
+                >
                     <ImageBackground
                         source={bgBar}
                         style={styles.bar}>
@@ -41,9 +43,11 @@ const SpellTypes = (props) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => {click.setSpellType('Charm');
-                    navigation.navigate('SpellList', {spellType: 'Charm'})}}
-                    >
+                    onPress={() => {
+                        click.setSpellType('Charm');
+                        navigation.navigate('SpellList', { spellType: 'Charm' })
+                    }}
+                >
                     <ImageBackground
                         source={bgBar}
                         style={styles.bar}>
@@ -52,9 +56,11 @@ const SpellTypes = (props) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => {click.setSpellType('Jinx');
-                    navigation.navigate('SpellList', {spellType: 'Jinx'})}}
-                    >
+                    onPress={() => {
+                        click.setSpellType('Jinx');
+                        navigation.navigate('SpellList', { spellType: 'Jinx' })
+                    }}
+                >
                     <ImageBackground
                         source={bgBar}
                         style={styles.bar}>
@@ -63,9 +69,11 @@ const SpellTypes = (props) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => {click.setSpellType('Hex');
-                    navigation.navigate('SpellList', {spellType: 'Hex'})}}
-                    >
+                    onPress={() => {
+                        click.setSpellType('Hex');
+                        navigation.navigate('SpellList', { spellType: 'Hex' })
+                    }}
+                >
                     <ImageBackground
                         source={bgBar}
                         style={styles.bar}>
@@ -74,9 +82,11 @@ const SpellTypes = (props) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => {click.setSpellType('CounterSpell');
-                    navigation.navigate('SpellList', {spellType: ['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration']})}}
-                    >
+                    onPress={() => {
+                        click.setSpellType('CounterSpell');
+                        navigation.navigate('SpellList', { spellType: ['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'] })
+                    }}
+                >
                     <ImageBackground
                         source={bgBar}
                         style={styles.bar}>
@@ -85,9 +95,11 @@ const SpellTypes = (props) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => {click.setSpellType('HealingSpell');
-                    navigation.navigate('SpellList', {spellType: 'HealingSpell'})}}
-                    >
+                    onPress={() => {
+                        click.setSpellType('HealingSpell');
+                        navigation.navigate('SpellList', { spellType: 'HealingSpell' })
+                    }}
+                >
                     <ImageBackground
                         source={bgBar}
                         style={styles.bar}>
@@ -97,7 +109,7 @@ const SpellTypes = (props) => {
 
                 <TouchableOpacity
                     onPress={() => navigation.navigate('Search')}
-                    >
+                >
                     <ImageBackground
                         source={bgBar}
                         style={styles.bar}>

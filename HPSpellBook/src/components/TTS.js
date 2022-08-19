@@ -6,8 +6,8 @@ const TTS = (props) => {
 
     return (
         <View>
-            <TouchableOpacity onPress={() => Speech.speak(props.incantation)} >
-                <Icon name="volume-up" size={20} />
+            <TouchableOpacity onPress={() => Speech.speak(props.incantation)}>
+                <Icon name={props.icon} size={18} />
             </TouchableOpacity>
         </View>
     )

@@ -7,35 +7,23 @@ import backgroundImg from '../../assets/bgImage1.png';
 
 const Search = () => {
 
+    const navigation = useNavigation();
     const [search, setSearch] = useState([]);
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
     const getSpells = async () => {
         const { status, data } = await API.get('/Spells');
+        const sortedSpells = data.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
         if (status === 200) {
-            setFilteredData(data);
-            setData(data);
+            setFilteredData(sortedSpells);
+            setData(sortedSpells);
         }
     }
 
     useEffect(() => {
         getSpells();
-    }, [navigation]);
-
-    const navigation = useNavigation();
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerTransparent: true,
-            headerSearchBarOptions: {
-                placeholder: "Search",
-                onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
-                onClear: (event) => searchFilterFunction(''),
-                value: search
-            }
-        })
-    }, [])
+    }, []);
 
     const searchFilterFunction = (text) => {
         if (text) {
@@ -51,6 +39,19 @@ const Search = () => {
             setSearch(text)
         }
     };
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTransparent: true,
+            headerSearchBarOptions: {
+                borderColor: "black",
+                placeholder: "Search",
+                onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
+                onClear: () => searchFilterFunction(''),
+                value: search
+            }
+        })
+    }, [search])
 
     return (
         <View style={{flex: 1}}>
