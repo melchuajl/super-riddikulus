@@ -44,6 +44,9 @@ const Search = () => {
         navigation.setOptions({
             headerTransparent: true,
             headerSearchBarOptions: {
+                obscureBackground: false,
+                barTintColor: 'rgba(225, 225, 225, 0.7)',
+                hintTextColor: 'black',
                 placeholder: "Search",
                 onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
                 onClear: () => searchFilterFunction(''),

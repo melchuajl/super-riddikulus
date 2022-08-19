@@ -20,8 +20,13 @@ const SpellTypes = (props) => {
                 style={styles.bg}
                 source={bgImage}>
 
-                <TouchableOpacity style={{marginTop: -30, marginBottom: 10}}onPress={() => navigation.navigate('Search')}>
-                    <Text style={[styles.text, {padding: 5, color: "#3d3d3d"}]}><Icon name="book-search-outline" size={20} color="#3d3d3d" /> Search</Text>
+                <TouchableOpacity
+                    style={{marginBottom: 10}}
+                    onPress={() => navigation.navigate('Search')}>
+                    <Text style={styles.search}>
+                        <Icon name="book-search-outline" size={25} />
+                        &nbsp;Search
+                    </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
