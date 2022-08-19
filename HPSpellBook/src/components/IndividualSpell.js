@@ -5,7 +5,6 @@ import styles from "../styles/FarhanStyle";
 import detailsBg from "../../assets/individualSpellBG.png";
 import spellScroll from "../../assets/kraftpaper.png";
 import disco from '../../assets/circle3.gif';
-import { useFonts } from 'expo-font';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
 import TTS from "./TTS";
@@ -14,9 +13,6 @@ import TTS from "./TTS";
 const IndividualSpell = () => {
 
     const navigation = useNavigation();
-    const [fontsLoaded] = useFonts({
-        'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
-    });
     const [spellList, setSpellList] = useState([]);
 
     const getSpellList = async () => {
@@ -33,11 +29,6 @@ const IndividualSpell = () => {
     useEffect(() => {
         getSpellList();
     }, []);
-
-    if (!fontsLoaded) {
-        return null;
-    }
-
 
     return (
         <View style={{ flex: 1 }}>
@@ -69,7 +60,7 @@ const IndividualSpell = () => {
                 </View>
                 <View style={styles.return}>
                     <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                        <Text style={styles.magicText2}>Return to list</Text>
+                        <Text style={styles.magicText2}>&#8592; Return to list</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

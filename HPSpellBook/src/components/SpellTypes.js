@@ -1,6 +1,4 @@
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
-import { useFonts } from 'expo-font';
-
 import styles from "../styles/Stylesheet";
 import bgBar from "../../assets/categorybar.png";
 import bgImage from "../../assets/bgImage.png";
@@ -10,14 +8,6 @@ const SpellTypes = (props) => {
 
     //Navigation
     const navigation = useNavigation();
-
-    //For the Croissant Font
-    const [fontsLoaded] = useFonts({
-        'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
-    });
-    if (!fontsLoaded) {
-        return null;
-    }
 
     //For parent container
     const click = props.result;
@@ -116,6 +106,11 @@ const SpellTypes = (props) => {
                         <Text style={styles.text}>SEARCH</Text>
                     </ImageBackground>
                 </TouchableOpacity>
+
+                <Text
+                    onPress={() => navigation.navigate('Welcome')}>
+                    &#8592;
+                </Text>
 
             </ImageBackground>
         </View>

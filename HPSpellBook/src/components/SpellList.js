@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList } from 'react-native';
 import styles from "../styles/FarhanStyle";
 import backgroundImg from '../../assets/bgImage1.png';
-import categorybar1 from '../../assets/categorybar1.png'
+import categorybar from '../../assets/categorybar.png'
 import dividerImg from '../../assets/Divider.png';
 import uuid from 'react-native-uuid';
 import { useNavigation } from '@react-navigation/native';
@@ -61,7 +61,7 @@ const SpellList = (props) => {
                 resizeMode="cover"
                 style={styles.image}>
                 <ImageBackground
-                    source={categorybar1}
+                    source={categorybar}
                     resizeMode="cover"
                     style={styles.bar}>
                     <View style={styles.divider}></View>

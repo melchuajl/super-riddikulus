@@ -18,6 +18,7 @@ const WelcomeScreen = () => {
     setSound(sound);
 
     await sound.playAsync();
+    sound.setStatusAsync({isLooping : true});
     }
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -56,7 +57,7 @@ const WelcomeScreen = () => {
                     
             ]),
             {
-                iterations: 20
+                iterations: 200
             }
             
             ).start()
