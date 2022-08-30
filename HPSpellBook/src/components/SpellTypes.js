@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from "../styles/Stylesheet";
 import bgBar from "../../assets/categorybar.png";
 import bgImage from "../../assets/bgImage.png";
@@ -18,6 +19,15 @@ const SpellTypes = (props) => {
             <ImageBackground
                 style={styles.bg}
                 source={bgImage}>
+
+                <TouchableOpacity
+                    style={{marginBottom: 10}}
+                    onPress={() => navigation.navigate('Search')}>
+                    <Text style={styles.search}>
+                        <Icon name="book-search-outline" size={25} />
+                        &nbsp;Search
+                    </Text>
+                </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => {
@@ -94,16 +104,6 @@ const SpellTypes = (props) => {
                         source={bgBar}
                         style={styles.bar}>
                         <Text style={styles.text}>HEALING SPELL</Text>
-                    </ImageBackground>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('Search')}
-                >
-                    <ImageBackground
-                        source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>SEARCH</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 

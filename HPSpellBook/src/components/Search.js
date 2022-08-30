@@ -44,6 +44,9 @@ const Search = () => {
         navigation.setOptions({
             headerTransparent: true,
             headerSearchBarOptions: {
+                obscureBackground: false,
+                barTintColor: 'rgba(225, 225, 225, 0.7)',
+                hintTextColor: 'black',
                 placeholder: "Search",
                 onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
                 onClear: () => searchFilterFunction(''),
@@ -59,12 +62,12 @@ const Search = () => {
                 resizeMode="cover"
                 style={styles.image}>
                 <SafeAreaView>
-                    <ScrollView>
+                    <ScrollView style={{marginBottom: 50}}>
                         {filteredData.map((item, index) => {
                             return (
                                 <View key={index}>
                                     <Text
-                                        style={[styles.magicText3, {marginLeft: 40, marginVertical: 10}]}
+                                        style={[styles.magicText3, {marginLeft: 75, marginVertical: 10}]}
                                         onPress={() => navigation.navigate('IndividualSpell', { name: item.name })}>
                                         {item.name}
                                     </Text>

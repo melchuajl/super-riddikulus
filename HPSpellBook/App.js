@@ -14,10 +14,10 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Welcome'>
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ headerShown: false }} />
-                <Stack.Screen name='Search' component={Search} />
+                <Stack.Screen name='Search' component={Search} options={{ animation: 'fade_from_bottom', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

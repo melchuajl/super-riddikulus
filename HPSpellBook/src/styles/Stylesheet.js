@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         width: 211,
         height: 39,
-        margin: 17
+        margin: 18
     },
     text: {
         color: 'white',
@@ -28,7 +28,13 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         fontSize: 16,
         lineHeight: 23,
-    },
+    }, 
+    search: {
+        fontFamily: 'CroissantOne', 
+        fontSize: 16, 
+        padding: 5,
+        color: '#3d3d3d'
+    }
 });
 
 export default styles;
