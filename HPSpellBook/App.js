@@ -26,8 +26,8 @@ export default function App() {
                 <Stack.Screen name='NotesList' component={NotesList} options={{ headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ headerShown: false }} />
-                {/* <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ headerShown: false }} />
-                <Stack.Screen name='IngredientList' component={IngredientList} options={{ headerShown: false }} /> */}
+                <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ headerShown: false }} />
+                <Stack.Screen name='IngredientList' component={IngredientList} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
