@@ -10,6 +10,8 @@ import Search from './src/screens/Search';
 import NotesList from './src/screens/NotesList';
 import NotesInput from './src/screens/NotesInput';
 import IndividualNote from './src/screens/IndividualNote';
+import IndividualIngredient from './src/screens/IndividualIngredient';
+import IngredientList from './src/screens/IngredientList';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -24,6 +26,8 @@ export default function App() {
                 <Stack.Screen name='NotesList' component={NotesList} options={{ headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ headerShown: false }} />
+                {/* <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ headerShown: false }} />
+                <Stack.Screen name='IngredientList' component={IngredientList} options={{ headerShown: false }} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     );
