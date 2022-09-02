@@ -240,31 +240,37 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 100,
         width: '100%',
-        padding: 45
+        height: windowHeight - 200,
+        paddingLeft: "10%", 
+        paddingTop: "10%", 
+        paddingBottom: "5%"
     },
 
-    inputTitle: {
-        height: 40,
+    inputNote: {
         width: '100%',
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        backgroundColor: 'rgba(255,255,255, 0.6)'
     },
 
-    inputBody: {
-        height: 100,
-        width: '100%',
-        margin: 12,
-        borderWidth: 1,
-        padding: 10
-    },
-
-    addButton: {
+    addNote: {
         alignItems: 'center',
+        margin: 12, 
         borderWidth: 1,
-        borderColor: 'black',
         padding: 10,
-        width: '20%'
+        borderColor: 'black',
+    },
+
+    noteCard: {
+        width: "85%",
+        height: 60,
+        margin: 7,
+        backgroundColor: 'rgba(255,255,255, 0.7)',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: 'rgba(0, 0, 0, 0.2)',
+        borderRadius: 10
     }
 
 });

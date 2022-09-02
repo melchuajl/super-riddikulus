@@ -9,19 +9,21 @@ import IndividualSpell from './src/screens/IndividualSpell';
 import Search from './src/screens/Search';
 import NotesList from './src/screens/NotesList';
 import NotesInput from './src/screens/NotesInput';
+import IndividualNote from './src/screens/IndividualNote';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='NotesList'>
+            <Stack.Navigator initialRouteName='Welcome'>
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ headerShown: false }} />
                 <Stack.Screen name='Search' component={Search} options={{ animation: 'fade_from_bottom', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
                 <Stack.Screen name='NotesList' component={NotesList} options={{ headerShown: false }} />
-                <Stack.Screen name='NotesInput' component={NotesInput} options={{ headerShown: false }} />
+                <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
+                <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

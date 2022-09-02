@@ -1,8 +1,9 @@
 import mongoAPI from '../../config/mongoAPI';
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList, TextInput, Button, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList, SafeAreaView, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
+import uuid from 'react-native-uuid';
 
 import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
@@ -16,7 +17,7 @@ const NotesList = (props) => {
 
     const [notesList, setNotesList] = useState([]);
 
-    const getSpellList = async () => {
+    const getNotesList = async () => {
         const { status, data } = await mongoAPI.get('/note');
         const notesList = data.data;
 
@@ -26,7 +27,7 @@ const NotesList = (props) => {
     }
 
     useEffect(() => {
-        getSpellList();
+        getNotesList();
     }, []);
 
     return (
@@ -46,10 +47,25 @@ const NotesList = (props) => {
                     <View style={styles.divider4}></View>
                 </ImageBackground>
                 <View style={styles.noteContainer}>
-                    <Text>
-                        {notesList.map(n => `Title: ${n.title} \nBody: ${n.body} \n`)}
-                    </Text>
-                    <NoteCard />
+                    
+                    <TouchableOpacity
+                        onPress={() => { navigation.navigate('NotesInput') }}>
+                        <Text style={{ marginLeft: -30 }}>+ Add note</Text>
+                    </TouchableOpacity>
+
+                    <ScrollView>
+                        {notesList.map(n =>
+                            <NoteCard
+                                key={uuid.v4()}
+                                title={n.title}
+                                onPress={() => { navigation.navigate('IndividualNote') }}
+                            />)}
+                        <TouchableOpacity onPress={() => { navigation.navigate('IndividualNote') }}>
+                            <Text>
+                                Control Test
+                            </Text>
+                        </TouchableOpacity>
+                    </ScrollView>
                 </View>
                 <View style={styles.return2}>
                     <TouchableOpacity onPress={() => { navigation.goBack() }}>

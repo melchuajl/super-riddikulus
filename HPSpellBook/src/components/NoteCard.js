@@ -1,12 +1,16 @@
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
+import styles from "../styles/Stylesheet";
 
-const NoteCard = () => {
+const NoteCard = (props) => {
 
     return (<>
-        <Text>
-            Here's a test note card
-        </Text>
+        <TouchableOpacity style={styles.noteCard}>
+            <Text>
+                {props.title}
+            </Text>
+        </TouchableOpacity>
     </>)
 }
 
-export default NoteCard; 
+export default NoteCard;
+
