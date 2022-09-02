@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View } from 'react-native';
-import SpellTypes from "../components/SpellTypes";
+import SpellTypes from "./SpellTypes";
 
 const SpellTypeScreen = () => {
 

@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState} from "react";
 import { View, TouchableOpacity, ImageBackground, Text, Animated } from 'react-native';
-import styles from '../styles/FarhanStyle';
+import styles from '../styles/Stylesheet';
 import welcome from '../../assets/welcomeImage.png'
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';

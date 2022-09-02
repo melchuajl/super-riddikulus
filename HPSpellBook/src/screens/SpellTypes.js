@@ -21,7 +21,7 @@ const SpellTypes = (props) => {
                 source={bgImage}>
 
                 <TouchableOpacity
-                    style={{marginBottom: 10}}
+                    style={{ marginBottom: 10 }}
                     onPress={() => navigation.navigate('Search')}>
                     <Text style={styles.search}>
                         <Icon name="book-search-outline" size={25} />
@@ -37,8 +37,8 @@ const SpellTypes = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>TRANSFIGURATION</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>TRANSFIGURATION</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -50,8 +50,8 @@ const SpellTypes = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>CHARM</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>CHARM</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -63,8 +63,8 @@ const SpellTypes = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>JINX</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>JINX</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -76,8 +76,8 @@ const SpellTypes = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>HEX</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>HEX</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -89,8 +89,8 @@ const SpellTypes = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>COUNTER-SPELL</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>COUNTER-SPELL</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -102,8 +102,8 @@ const SpellTypes = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>HEALING SPELL</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>HEALING SPELL</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -111,7 +111,6 @@ const SpellTypes = (props) => {
                     onPress={() => navigation.navigate('Welcome')}>
                     &#8592;
                 </Text>
-
             </ImageBackground>
         </View>
     );

@@ -1,13 +1,13 @@
 import API from "../../API";
 import { useEffect, useState } from "react";
 import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
-import styles from "../styles/FarhanStyle";
+import styles from "../styles/Stylesheet";
 import detailsBg from "../../assets/individualSpellBG.png";
 import spellScroll from "../../assets/kraftpaper.png";
 import disco from '../../assets/circle2.gif';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
-import TTS from "./TTS";
+import TTS from "../components/TTS";
 
 
 const IndividualSpell = () => {
