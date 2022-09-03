@@ -16,7 +16,6 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Welcome'>
-
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
