@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View } from 'react-native';
-import ElixirDifficulty from "../components/ElixirDifficulty";
+import ElixirDifficulty from "./ElixirDifficulty";
 
 const ElixirDiffucltyScreen = () => {
 

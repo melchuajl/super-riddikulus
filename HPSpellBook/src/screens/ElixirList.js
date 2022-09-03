@@ -2,7 +2,7 @@ import React from 'react';
 import API from "../../API";
 import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList } from 'react-native';
-import styles from "../styles/ElixirListStyle";
+import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png'
 import dividerImg from '../../assets/Divider.png';
@@ -20,7 +20,8 @@ const ElixirList = (props) => {
 
     const getElixirList = async () => {
         const { status, data } = await API.get('/Elixirs');
-        const elixirList = data;
+        // const elixirList = data;
+        const elixirList = data.filter(e => e.ingredients[0]) // Filters out elixirs with ingredients = []
 
         if (status === 200) {
             setElixirList(elixirList);
@@ -39,11 +40,6 @@ const ElixirList = (props) => {
 
     }, [elixirTypeDisplay]);
 
-    // if (elixirDifficulty === "CounterSpell") {
-    //     setElixirDifficulty(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'])
-    // }
-
-    // console.log('spellType 2', elixirDifficulty);
     const Item = ({ title }) => (
         <View style={styles.item}>
             <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title }) }}>

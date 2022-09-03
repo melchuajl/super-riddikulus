@@ -135,6 +135,13 @@ const styles = StyleSheet.create({
         width: 111,
     },
 
+    itemElixir: {
+        padding: 2,
+        marginVertical: 5,
+        marginHorizontal: 20,
+        width: 111
+    },
+
     text: {
         fontWeight: '400',
         fontSize: 15,
@@ -159,11 +166,10 @@ const styles = StyleSheet.create({
 
     scroll: {
         position: 'absolute',
-        height: 273,
+        height: 500,
         width: 311,
         left: 39,
-        top: 200,
-
+        top: 200
     },
 
     return: {

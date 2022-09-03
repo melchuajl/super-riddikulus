@@ -82,11 +82,11 @@ const IndividualIngredient = () => {
                     <Text style={styles.text}>Used In:</Text>
                     <View>
                 <FlatList
-                        showsVerticalScrollIndicator={false}
+                        showsVerticalScrollIndicator
                         data={filteredElixir}
                         renderItem={({ item }) => { return <Item title={item.name} /> }}
                         keyExtractor={item => uuid.v4()}
-                        numColumns={1}>
+                        numColumns={2}>
                     </FlatList>
                 </View>
                 </View>

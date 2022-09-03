@@ -13,8 +13,8 @@ import IndividualNote from './src/screens/IndividualNote';
 import IndividualIngredient from './src/screens/IndividualIngredient';
 import IngredientList from './src/screens/IngredientList';
 import ElixirDifficultyScreen from './src/screens/ElixirDifficultyScreen';
-import ElixirList from './src/components/ElixirList';
-import IndividualElixir from './src/components/IndividualElixir';
+import ElixirList from './src/screens/ElixirList';
+import IndividualElixir from './src/screens/IndividualElixir';
 const Stack = createNativeStackNavigator();
 
 export default function App() {

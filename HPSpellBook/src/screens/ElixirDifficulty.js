@@ -1,5 +1,4 @@
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import bgBar from "../../assets/categorybar.png";
 import backgroundImg from '../../assets/bgImage1.png';
 import { useNavigation } from '@react-navigation/native';
@@ -12,14 +11,6 @@ const ElixirDifficulty = (props) => {
     const navigation = useNavigation();
 
     const click = props.result;
-
-    //Added font in because keep error while testing
-    const [fontsLoaded] = useFonts({
-        'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
-    });
-        if (!fontsLoaded) {
-            return null;
-        }
 
     return (
         <View>
@@ -35,8 +26,8 @@ const ElixirDifficulty = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>BEGINNER</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>BEGINNER</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -48,8 +39,8 @@ const ElixirDifficulty = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>MODERATE</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>MODERATE</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -61,8 +52,8 @@ const ElixirDifficulty = (props) => {
                 >
                     <ImageBackground
                         source={bgBar}
-                        style={styles.bar}>
-                        <Text style={styles.text}>ADVANCED</Text>
+                        style={styles.barTypes}>
+                        <Text style={styles.textTypes}>ADVANCED</Text>
                     </ImageBackground>
                 </TouchableOpacity>
             </ImageBackground>
