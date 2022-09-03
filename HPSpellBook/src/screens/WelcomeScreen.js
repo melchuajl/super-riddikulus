@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState} from "react";
 import { View, TouchableOpacity, ImageBackground, Text, Animated } from 'react-native';
-import styles from '../styles/FarhanStyle';
+import styles from '../styles/Stylesheet';
 import welcome from '../../assets/welcomeImage.png'
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -73,7 +73,7 @@ const WelcomeScreen = () => {
                 style={styles.image}>
                 <TouchableOpacity
                     onPress={() => {
-                    navigation.navigate('SpellTypes');{Audio.setIsEnabledAsync(false)}}}
+                    navigation.navigate('NotesList');{Audio.setIsEnabledAsync(false)}}}
                     hitSlop={{ top: 1000, bottom: 1000, left: 1000, right: 1000 }}>
                     <Animated.View style={{opacity: fadeAnim}}>
                         <Text style={styles.welcomeText}>Tap Anywhere To Begin</Text>

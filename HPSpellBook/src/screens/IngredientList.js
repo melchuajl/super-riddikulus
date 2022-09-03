@@ -2,7 +2,7 @@ import React from 'react';
 import API from "../../API";
 import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList } from 'react-native';
-import styles from "../styles/FarhanStyle";
+import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png'
 import dividerImg from '../../assets/Divider.png';
@@ -11,44 +11,32 @@ import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
 
 
-const SpellList = (props) => {
+const IngredientList = (props) => {
     const route = useRoute();
     const navigation = useNavigation();
     const spellTypeDisplay = props.spellType;
-    const [spellList, setSpellList] = useState([]);
-    const [spellType, setSpellType] = useState('');
+    const [ingredientList, setIngredientList] = useState([]);
 
-    const getSpellList = async () => {
-        const { status, data } = await API.get('/Spells');
-        const spellList = data;
+    const getIngredientList = async () => {
+        const { status, data } = await API.get('/Ingredients');
+        const ingredientList = data;
 
         if (status === 200) {
-            setSpellList(spellList);
+            setIngredientList(ingredientList);
 
         }
     }
 
-    console.log('spellType 1', spellType);
-    spellList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
-
-    const filteredList = spellList.filter(spell => {
-        return spell.type === spellType || spell.type === spellType[0] || spell.type === spellType[1] || spell.type === spellType[2] || spell.type === spellType[3]
-    })
+    ingredientList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
 
     useEffect(() => {
-        getSpellList();
-        setSpellType(route.params ? route.params.spellType : spellType);
+        getIngredientList();
 
-    }, [spellTypeDisplay]);
+    }, []);
 
-    if (spellType === "CounterSpell") {
-        setSpellType(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration']) 
-     }   
-
-    console.log('spellType 2', spellType);
     const Item = ({ title }) => (
         <View style={styles.item}>
-            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualSpell', { name: title }) }}>
+            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualIngredient', { name: title }) }}>
                 <Text style={styles.magicText3}>{title}</Text>
             </TouchableOpacity>
         </View>
@@ -66,7 +54,7 @@ const SpellList = (props) => {
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
-                    <Text style={styles.header}>{route.params.spellType}</Text>
+                    <Text style={styles.header}>Ingredient List</Text>
                     <View style={styles.divider3}></View>
                     <View style={styles.divider4}></View>
                 </ImageBackground>
@@ -75,7 +63,7 @@ const SpellList = (props) => {
                 <View style={styles.listContainer}>
                     <FlatList
                         showsVerticalScrollIndicator={false}
-                        data={filteredList}
+                        data={ingredientList}
                         renderItem={({ item }) => { return <Item title={item.name} /> }}
                         keyExtractor={item => uuid.v4()}
                         numColumns={2}>
@@ -94,4 +82,4 @@ const SpellList = (props) => {
 
 }
 
-export default SpellList; 
+export default IngredientList; 

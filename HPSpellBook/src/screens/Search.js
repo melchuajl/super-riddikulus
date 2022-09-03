@@ -2,7 +2,7 @@ import API from '../../API';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { SafeAreaView, Text, View, ScrollView, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from '../styles/FarhanStyle';
+import styles from '../styles/Stylesheet';
 import backgroundImg from '../../assets/bgImage1.png';
 
 const Search = () => {
