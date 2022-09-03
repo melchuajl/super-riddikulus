@@ -27,12 +27,11 @@ const ElixirList = (props) => {
         }
     }
 
-    console.log('spellType 1', elixirDifficulty);
+    // console.log('spellType 1', elixirDifficulty);
     elixirList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
 
     const filteredList = elixirList.filter(elixir => {
-        return elixir.difficulty === elixirDifficulty || elixir.difficulty === elixirDifficulty[0] || elixir.difficulty === elixirDifficulty[1] || elixir.difficulty === elixirDifficulty[2] || elixir.difficulty === elixirDifficulty[3]
-    })
+        return elixir.difficulty === elixirDifficulty})
 
     useEffect(() => {
         getElixirList();
@@ -44,7 +43,7 @@ const ElixirList = (props) => {
     //     setElixirDifficulty(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'])
     // }
 
-    console.log('spellType 2', elixirDifficulty);
+    // console.log('spellType 2', elixirDifficulty);
     const Item = ({ title }) => (
         <View style={styles.item}>
             <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title }) }}>
@@ -65,7 +64,7 @@ const ElixirList = (props) => {
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
-                    {/* <Text style={styles.header}>{route.params.elixirDifficulty}</Text> */}
+                    <Text style={styles.header}>{route.params.elixirDifficulty}</Text>
                     <View style={styles.divider3}></View>
                     <View style={styles.divider4}></View>
                 </ImageBackground>
