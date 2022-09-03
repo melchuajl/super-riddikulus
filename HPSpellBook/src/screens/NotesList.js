@@ -1,8 +1,9 @@
 import mongoAPI from '../../config/mongoAPI';
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import uuid from 'react-native-uuid';
 
 import styles from "../styles/Stylesheet";
@@ -20,9 +21,10 @@ const NotesList = (props) => {
     const getNotesList = async () => {
         const { status, data } = await mongoAPI.get('/note');
         const notesList = data.data;
+        const sortedNotesList = notesList.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)); // sorts note list so that most updated is on top
 
         if (status === 200) {
-            setNotesList(notesList);
+            setNotesList(sortedNotesList);
         }
     }
 
@@ -47,10 +49,12 @@ const NotesList = (props) => {
                     <View style={styles.divider4}></View>
                 </ImageBackground>
                 <View style={styles.noteContainer}>
-                    
+
                     <TouchableOpacity
                         onPress={() => { navigation.navigate('NotesInput') }}>
-                        <Text style={{ marginLeft: -30 }}>+ Add note</Text>
+                        <Text style={[styles.search, { marginLeft: -30 }]}>
+                            <Icon name='add-circle' size={15} /> Add note
+                        </Text>
                     </TouchableOpacity>
 
                     <ScrollView>
@@ -58,7 +62,9 @@ const NotesList = (props) => {
                             <NoteCard
                                 key={uuid.v4()}
                                 title={n.title}
-                                onPress={() => { navigation.navigate('IndividualNote') }}
+                                date={n.updatedAt}
+                                preview={n.body}
+                                id={n._id}
                             />)}
                         <TouchableOpacity onPress={() => { navigation.navigate('IndividualNote') }}>
                             <Text>

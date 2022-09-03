@@ -2,7 +2,7 @@
 import React from 'react';
 import mongoAPI from '../../config/mongoAPI';
 import { useEffect, useState, useLayoutEffect } from "react";
-import { View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Alert, ScrollView } from 'react-native';
 import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png'
@@ -50,13 +50,13 @@ const NotesInput = () => {
                 Alert.alert("Success!", "You've added a new note", [
                     {
                         text: "OK",
-                        onPress: () => {setNoteTitle(''), setNoteBody('')}
+                        onPress: () => { setNoteTitle(''), setNoteBody('') }
                     },
                     {
-                        text: "View notes", 
-                        onPress: () => {navigation.navigate('NotesList')}
+                        text: "View notes",
+                        onPress: () => { navigation.navigate('NotesList') }
                     }
-                ]); 
+                ]);
             }
         } catch (error) {
             console.error(error)
@@ -64,8 +64,8 @@ const NotesInput = () => {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ImageBackground
                     source={backgroundImg}
                     resizeMode="cover"
@@ -80,11 +80,12 @@ const NotesInput = () => {
                         <View style={styles.divider3}></View>
                         <View style={styles.divider4}></View>
                     </ImageBackground>
-                    <View style={[styles.noteContainer, {width: "85%", marginLeft: 12}]}>
+                    <View style={[styles.noteContainer, { width: "85%", marginLeft: 12 }]}>
                         <TextInput
                             style={[styles.inputNote, { height: 40 }]}
                             placeholder='Title'
                             clearButtonMode='while-editing'
+                            selectionColor='black'
                             onChangeText={input => setNoteTitle(input)}
                             value={noteTitle}
                         />
@@ -92,20 +93,21 @@ const NotesInput = () => {
                             style={[styles.inputNote, { height: "80%" }]}
                             placeholder='Body'
                             multiline
+                            selectionColor='black'
                             onChangeText={input => setNoteBody(input)}
                             value={noteBody}
                         />
                         <TouchableOpacity
                             style={styles.addNote}
                             onPress={() => handleAddNote()}>
-                            <Text>
+                            <Text style={styles.magicText3}>
                                 + Add note
                             </Text>
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
-            </KeyboardAvoidingView>
-        </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     );
 
 }

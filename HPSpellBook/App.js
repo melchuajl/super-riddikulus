@@ -23,7 +23,7 @@ export default function App() {
                 <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ headerShown: false }} />
                 <Stack.Screen name='Search' component={Search} options={{ animation: 'fade_from_bottom', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
-                <Stack.Screen name='NotesList' component={NotesList} options={{ headerShown: false }} />
+                <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ headerShown: false }} />

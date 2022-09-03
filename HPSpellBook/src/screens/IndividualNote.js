@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from "../styles/Stylesheet";
 import detailsBg from "../../assets/individualSpellBG.png";
@@ -24,7 +25,7 @@ const IndividualNote = () => {
     }
 
     const route = useRoute();
-    const filteredNote = notesList.filter(n => n._id === /* route.params.title  */'6311c69b7e57b9430d559b26');
+    const filteredNote = notesList.filter(n => n._id === route.params.id);
 
     useEffect(() => {
         getNotesList();
@@ -42,11 +43,22 @@ const IndividualNote = () => {
                 <Image source={spellScroll}
                     style={styles.spellScroll} />
                 <View style={styles.box}>
-                    <Text style={styles.magicText}>{filteredNote[0] ? filteredNote[0].title : null }</Text>
+                    <Text style={styles.magicText}>{filteredNote[0] ? filteredNote[0].title : null}</Text>
                 </View>
                 <View style={styles.scroll}>
+                    <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
+                        <TouchableOpacity
+                            style={{ marginHorizontal: 5 }}
+                            onPress={() => { }}>
+                            <Icon name='edit' size={20} />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => { }}>
+                            <Icon name='delete' size={20} />
+                        </TouchableOpacity>
+                    </View>
                     <Text style={styles.text}>
-                        {filteredNote[0] ? filteredNote[0].body : null }
+                        {filteredNote[0] ? filteredNote[0].body : null}
                     </Text>
                 </View>
                 <View style={styles.return}>

@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
         left: 110,
         height: 304,
         width: 800,
-        fontFamily: "CroissantOne",
+        fontFamily: "CroissantOne"
     },
 
     disco: {
@@ -251,7 +251,9 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        backgroundColor: 'rgba(255,255,255, 0.6)'
+        backgroundColor: 'rgba(255,255,255, 0.6)', 
+        fontSize: 16, 
+        fontFamily: "CroissantOne"
     },
 
     addNote: {
@@ -259,18 +261,34 @@ const styles = StyleSheet.create({
         margin: 12, 
         borderWidth: 1,
         padding: 10,
-        borderColor: 'black',
+        borderColor: 'black'
     },
 
     noteCard: {
         width: "85%",
-        height: 60,
+        height: 110,
         margin: 7,
         backgroundColor: 'rgba(255,255,255, 0.7)',
         padding: 10,
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.2)',
-        borderRadius: 10
+        borderRadius: 10 
+    },
+
+    noteCardTitle: {
+        fontFamily: 'CroissantOne',
+        fontSize: 16
+    }, 
+
+    noteCardPreview: {
+        marginTop: 5
+    }, 
+
+    noteCardDate: {
+        position:'absolute', 
+        bottom: 10, 
+        right: 10, 
+        color: '#3d3d3d'
     }
 
 });
