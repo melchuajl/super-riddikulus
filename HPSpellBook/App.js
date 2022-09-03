@@ -12,6 +12,9 @@ import NotesInput from './src/screens/NotesInput';
 import IndividualNote from './src/screens/IndividualNote';
 import IndividualIngredient from './src/screens/IndividualIngredient';
 import IngredientList from './src/screens/IngredientList';
+import ElixirDifficultyScreen from './src/screens/ElixirDifficultyScreen';
+import ElixirList from './src/components/ElixirList';
+import IndividualElixir from './src/components/IndividualElixir';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -22,6 +25,9 @@ export default function App() {
                 <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ headerShown: false }} />
+                <Stack.Screen name='ElixirDifficulty' component={ElixirDifficultyScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='ElixirList' component={ElixirList} options={{ headerShown: false }} />
+                <Stack.Screen name='IndividualElixir' component={IndividualElixir} options={{ headerShown: false }} />
                 <Stack.Screen name='Search' component={Search} options={{ animation: 'fade_from_bottom', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
                 <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
