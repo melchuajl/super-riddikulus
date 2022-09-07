@@ -15,6 +15,7 @@ import IngredientList from './src/screens/IngredientList';
 import ElixirDifficultyScreen from './src/screens/ElixirDifficultyScreen';
 import ElixirList from './src/screens/ElixirList';
 import IndividualElixir from './src/screens/IndividualElixir';
+import Houses from './src/screens/Houses';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ headerShown: false }} />
                 <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ headerShown: false }} />
                 <Stack.Screen name='IngredientList' component={IngredientList} options={{ headerShown: false }} />
+                <Stack.Screen name='Houses' component={Houses} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

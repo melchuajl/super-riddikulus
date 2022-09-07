@@ -14,18 +14,9 @@ const NotesInput = () => {
     const route = useRoute();
     const navigation = useNavigation();
 
-    const [noteTitle, setNoteTitle] = useState('');
-    const [noteBody, setNoteBody] = useState('');
+    const [noteTitle, setNoteTitle] = useState(route.params ? route.params.title : '');
+    const [noteBody, setNoteBody] = useState(route.params ? route.params.body : '');
     const [note, setNote] = useState({});
-
-    // const getSpellList = async () => {
-    //     const { status, data } = await mongoAPI.get('/note');
-    //     const notesList = data.data;
-
-    //     if (status === 200) {
-    //         setNotesList(notesList);
-    //     }
-    // }
 
     useEffect(() => {
         const prepare = () => {
@@ -50,11 +41,23 @@ const NotesInput = () => {
                 Alert.alert("Success!", "You've added a new note", [
                     {
                         text: "OK",
-                        onPress: () => { setNoteTitle(''), setNoteBody('') }
-                    },
+                        onPress: () => { setNoteTitle(''), setNoteBody(''), navigation.navigate('NotesList') }
+                    }
+                ]);
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleEditNote = async () => {
+        try {
+            const res = await mongoAPI.patch(`/note/${route.params.id}`, note);
+            if (res) {
+                Alert.alert("Saved!", "Your note has been edited", [
                     {
-                        text: "View notes",
-                        onPress: () => { navigation.navigate('NotesList') }
+                        text: "OK",
+                        onPress: () => { navigation.goBack() }
                     }
                 ]);
             }
@@ -90,7 +93,7 @@ const NotesInput = () => {
                             value={noteTitle}
                         />
                         <TextInput
-                            style={[styles.inputNote, { height: "80%" }]}
+                            style={[styles.inputNote, { fontSize: 15, height: "80%" }]}
                             placeholder='Body'
                             multiline
                             selectionColor='black'
@@ -99,9 +102,9 @@ const NotesInput = () => {
                         />
                         <TouchableOpacity
                             style={styles.addNote}
-                            onPress={() => handleAddNote()}>
+                            onPress={() => route.params ? handleEditNote() : handleAddNote()}>
                             <Text style={styles.magicText3}>
-                                + Add note
+                                Save
                             </Text>
                         </TouchableOpacity>
                     </View>

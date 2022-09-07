@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet, } from "react-native";
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     containerS: {
@@ -247,8 +248,8 @@ const styles = StyleSheet.create({
         top: 100,
         width: '100%',
         height: windowHeight - 200,
-        paddingLeft: "10%", 
-        paddingTop: "10%", 
+        paddingLeft: "10%",
+        paddingTop: "10%",
         paddingBottom: "5%"
     },
 
@@ -257,14 +258,14 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        backgroundColor: 'rgba(255,255,255, 0.6)', 
-        fontSize: 16, 
+        backgroundColor: 'rgba(255,255,255, 0.6)',
+        fontSize: 16,
         fontFamily: "CroissantOne"
     },
 
     addNote: {
         alignItems: 'center',
-        margin: 12, 
+        margin: 12,
         borderWidth: 1,
         padding: 10,
         borderColor: 'black'
@@ -278,24 +279,61 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.2)',
-        borderRadius: 10 
+        borderRadius: 10
     },
 
     noteCardTitle: {
         fontFamily: 'CroissantOne',
         fontSize: 16
-    }, 
+    },
 
     noteCardPreview: {
         marginTop: 5
-    }, 
+    },
 
     noteCardDate: {
-        position:'absolute', 
-        bottom: 10, 
-        right: 10, 
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
         color: '#3d3d3d'
-    }
+    },
+
+    housesHeader: {
+        position: 'absolute',
+        top: '7%'
+    },
+
+    flagContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: '15%',
+        width: '100%',
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        shadowOffset: {
+            width: 0,
+            height: 0
+        },
+        shadowRadius: 20
+    },
+
+    scrollContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center', 
+        position: 'absolute', 
+        top: '80%'
+    },
+
+    scrollDot: {
+        height: 8,
+        width: 8,
+        borderRadius: 4,
+        backgroundColor: "silver",
+        marginHorizontal: 4
+    },
 
 });
 

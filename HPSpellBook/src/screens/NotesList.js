@@ -1,6 +1,6 @@
 import mongoAPI from '../../config/mongoAPI';
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -30,7 +30,7 @@ const NotesList = (props) => {
 
     useEffect(() => {
         getNotesList();
-    }, []);
+    }, [notesList]);
 
     return (
         <View>
@@ -66,11 +66,6 @@ const NotesList = (props) => {
                                 preview={n.body}
                                 id={n._id}
                             />)}
-                        <TouchableOpacity onPress={() => { navigation.navigate('IndividualNote') }}>
-                            <Text>
-                                Control Test
-                            </Text>
-                        </TouchableOpacity>
                     </ScrollView>
                 </View>
                 <View style={styles.return2}>
