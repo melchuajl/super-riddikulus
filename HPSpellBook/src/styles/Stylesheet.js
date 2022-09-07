@@ -322,8 +322,8 @@ const styles = StyleSheet.create({
     scrollContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center', 
-        position: 'absolute', 
+        justifyContent: 'center',
+        position: 'absolute',
         top: '80%'
     },
 
@@ -334,6 +334,29 @@ const styles = StyleSheet.create({
         backgroundColor: "silver",
         marginHorizontal: 4
     },
+
+    modalView: {
+        margin: 20,
+        // backgroundColor: "white",
+        padding: 30,
+        marginLeft: 35,
+        alignItems:'flex-start',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+
+    houseDetails: {
+        position: 'absolute', 
+        top: 310, 
+        width: 390, 
+        height: 434
+    }
 
 });
 

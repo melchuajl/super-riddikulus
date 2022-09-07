@@ -1,6 +1,6 @@
 import API from "../../API";
 import { useEffect, useState, useRef } from "react";
-import { View, Text, Image, ImageBackground, StatusBar, Animated, ScrollView, Pressable, useWindowDimensions } from 'react-native';
+import { View, Text, Image, ImageBackground, Modal, StatusBar, Animated, ScrollView, Pressable, useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import styles from "../styles/Stylesheet";
@@ -16,7 +16,10 @@ const flags = [
 
 const Houses = () => {
 
+    const navigation = useNavigation();
+
     const [houseList, setHouseList] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const getHouses = async () => {
         const { status, data } = await API.get('/Houses');
@@ -29,7 +32,7 @@ const Houses = () => {
 
     useEffect(() => {
         getHouses();
-    }, [])
+    }, [modalVisible])
 
     const scrollX = useRef(new Animated.Value(0)).current;
     const { width: windowWidth } = useWindowDimensions();
@@ -47,25 +50,27 @@ const Houses = () => {
                     <Text style={styles.textTypes}>HOGWARTS HOUSES</Text>
                 </ImageBackground>
 
-                {/* <View style={[styles.flagContainer, { width: windowWidth }]}>
-                    <Animated.FlatList
-                        data={flags}
-                        horizontal
-                        pagingEnabled
-                        onScroll={Animated.event(
-                            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                            { useNativeDriver: true }
-                        )}
-                        scrollEventThrottle={1}
-                        showsHorizontalScrollIndicator={false}
-                        renderItem={({ item }) => {
-                            return <Pressable onLongPress={() => { alert("You pressed me!") }}>
-                                <Image source={item} />
+                {/* <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.container}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.modalText}>Hello World!</Text>
+                            <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => setModalVisible(!modalVisible)}
+                            >
+                                <Text style={styles.textStyle}>Hide Modal</Text>
                             </Pressable>
-                        }}
-                        keyExtractor={item => item}
-                    />
-                </View> */}
+                        </View>
+                    </View>
+                </Modal> */}
 
                 <ScrollView
                     horizontal
@@ -75,13 +80,15 @@ const Houses = () => {
                         [{ nativeEvent: { contentOffset: { x: scrollX } } }],
                         { useNativeDriver: false }
                     )}
-                    scrollEventThrottle={0.5}>
+                    scrollEventThrottle={16}
+                    decelerationRate={'normal'}
+                    snapToAlignment='center'>
                     {flags.map((image, imageIndex) => {
                         return (
                             <Pressable
                                 style={{ width: windowWidth }}
                                 key={imageIndex}
-                                onLongPress={() => alert('Pressed!')}
+                                onPress={() => {navigation.navigate('HouseDetails', {name: 'Ravenclaw'})}}
                             >
                                 <View style={styles.flagContainer}>
                                     <Image source={image} />

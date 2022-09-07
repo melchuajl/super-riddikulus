@@ -29,7 +29,6 @@ const IndividualNote = () => {
 
     useEffect(() => {
         getNotesList();
-        console.log("GETNOTESLIST HAS BEEN CALLED")
     }, [notesList]);
 
     const handleDeleteNote = () => {
