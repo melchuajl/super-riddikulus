@@ -91,7 +91,6 @@ const Houses = () => {
                                 style={{ width: windowWidth }}
                                 key={flagIndex}
                                 onPress={() => { navigation.navigate('HouseDetails', { name: flag.house }) }}
-                            // onPress={() => { <HouseDetails name={flag.house} /> }}
                             >
                                 <View style={styles.flagContainer}>
                                     <Image source={flag.image} />
@@ -122,7 +121,7 @@ const Houses = () => {
                 </View>
 
                 <TabNav />
-                
+
             </ImageBackground>
         </View>
     );
