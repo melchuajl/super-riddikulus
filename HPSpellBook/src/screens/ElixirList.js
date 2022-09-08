@@ -11,44 +11,38 @@ import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
 
 
-const SpellList = (props) => {
+const ElixirList = (props) => {
     const route = useRoute();
     const navigation = useNavigation();
-    const spellTypeDisplay = props.spellType;
-    const [spellList, setSpellList] = useState([]);
-    const [spellType, setSpellType] = useState('');
+    const elixirTypeDisplay = props.elixirDifficulty;
+    const [elixirList, setElixirList] = useState([]);
+    const [elixirDifficulty, setElixirDifficulty] = useState('');
 
-    const getSpellList = async () => {
-        const { status, data } = await API.get('/Spells');
-        const spellList = data;
+    const getElixirList = async () => {
+        const { status, data } = await API.get('/Elixirs');
+        // const elixirList = data;
+        const elixirList = data.filter(e => e.ingredients[0]) // Filters out elixirs with ingredients = []
 
         if (status === 200) {
-            setSpellList(spellList);
-
+            setElixirList(elixirList);
         }
     }
 
-    console.log('spellType 1', spellType);
-    spellList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
+    // console.log('spellType 1', elixirDifficulty);
+    elixirList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
 
-    const filteredList = spellList.filter(spell => {
-        return spell.type === spellType || spell.type === spellType[0] || spell.type === spellType[1] || spell.type === spellType[2] || spell.type === spellType[3]
-    })
+    const filteredList = elixirList.filter(elixir => {
+        return elixir.difficulty === elixirDifficulty})
 
     useEffect(() => {
-        getSpellList();
-        setSpellType(route.params ? route.params.spellType : spellType);
+        getElixirList();
+        setElixirDifficulty(route.params ? route.params.elixirDifficulty : elixirDifficulty);
 
-    }, [spellTypeDisplay]);
+    }, [elixirTypeDisplay]);
 
-    if (spellType === "CounterSpell") {
-        setSpellType(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration']) 
-     }   
-
-    console.log('spellType 2', spellType);
     const Item = ({ title }) => (
         <View style={styles.item}>
-            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualSpell', { name: title }) }}>
+            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title }) }}>
                 <Text style={styles.magicText3}>{title}</Text>
             </TouchableOpacity>
         </View>
@@ -57,16 +51,16 @@ const SpellList = (props) => {
     return (
         <View>
             <ImageBackground
-                source={backgroundImg}
-                resizeMode="cover"
-                style={styles.image}>
+                 source={backgroundImg}
+                 resizeMode="cover"
+                 style={styles.image}>
                 <ImageBackground
                     source={categorybar}
                     resizeMode="cover"
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
-                    <Text style={styles.header}>{route.params.spellType}</Text>
+                    <Text style={styles.header}>{route.params.elixirDifficulty}</Text>
                     <View style={styles.divider3}></View>
                     <View style={styles.divider4}></View>
                 </ImageBackground>
@@ -77,7 +71,7 @@ const SpellList = (props) => {
                         showsVerticalScrollIndicator={false}
                         data={filteredList}
                         renderItem={({ item }) => { return <Item title={item.name} /> }}
-                        keyExtractor={uuid.v4()}
+                        keyExtractor={item => uuid.v4()}
                         numColumns={2}>
                     </FlatList>
                 </View>
@@ -94,4 +88,4 @@ const SpellList = (props) => {
 
 }
 
-export default SpellList; 
+export default ElixirList; 

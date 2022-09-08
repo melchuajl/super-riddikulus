@@ -2,7 +2,7 @@
 import React from 'react';
 import mongoAPI from '../../config/mongoAPI';
 import { useEffect, useState, useLayoutEffect } from "react";
-import { View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Alert, ScrollView } from 'react-native';
 import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png'
@@ -14,18 +14,9 @@ const NotesInput = () => {
     const route = useRoute();
     const navigation = useNavigation();
 
-    const [noteTitle, setNoteTitle] = useState('');
-    const [noteBody, setNoteBody] = useState('');
+    const [noteTitle, setNoteTitle] = useState(route.params ? route.params.title : '');
+    const [noteBody, setNoteBody] = useState(route.params ? route.params.body : '');
     const [note, setNote] = useState({});
-
-    // const getSpellList = async () => {
-    //     const { status, data } = await mongoAPI.get('/note');
-    //     const notesList = data.data;
-
-    //     if (status === 200) {
-    //         setNotesList(notesList);
-    //     }
-    // }
 
     useEffect(() => {
         const prepare = () => {
@@ -50,13 +41,25 @@ const NotesInput = () => {
                 Alert.alert("Success!", "You've added a new note", [
                     {
                         text: "OK",
-                        onPress: () => {setNoteTitle(''), setNoteBody('')}
-                    },
-                    {
-                        text: "View notes", 
-                        onPress: () => {navigation.navigate('NotesList')}
+                        onPress: () => { setNoteTitle(''), setNoteBody(''), navigation.navigate('NotesList') }
                     }
-                ]); 
+                ]);
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleEditNote = async () => {
+        try {
+            const res = await mongoAPI.patch(`/note/${route.params.id}`, note);
+            if (res) {
+                Alert.alert("Saved!", "Your note has been edited", [
+                    {
+                        text: "OK",
+                        onPress: () => { navigation.goBack() }
+                    }
+                ]);
             }
         } catch (error) {
             console.error(error)
@@ -64,8 +67,8 @@ const NotesInput = () => {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ImageBackground
                     source={backgroundImg}
                     resizeMode="cover"
@@ -80,32 +83,34 @@ const NotesInput = () => {
                         <View style={styles.divider3}></View>
                         <View style={styles.divider4}></View>
                     </ImageBackground>
-                    <View style={[styles.noteContainer, {width: "85%", marginLeft: 12}]}>
+                    <View style={[styles.noteContainer, { width: "85%", marginLeft: 12 }]}>
                         <TextInput
                             style={[styles.inputNote, { height: 40 }]}
                             placeholder='Title'
                             clearButtonMode='while-editing'
+                            selectionColor='black'
                             onChangeText={input => setNoteTitle(input)}
                             value={noteTitle}
                         />
                         <TextInput
-                            style={[styles.inputNote, { height: "80%" }]}
+                            style={[styles.inputNote, { fontSize: 15, height: "80%" }]}
                             placeholder='Body'
                             multiline
+                            selectionColor='black'
                             onChangeText={input => setNoteBody(input)}
                             value={noteBody}
                         />
                         <TouchableOpacity
                             style={styles.addNote}
-                            onPress={() => handleAddNote()}>
-                            <Text>
-                                + Add note
+                            onPress={() => route.params ? handleEditNote() : handleAddNote()}>
+                            <Text style={styles.magicText3}>
+                                Save
                             </Text>
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
-            </KeyboardAvoidingView>
-        </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     );
 
 }

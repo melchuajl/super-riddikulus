@@ -2,7 +2,7 @@ import React from 'react';
 import API from "../../API";
 import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList } from 'react-native';
-import styles from "../styles/FarhanStyle";
+import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png'
 import dividerImg from '../../assets/Divider.png';
