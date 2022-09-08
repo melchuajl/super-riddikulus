@@ -37,7 +37,7 @@ export default function App() {
                 <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ headerShown: false }} />
                 <Stack.Screen name='IngredientList' component={IngredientList} options={{ headerShown: false }} />
                 <Stack.Screen name='Houses' component={Houses} options={{ headerShown: false }} />
-                <Stack.Screen name='HouseDetails' component={HouseDetails} options={{ headerShown: false }} />
+                <Stack.Screen name='HouseDetails' component={HouseDetails} options={{ animation:'fade_from_bottom', headerTransparent: true, title: ' ', headerTintColor: 'white' }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

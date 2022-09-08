@@ -7,6 +7,7 @@ import { useRoute } from "@react-navigation/native";
 import styles from "../styles/Stylesheet";
 import bgImage from "../../assets/houses/housesBg.png";
 import houseDetails from "../../assets/houses/housesDetails.png";
+import TabNav from "./TabNav";
 
 const flags = {
     Gryffindor: require("../../assets/houses/flagGryffindor.png"),
@@ -38,7 +39,7 @@ const HouseDetails = (props) => {
 
     const route = useRoute();
     const filteredHouse = houseList.filter(h => h.name === house);
-    console.log("House:", house, "Traits:", filteredHouse[0]?.traits)
+    // console.log("House:", house, "Traits:", filteredHouse[0]?.traits)
 
     return (
         <View>
@@ -75,6 +76,9 @@ const HouseDetails = (props) => {
                         </FlatList>
                     </View>
                 </ImageBackground>
+
+                <TabNav style={{position: 'absolute', bottom: 0}}/>
+
             </ImageBackground>
         </View>
     )
