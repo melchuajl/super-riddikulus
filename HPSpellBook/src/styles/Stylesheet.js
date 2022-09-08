@@ -124,6 +124,12 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         fontFamily: "CroissantOne",
     },
+    
+    elixirHeader: {
+        fontWeight: '400',
+        textTransform: 'uppercase',
+        fontFamily: "CroissantOne",
+    },
 
     listContainer: {
         position: 'absolute',

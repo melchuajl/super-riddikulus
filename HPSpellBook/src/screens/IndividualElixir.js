@@ -50,7 +50,7 @@ const IndividualElixir = () => {
                 <Image source={elixirsInnerBg}
                     style={styles.elixirInnerBg} />
 
-                <Text style={styles.header}>{route.params.elixirDifficulty}</Text>
+                <Text style={styles.elixirHeader}>{route.params.elixirDifficulty}ELIXIRS</Text>
                 
                 <View style={styles.scroll}>
                     <Text style={styles.text}>Name:
