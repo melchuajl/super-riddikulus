@@ -125,11 +125,13 @@ const styles = StyleSheet.create({
         fontFamily: "CroissantOne",
     },
     
-    elixirHeader: {
-        fontWeight: '400',
-        textTransform: 'uppercase',
-        fontFamily: "CroissantOne",
-    },
+    // elixirHeader: {
+    //     fontWeight: '400',
+    //     textTransform: 'uppercase',
+    //     fontFamily: "CroissantOne",
+    //     left: 100,
+    //     top: 100
+    // },
 
     listContainer: {
         position: 'absolute',
@@ -338,6 +340,66 @@ const styles = StyleSheet.create({
         bottom: 10, 
         right: 10, 
         color: '#3d3d3d'
+    },
+
+    housesHeader: {
+        position: 'absolute',
+        top: '7%'
+    },
+
+    flagContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: '15%',
+        width: '100%',
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        shadowOffset: {
+            width: 0,
+            height: 0
+        },
+        shadowRadius: 20
+    },
+
+    scrollContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        top: '80%'
+    },
+
+    scrollDot: {
+        height: 8,
+        width: 8,
+        borderRadius: 4,
+        backgroundColor: "silver",
+        marginHorizontal: 4
+    },
+
+    modalView: {
+        margin: 20,
+        // backgroundColor: "white",
+        padding: 30,
+        marginLeft: 35,
+        alignItems:'flex-start',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+
+    houseDetails: {
+        position: 'absolute', 
+        top: 310, 
+        width: 390, 
+        height: 434
     }
 
 });
