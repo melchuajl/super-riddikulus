@@ -14,7 +14,6 @@ import TabNav from '../components/TabNav';
 
 const NotesList = (props) => {
 
-    const route = useRoute();
     const navigation = useNavigation();
 
     const [notesList, setNotesList] = useState([]);
@@ -32,6 +31,9 @@ const NotesList = (props) => {
     useEffect(() => {
         getNotesList();
     }, [notesList]);
+
+    const route = useRoute();
+    const userId = route.params?.userId
 
     return (
         <View>

@@ -22,7 +22,7 @@ const TabNav = () => {
             <Pressable onPress={() => { navigation.goBack() }}>
                 <Image source={backIcon} />
             </Pressable>
-            <Pressable onPress={() => { }}>
+            <Pressable onPress={() => { navigation.navigate('Search') }}>
                 <Image source={searchIcon} />
             </Pressable>
             <Pressable onPress={() => { navigation.navigate('NotesList') }}>

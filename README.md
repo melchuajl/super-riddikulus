@@ -2,8 +2,21 @@
 
 ## For students, Witches and Wizards alike
 
-<img src="./UI looking hawt.png">
+### Features: 
+* Houses
+* Spells
+* Elixirs
+* Ingredients
+* Notes (requires a user account)
 
-## Component diagram
+### To launch app: 
 
-<img src="./Group 1 Module 4.drawio.png">
+```bash
+cd HPSpellBook
+```
+```bash 
+npm install
+```
+```bash 
+expo start
+```

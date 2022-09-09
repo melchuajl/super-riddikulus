@@ -30,7 +30,7 @@ export default function App() {
                 <Stack.Screen name='ElixirDifficulty' component={ElixirDifficultyScreen} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='ElixirList' component={ElixirList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualElixir' component={IndividualElixir} options={{ animation: 'fade', headerShown: false }} />
-                <Stack.Screen name='Search' component={Search} options={{ animation: 'fade_from_bottom', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
+                <Stack.Screen name='Search' component={Search} options={{ animation: 'fade', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
                 <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ animation: 'fade', headerShown: false }} />

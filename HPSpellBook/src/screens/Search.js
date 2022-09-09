@@ -4,6 +4,7 @@ import { SafeAreaView, Text, View, ScrollView, ImageBackground } from 'react-nat
 import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/Stylesheet';
 import backgroundImg from '../../assets/bgImage1.png';
+import TabNav from '../components/TabNav';
 
 const Search = () => {
 
@@ -56,17 +57,17 @@ const Search = () => {
     }, [search])
 
     return (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
             <ImageBackground
                 source={backgroundImg}
                 style={styles.bg}>
                 <SafeAreaView>
-                    <ScrollView style={{marginBottom: 50}}>
+                    <ScrollView style={{ marginBottom: 70 }}>
                         {filteredData.map((item, index) => {
                             return (
                                 <View key={index}>
                                     <Text
-                                        style={[styles.magicText3, {marginLeft: 75, marginVertical: 10}]}
+                                        style={[styles.magicText3, { marginLeft: 75, marginVertical: 10 }]}
                                         onPress={() => navigation.navigate('IndividualSpell', { name: item.name })}>
                                         {item.name}
                                     </Text>
@@ -75,6 +76,9 @@ const Search = () => {
                         })}
                     </ScrollView>
                 </SafeAreaView>
+
+                <TabNav />
+                
             </ImageBackground>
         </View>
     );
