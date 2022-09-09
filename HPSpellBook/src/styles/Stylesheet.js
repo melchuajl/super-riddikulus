@@ -352,8 +352,7 @@ const styles = StyleSheet.create({
     },
 
     houseDetails: {
-        position: 'absolute', 
-        top: 310, 
+        top: 100,
         width: 390, 
         height: 434
     }

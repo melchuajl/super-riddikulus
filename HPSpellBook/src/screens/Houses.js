@@ -6,12 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import styles from "../styles/Stylesheet";
 import bgBar from "../../assets/categorybar.png";
 import bgImage from "../../assets/houses/housesBg.png";
+import HouseDetails from "../components/HouseDetails";
+import TabNav from "../components/TabNav";
 
 const flags = [
-    require("../../assets/houses/flagGryffindor.png"),
-    require("../../assets/houses/flagHufflepuff.png"),
-    require("../../assets/houses/flagSlytherin.png"),
-    require("../../assets/houses/flagRavenclaw.png")
+    { house: "Gryffindor", image: require("../../assets/houses/flagGryffindor.png") },
+    { house: "Hufflepuff", image: require("../../assets/houses/flagHufflepuff.png") },
+    { house: "Slytherin", image: require("../../assets/houses/flagSlytherin.png") },
+    { house: "Ravenclaw", image: require("../../assets/houses/flagRavenclaw.png") }
 ];
 
 const Houses = () => {
@@ -83,15 +85,15 @@ const Houses = () => {
                     scrollEventThrottle={16}
                     decelerationRate={'normal'}
                     snapToAlignment='center'>
-                    {flags.map((image, imageIndex) => {
+                    {flags.map((flag, flagIndex) => {
                         return (
                             <Pressable
                                 style={{ width: windowWidth }}
-                                key={imageIndex}
-                                onPress={() => {navigation.navigate('HouseDetails', {name: 'Ravenclaw'})}}
+                                key={flagIndex}
+                                onPress={() => { navigation.navigate('HouseDetails', { name: flag.house }) }}
                             >
                                 <View style={styles.flagContainer}>
-                                    <Image source={image} />
+                                    <Image source={flag.image} />
                                 </View>
                             </Pressable>
                         );
@@ -117,6 +119,8 @@ const Houses = () => {
                         );
                     })}
                 </View>
+
+                <TabNav />
 
             </ImageBackground>
         </View>
