@@ -9,7 +9,7 @@ import dividerImg from '../../assets/Divider.png';
 import uuid from 'react-native-uuid';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
-
+import TabNav from '../components/TabNav';
 
 const SpellList = (props) => {
     const route = useRoute();
@@ -42,8 +42,8 @@ const SpellList = (props) => {
     }, [spellTypeDisplay]);
 
     if (spellType === "CounterSpell") {
-        setSpellType(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration']) 
-     }   
+        setSpellType(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'])
+    }
 
     console.log('spellType 2', spellType);
     const Item = ({ title }) => (
@@ -58,11 +58,9 @@ const SpellList = (props) => {
         <View>
             <ImageBackground
                 source={backgroundImg}
-                resizeMode="cover"
-                style={styles.image}>
+                style={styles.bg}>
                 <ImageBackground
                     source={categorybar}
-                    resizeMode="cover"
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
@@ -81,12 +79,9 @@ const SpellList = (props) => {
                         numColumns={2}>
                     </FlatList>
                 </View>
-                <View style={styles.return2}>
-                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                        <Text style={styles.magicText3}>Return to previous page
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+
+                <TabNav />
+
             </ImageBackground>
         </View>
 

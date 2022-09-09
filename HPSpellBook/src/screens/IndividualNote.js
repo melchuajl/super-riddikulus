@@ -9,6 +9,7 @@ import styles from "../styles/Stylesheet";
 import detailsBg from "../../assets/individualSpellBG.png";
 import spellScroll from "../../assets/kraftpaper.png";
 import disco from '../../assets/circle2.gif';
+import TabNav from "../components/TabNav";
 
 const IndividualNote = () => {
 
@@ -50,8 +51,7 @@ const IndividualNote = () => {
             <StatusBar barStyle="light-content" />
             <ImageBackground
                 source={detailsBg}
-                resizeMode="cover"
-                style={styles.image}>
+                style={styles.bg}>
                 <Image source={disco}
                     style={styles.disco} />
                 <Image source={spellScroll}
@@ -59,7 +59,7 @@ const IndividualNote = () => {
                 <View style={styles.box}>
                     <Text style={styles.magicText}>{filteredNote[0] ? filteredNote[0].title : null}</Text>
                 </View>
-                <View style={styles.scroll}>
+                <View style={[styles.scroll, { top: '22%' }]}>
                     <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
                         <TouchableOpacity
                             style={{ marginHorizontal: 5 }}
@@ -75,11 +75,9 @@ const IndividualNote = () => {
                         {filteredNote[0] ? filteredNote[0].body : null}
                     </Text>
                 </View>
-                <View style={styles.return}>
-                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                        <Text style={styles.magicText2}>&#8592; Return to list</Text>
-                    </TouchableOpacity>
-                </View>
+
+                <TabNav />
+
             </ImageBackground>
         </View>
     );

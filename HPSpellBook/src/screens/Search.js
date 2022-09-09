@@ -59,8 +59,7 @@ const Search = () => {
         <View style={{flex: 1}}>
             <ImageBackground
                 source={backgroundImg}
-                resizeMode="cover"
-                style={styles.image}>
+                style={styles.bg}>
                 <SafeAreaView>
                     <ScrollView style={{marginBottom: 50}}>
                         {filteredData.map((item, index) => {

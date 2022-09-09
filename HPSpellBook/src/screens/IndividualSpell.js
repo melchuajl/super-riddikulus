@@ -8,6 +8,7 @@ import disco from '../../assets/circle2.gif';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
 import TTS from "../components/TTS";
+import TabNav from "../components/TabNav";
 
 
 const IndividualSpell = () => {
@@ -35,8 +36,7 @@ const IndividualSpell = () => {
             <StatusBar barStyle="light-content" />
             <ImageBackground
                 source={detailsBg}
-                resizeMode="cover"
-                style={styles.image}>
+                style={styles.bg}>
                 <Image source={disco}
                     style={styles.disco} />
                 <Image source={spellScroll}
@@ -59,11 +59,9 @@ const IndividualSpell = () => {
                         <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
                     </Text>
                 </View>
-                <View style={styles.return}>
-                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                        <Text style={styles.magicText2}>&#8592; Return to list</Text>
-                    </TouchableOpacity>
-                </View>
+
+                <TabNav />
+
             </ImageBackground>
         </View>
     );
