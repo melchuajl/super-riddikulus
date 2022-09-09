@@ -25,6 +25,7 @@ const WelcomeScreen = () => {
     const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
+        'ParryHotter': require('../../assets/fonts/ParryHotter.ttf')
     });
 
     useEffect(() => {

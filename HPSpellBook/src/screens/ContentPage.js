@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, ImageBackground } from "react-native";
 import styles from "../styles/Stylesheet";
 import ContentBG from "../../assets/ContentBG.png";
 import WhiteGlow from "../../assets/whiteglow.png";
-import Icon from 'react-native-vector-icons/AntDesign'; //can switch between different designs based on which folder
+import Icon from 'react-native-vector-icons/MaterialIcons'; //can switch between different designs based on which folder
 
 
 const ContentPage = () => {
@@ -24,17 +24,14 @@ const ContentPage = () => {
                         navigation.navigate('ElixirDifficulty')
                     }}
                 >
-                    <Icon
-                        name="caretright"
-                        size={30}
-                        // color="red"
-                        style={styles.caret}
-                    />
                     <ImageBackground
                         source={WhiteGlow}
                         style={styles.contentButton}
                     >
-                        <Text style={styles.contentButtonText}>HOUSES</Text>
+                        <View style={styles.caret}>
+                            <Text style={styles.contentButtonText}>HOUSES</Text>
+                            <Icon name="play-arrow" size={30} />
+                        </View>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -47,7 +44,10 @@ const ContentPage = () => {
                     <ImageBackground
                         source={WhiteGlow}
                         style={styles.contentButton}>
-                        <Text style={styles.contentButtonText}>SPELLS</Text>
+                        <View style={styles.caret}>
+                            <Text style={styles.contentButtonText}>SPELLS</Text>
+                            <Icon name="play-arrow" size={30} />
+                        </View>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -60,7 +60,10 @@ const ContentPage = () => {
                     <ImageBackground
                         source={WhiteGlow}
                         style={styles.contentButton}>
-                        <Text style={styles.contentButtonText}>ELIXIRS</Text>
+                        <View style={styles.caret}>
+                            <Text style={styles.contentButtonText}>ELIXIRS</Text>
+                            <Icon name="play-arrow" size={30} />
+                        </View>
                     </ImageBackground>
                 </TouchableOpacity>
 
@@ -73,14 +76,12 @@ const ContentPage = () => {
                     <ImageBackground
                         source={WhiteGlow}
                         style={styles.contentButton}>
-                        <Text style={styles.contentButtonText}>INGREDIENTS</Text>
+                        <View style={styles.caret}>
+                            <Text style={styles.contentButtonText}>INGREDIENTS</Text>
+                            <Icon name="play-arrow" size={30} />
+                        </View>
                     </ImageBackground>
                 </TouchableOpacity>
-
-                {/* Testing ICONS */}
-                <Text>
-                    <Icon name="caretright" size={20} color="black" />
-                </Text>
 
             </ImageBackground>
         </View>

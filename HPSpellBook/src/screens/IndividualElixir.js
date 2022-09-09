@@ -10,10 +10,12 @@ import { useNavigation } from '@react-navigation/native';
 import uuid from 'react-native-uuid';
 
 
-const IndividualElixir = () => {
+const IndividualElixir = (props) => {
 
     const navigation = useNavigation();
     const [elixirList, setElixirList] = useState([]);
+    const [elixirDifficulty, setElixirDifficulty] = useState('');
+    const elixirTypeDisplay = props.elixirDifficulty;
 
     const getElixirList = async () => {
         const { status, data } = await API.get('/Elixirs');
@@ -30,8 +32,26 @@ const IndividualElixir = () => {
         getElixirList();
     }, []);
 
-    const Item = ({ title }) => (
-        <View style={styles.itemElixir}>
+    const filteredList = elixirList.filter(elixir => {
+        return elixir.difficulty === elixirDifficulty
+    })
+
+    useEffect(() => {
+        getElixirList();
+        setElixirDifficulty(route.params ? route.params.elixirDifficulty : elixirDifficulty);
+
+    }, [elixirTypeDisplay]);
+
+    const ElixirListItem = ({ title }) => (
+        <View style={styles.itemElixirList}>
+            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title }) }}>
+                <Text style={styles.magicText3}>{title}</Text>
+            </TouchableOpacity>
+        </View>
+    );
+
+    const IngredientItem = ({ title }) => (
+        <View style={styles.itemIngredient}>
             <TouchableOpacity onPress={() => { navigation.navigate('IndividualIngredient', { name: title }) }}>
                 <Text style={styles.magicText3}>&#8227; {title}</Text>
             </TouchableOpacity>
@@ -50,36 +70,47 @@ const IndividualElixir = () => {
                 <Image source={elixirsInnerBg}
                     style={styles.elixirInnerBg} />
 
-                <Text style={styles.elixirHeader}>{route.params.elixirDifficulty}</Text>
-                
+                {/* Header */}
+                <View style={styles.elixirHeader}>
+                    <Text style={styles.headerText}>{route.params.elixirDifficulty}&nbsp;ELIXIRS</Text>
+                </View>
+
+                {/* ElixirList */}
+                <View style={styles.elixirFlat}>
+                    <FlatList
+                        showsVerticalScrollIndicator={false}
+                        data={filteredList}
+                        renderItem={({ item }) => { return <ElixirListItem title={item.name} /> }}
+                        keyExtractor={item => uuid.v4()}
+                        numColumns={1}>
+                    </FlatList>
+                </View>
+
+                {/* ElixirIngredients */}
                 <View style={styles.scroll}>
-                    <Text style={styles.text}>Name:
-                        <Text style={{ fontSize: 17 }}>&nbsp;{filteredElixir[0] ? filteredElixir[0].name : 'Nil'}</Text>
+                    <Text style={styles.elixirText1}>Name:
+                        <Text style={{ fontSize: 15 }}>&nbsp;{filteredElixir[0] ? filteredElixir[0].name : ''}</Text>
                     </Text>
-                    <Text style={styles.text}>Effect:
-                        <Text style={{ fontSize: 17 }}>&nbsp;{filteredElixir[0] && filteredElixir[0].effect ? filteredElixir[0].effect : 'Unknown'}</Text>
+                    <Text style={styles.elixirText}>Effect:
+                        <Text style={{ fontSize: 15 }}>&nbsp;{filteredElixir[0] && filteredElixir[0].effect ? filteredElixir[0].effect : ''}{"\n"}</Text>
                     </Text>
-                    <Text style={styles.text}>Characteristics:
-                        <Text style={{ fontSize: 17 }}>&nbsp;{filteredElixir[0] && filteredElixir[0].characteristics ? filteredElixir[0].characteristics : 'Unknown'}</Text>
+                    <Text style={styles.elixirText}>Side Effects:
+                        <Text style={{ fontSize: 15 }}>&nbsp;{filteredElixir[0] && filteredElixir[0].sideEffects ? filteredElixir[0].sideEffects : ''}</Text>
                     </Text>
-                    <Text style={styles.text}>Side Effects:
-                        <Text style={{ fontSize: 17 }}>&nbsp;{"\n"}{filteredElixir[0] && filteredElixir[0].sideEffects ? filteredElixir[0].sideEffects : 'Unknown'}</Text>
+                    <Text style={styles.elixirText}>Characteristics:
+                        <Text style={{ fontSize: 15 }}>&nbsp;{filteredElixir[0] && filteredElixir[0].characteristics ? filteredElixir[0].characteristics : ''}{"\n"}</Text>
                     </Text>
-                    <Text style={styles.text}>Ingredients:
+                    <Text style={styles.elixirText}>Ingredients:
                     </Text>
                     <FlatList
-                        showsVerticalScrollIndicator
+                        showsVerticalScrollIndicator={false}
                         data={filteredElixir[0]?.ingredients}
-                        renderItem={({ item }) => { return <Item title={item.name} /> }}
+                        renderItem={({ item }) => { return <IngredientItem title={item.name} /> }}
                         keyExtractor={item => uuid.v4()}
                         numColumns={2}>
                     </FlatList>
                 </View>
-                {/* <View style={styles.return}>
-                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                        <Text style={styles.magicText2}>&#8592; Return to list</Text>
-                    </TouchableOpacity>
-                </View> */}
+
             </ImageBackground>
         </View>
     );
