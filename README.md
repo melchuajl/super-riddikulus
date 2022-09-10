@@ -11,6 +11,8 @@
 
 ### To launch app: 
 
+Optimised for viewing on iPhone 13 Pro - iOS 15.5
+
 ```bash
 cd HPSpellBook
 ```
