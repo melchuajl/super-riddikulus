@@ -25,9 +25,9 @@ const AppNav = () => {
     }
 
     return (
-        <AuthProvider>
+        <>
             {userToken !== null ? <AppStack /> : <AuthStack />}
-        </AuthProvider>
+        </>
     )
 }
 

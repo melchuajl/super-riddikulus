@@ -57,7 +57,7 @@ const Login = () => {
         <View>
             <ImageBackground
                 source={welcome}
-                style={styles.image}>   
+                style={styles.bg}>   
                 <View style = {styles.inputBox}>
                         <TextInput 
                             placeholder = 'email'
@@ -72,6 +72,11 @@ const Login = () => {
                             onPress = {() => {login(details)}}>
                                 <Text>Login</Text>
                             </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress ={() => {navigation.navigate('Registration')}}>
+                                <Text>Sign up here</Text>
+                            </TouchableOpacity>
+                            
                             </View>
             </ImageBackground>
         </View>

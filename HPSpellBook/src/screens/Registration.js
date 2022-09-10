@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from "react";
-import { View, TouchableOpacity, ImageBackground, Text, Animated, TextInput, Alert } from 'react-native';
+import { View, TouchableOpacity, ImageBackground, Text, Animated, TextInput, Alert, Touchable } from 'react-native';
 import styles from '../styles/Stylesheet';
 import welcome from '../../assets/welcomeImage.png'
 import { useNavigation } from '@react-navigation/native';
@@ -73,10 +73,10 @@ const Registration = () => {
         <View>
             <ImageBackground
                 source={welcome}
-                style={styles.image}>   
+                style={styles.bg}>   
                 <View style = {styles.inputBox}>
                         <TextInput
-                            placeholder = 'Username'
+                            placeholder = 'Name'
                             value = {username}
                             onChangeText = {setUsername}></TextInput>
                         <TextInput 
@@ -97,7 +97,11 @@ const Registration = () => {
                             onPress = {registerOnPress}>
                                 <Text>Register</Text>
                             </TouchableOpacity>
-                            <Text>Have an account? Sign in</Text>
+                            <TouchableOpacity 
+                                onPress= {() => {navigation.navigate('Login')}}>
+                                <Text>Have an account? Sign in</Text>
+                                </TouchableOpacity>
+                            
                             </View>
             </ImageBackground>
         </View>

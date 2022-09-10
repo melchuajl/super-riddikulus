@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from 'react-native';
 import ElixirDifficulty from "./ElixirDifficulty";
 
-const ElixirDiffucltyScreen = () => {
+const ElixirDifficultyScreen = () => {
 
     const [elixirDifficulty, setElixirDifficulty] = useState([]);
 
@@ -16,4 +16,4 @@ const ElixirDiffucltyScreen = () => {
     );
 }
 
-export default ElixirDiffucltyScreen; 
+export default ElixirDifficultyScreen; 
