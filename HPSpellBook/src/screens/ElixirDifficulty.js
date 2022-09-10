@@ -1,10 +1,10 @@
-import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
-import bgBar from "../../assets/categorybar.png";
-import backgroundImg from '../../assets/bgImage1.png';
+import { View, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import elixirsTag from "../../assets/elixirsTag.png";
+import elixirsBg from '../../assets/elixirsBg.png';
+import elixirsYellowPotion from '../../assets/elixirsYellowPotion.png'
+import elixirsGreenPotion from '../../assets/elixirsGreenPotion.png'
 import { useNavigation } from '@react-navigation/native';
 import styles from "../styles/Stylesheet";
-import { useFonts } from 'expo-font';
-
 
 const ElixirDifficulty = (props) => {
 
@@ -16,47 +16,64 @@ const ElixirDifficulty = (props) => {
         <View>
             <ImageBackground
                 style={styles.bg}
-                source={backgroundImg}
+                source={elixirsBg}
             >
+                <View style={styles.elixirDiffHeader}>
+                    <Text style={styles.elixirDiffHeaderText1}>
+                        E
+                    </Text>
+                    <Text style={styles.elixirDiffHeaderText2}>
+                        LIXIRS
+                    </Text>
+                </View>
+
                 <TouchableOpacity
                     onPress={() => {
                         click.setElixirDifficulty('Beginner');
-                        navigation.navigate('ElixirList', { elixirDifficulty: 'Beginner' })
+                        navigation.navigate('IndividualElixir', { elixirDifficulty: 'Beginner' })
                     }}
                 >
                     <ImageBackground
-                        source={bgBar}
-                        style={styles.barTypes}>
-                        <Text style={styles.textTypes}>BEGINNER</Text>
+                        source={elixirsTag}
+                        style={styles.elixirBarTypes}>
+                        <Text style={styles.elixirBarText}>BEGINNER</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => {
                         click.setElixirDifficulty('Moderate');
-                        navigation.navigate('ElixirList', { elixirDifficulty: 'Moderate' })
+                        navigation.navigate('IndividualElixir', { elixirDifficulty: 'Moderate' })
                     }}
                 >
                     <ImageBackground
-                        source={bgBar}
-                        style={styles.barTypes}>
-                        <Text style={styles.textTypes}>MODERATE</Text>
+                        source={elixirsTag}
+                        style={styles.elixirBarTypes}>
+                        <Text style={styles.elixirBarText}>MODERATE</Text>
                     </ImageBackground>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={() => {
                         click.setElixirDifficulty('Advanced');
-                        navigation.navigate('ElixirList', { elixirDifficulty: 'Advanced' })
+                        navigation.navigate('IndividualElixir', { elixirDifficulty: 'Advanced' })
                     }}
                 >
                     <ImageBackground
-                        source={bgBar}
-                        style={styles.barTypes}>
-                        <Text style={styles.textTypes}>ADVANCED</Text>
+                        source={elixirsTag}
+                        style={styles.elixirBarTypes}>
+                        <Text style={styles.elixirBarText}>ADVANCED</Text>
                     </ImageBackground>
                 </TouchableOpacity>
             </ImageBackground>
+
+            <Image
+                source={elixirsYellowPotion}
+                style={styles.yellowPotion} />
+            <Image
+                source={elixirsGreenPotion}
+                style={styles.greenPotion} />
+
         </View>
     )
 }

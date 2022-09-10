@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { View, TouchableOpacity, ImageBackground, Text, Animated } from 'react-native';
 import styles from '../styles/Stylesheet';
 import welcome from '../../assets/welcomeImage.png'
@@ -11,24 +11,25 @@ const WelcomeScreen = () => {
     const [sound, setSound] = useState();
 
     async function playSound() {
-    const {sound} = await Audio.Sound.createAsync(
-        require('../../assets/audio/HP-theme-Marimba.mp3'),
-        /* { shouldPlay: true} */
-    );
-    setSound(sound);
+        const { sound } = await Audio.Sound.createAsync(
+            require('../../assets/audio/HP-theme-Marimba.mp3'),
+            /* { shouldPlay: true} */
+        );
+        setSound(sound);
 
-    await sound.playAsync();
-    sound.setStatusAsync({isLooping : true});
+        await sound.playAsync();
+        sound.setStatusAsync({ isLooping: true });
     }
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
+        'ParryHotter': require('../../assets/fonts/ParryHotter.ttf')
     });
 
     useEffect(() => {
-  
+
         playSound();
 
         Animated.loop(
@@ -36,31 +37,31 @@ const WelcomeScreen = () => {
                 Animated.timing(
                     fadeAnim,
                     {
-                        toValue:1,
-                        duration:0,
+                        toValue: 1,
+                        duration: 0,
                         useNativeDriver: true
                     }),
-                    Animated.timing(
-                        fadeAnim, {
-                            toValue: 0,
-                            delay: 0,
-                            duration: 1200,
-                            useNativeDriver: true
-                        }),
-                        Animated.timing(
-                            fadeAnim,
-                            {
-                                toValue:1,
-                                duration:1200,
-                                useNativeDriver: true
-                            }),
-                    
+                Animated.timing(
+                    fadeAnim, {
+                    toValue: 0,
+                    delay: 0,
+                    duration: 1200,
+                    useNativeDriver: true
+                }),
+                Animated.timing(
+                    fadeAnim,
+                    {
+                        toValue: 1,
+                        duration: 1200,
+                        useNativeDriver: true
+                    }),
+
             ]),
             {
                 iterations: 200
             }
-            
-            ).start()
+
+        ).start()
     }, [fadeAnim])
 
     if (!fontsLoaded) {
@@ -70,14 +71,14 @@ const WelcomeScreen = () => {
         <View>
             <ImageBackground
                 source={welcome}
-                style={styles.image}>
+                style={[styles.bg, { flex: 1 }]}>
                 <TouchableOpacity
                     onPress={() => {
-                    navigation.navigate('Houses');{Audio.setIsEnabledAsync(false)}}}
+                    navigation.navigate('ContentPage');{Audio.setIsEnabledAsync(false)}}}
                     hitSlop={{ top: 1000, bottom: 1000, left: 1000, right: 1000 }}>
-                    <Animated.View style={{opacity: fadeAnim}}>
+                    <Animated.View style={{ opacity: fadeAnim }}>
                         <Text style={styles.welcomeText}>Tap Anywhere To Begin</Text>
-                        </Animated.View>
+                    </Animated.View>
                 </TouchableOpacity>
             </ImageBackground>
         </View>

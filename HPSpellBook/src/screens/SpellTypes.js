@@ -4,6 +4,7 @@ import styles from "../styles/Stylesheet";
 import bgBar from "../../assets/categorybar.png";
 import bgImage from "../../assets/bgImage.png";
 import { useNavigation } from '@react-navigation/native';
+import TabNav from '../components/TabNav';
 
 const SpellTypes = (props) => {
 
@@ -107,10 +108,8 @@ const SpellTypes = (props) => {
                     </ImageBackground>
                 </TouchableOpacity>
 
-                <Text
-                    onPress={() => navigation.navigate('Welcome')}>
-                    &#8592;
-                </Text>
+                <TabNav /> 
+
             </ImageBackground>
         </View>
     );

@@ -18,7 +18,7 @@ const NoteCard = (props) => {
                 {props.preview}
             </Text>
             <Text style={styles.noteCardDate}>
-                {dateFormat(props.date, "dd mmm, hh:MM TT")}
+                Last updated: {dateFormat(props.date, "dd mmm, hh:MM TT")}
             </Text>
         </TouchableOpacity>
     </>)

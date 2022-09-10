@@ -20,7 +20,6 @@ const ElixirList = (props) => {
 
     const getElixirList = async () => {
         const { status, data } = await API.get('/Elixirs');
-        // const elixirList = data;
         const elixirList = data.filter(e => e.ingredients[0]) // Filters out elixirs with ingredients = []
 
         if (status === 200) {
@@ -28,7 +27,6 @@ const ElixirList = (props) => {
         }
     }
 
-    // console.log('spellType 1', elixirDifficulty);
     elixirList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
 
     const filteredList = elixirList.filter(elixir => {

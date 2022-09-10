@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import WelcomeScreen from './src/screens/WelcomeScreen';
+import ContentPage from './src/screens/ContentPage';
 import SpellTypeScreen from './src/screens/SpellTypeScreen';
 import SpellList from './src/screens/SpellList';
 import IndividualSpell from './src/screens/IndividualSpell';
@@ -24,19 +25,20 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Welcome'>
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='ContentPage' component={ContentPage} options={{ headerShown: false }} />
                 <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ animation: 'fade', headerShown: false }} />
-                <Stack.Screen name='SpellList' component={SpellList} options={{ headerShown: false }} />
-                <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ headerShown: false }} />
-                <Stack.Screen name='ElixirDifficulty' component={ElixirDifficultyScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='ElixirList' component={ElixirList} options={{ headerShown: false }} />
-                <Stack.Screen name='IndividualElixir' component={IndividualElixir} options={{ headerShown: false }} />
-                <Stack.Screen name='Search' component={Search} options={{ animation: 'fade_from_bottom', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
+                <Stack.Screen name='SpellList' component={SpellList} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='ElixirDifficulty' component={ElixirDifficultyScreen} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='ElixirList' component={ElixirList} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='IndividualElixir' component={IndividualElixir} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='Search' component={Search} options={{ animation: 'fade', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
                 <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
-                <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ headerShown: false }} />
-                <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ headerShown: false }} />
-                <Stack.Screen name='IngredientList' component={IngredientList} options={{ headerShown: false }} />
-                <Stack.Screen name='Houses' component={Houses} options={{ headerShown: false }} />
+                <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='IngredientList' component={IngredientList} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='Houses' component={Houses} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='HouseDetails' component={HouseDetails} options={{ animation:'fade_from_bottom', headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>

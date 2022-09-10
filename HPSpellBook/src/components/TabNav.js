@@ -14,16 +14,19 @@ const TabNav = () => {
 
     return (<>
         <Image source={tabBg} style={{ position: 'absolute', bottom: -45 }} />
-        <Image source={buttonGlow} style={{ position: 'absolute', top: 680, left: 244 }} />
-        <View style={{ flexDirection: 'row' , position: 'absolute', bottom: 0}}>
+        <Image source={buttonGlow} style={{ position: 'absolute', bottom: -37, right: -57 }} />
+        <View style={{ flexDirection: 'row', position: 'absolute', bottom: 0 }}>
             <Pressable onPress={() => { }}>
-                <Image source={homeIcon} style={{ left: -55 }}/>
+                <Image source={homeIcon} style={{ left: -10 }} />
             </Pressable>
-            <Pressable onPress={() => { }}>
+            <Pressable onPress={() => { navigation.goBack() }}>
+                <Image source={backIcon} />
+            </Pressable>
+            <Pressable onPress={() => { navigation.navigate('Search') }}>
                 <Image source={searchIcon} />
             </Pressable>
-            <Pressable onPress={() => {navigation.navigate('NotesList') }}>
-                <Image source={bookIcon} style={{ left: 66, bottom: 10 }}/>
+            <Pressable onPress={() => { navigation.navigate('NotesList') }}>
+                <Image source={bookIcon} style={{ left: 25, bottom: 10 }} />
             </Pressable>
         </View>
     </>)
