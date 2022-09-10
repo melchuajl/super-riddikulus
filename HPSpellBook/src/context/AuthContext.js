@@ -21,10 +21,13 @@ export const AuthProvider = ({children}) => {
             if(res) {
                 let userInfo = res.data;
                console.log('res.data', res.data);
-               console.log('user token:', userInfo.data);
+               console.log('user info.data:', userInfo.data);
                console.log('user info:', userInfo);          
                setUserInfo(userInfo);
-               setUserToken(userInfo.data);
+               setUserToken(userInfo.data.token);
+
+               AsyncStorage.setItem('userToken', userInfo.data.token)
+               AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
             }
         } catch (error) {
             console.log(`login error ${error}`);
@@ -35,7 +38,8 @@ export const AuthProvider = ({children}) => {
     const logout = () => {
         setIsLoading(true);
         setUserToken(null);
-        AsyncStorage.removeItem('userToken');
+        AsyncStorage.removeItem('userToken')
+        AsyncStorage.removeItem('userInfo');
         setIsLoading(false);
     }
 
