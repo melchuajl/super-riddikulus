@@ -25,7 +25,7 @@ const TabNav = () => {
             <Pressable onPress={() => { navigation.navigate('Search') }}>
                 <Image source={searchIcon} />
             </Pressable>
-            <Pressable onPress={() => { navigation.navigate('NotesList') }}>
+            <Pressable onPress={() => { navigation.navigate('AppNav') }}>
                 <Image source={bookIcon} style={{ left: 25, bottom: 10 }} />
             </Pressable>
         </View>

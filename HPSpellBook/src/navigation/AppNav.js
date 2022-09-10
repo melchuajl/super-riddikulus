@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import WelcomeScreen from '../screens/WelcomeScreen';
 import Login from '../screens/Login';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext, AuthProvider } from '../context/AuthContext';
 import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 
@@ -25,10 +25,9 @@ const AppNav = () => {
     }
 
     return (
-        <>
-            
+        <AuthProvider>
             {userToken !== null ? <AppStack /> : <AuthStack />}
-        </>
+        </AuthProvider>
     )
 }
 

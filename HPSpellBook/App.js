@@ -18,6 +18,8 @@ import ElixirList from './src/screens/ElixirList';
 import IndividualElixir from './src/screens/IndividualElixir';
 import Houses from './src/screens/Houses';
 import HouseDetails from './src/components/HouseDetails'; // TEMPORARY till I can fix the Modal function T^T
+import { AuthProvider } from './src/context/AuthContext';
+import AppNav from './src/navigation/AppNav';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -40,6 +42,8 @@ export default function App() {
                 <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='Houses' component={Houses} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='HouseDetails' component={HouseDetails} options={{ animation:'fade_from_bottom', headerShown: false }} />
+                <Stack.Screen name='AppNav' component={AppNav} options={{ animation:'fade', headerShown: false }} />
+                
             </Stack.Navigator>
         </NavigationContainer>
     );
