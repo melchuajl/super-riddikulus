@@ -10,10 +10,10 @@ import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png';
 import NoteCard from '../components/NoteCard';
+import TabNav from '../components/TabNav';
 
 const NotesList = (props) => {
 
-    const route = useRoute();
     const navigation = useNavigation();
 
     const [notesList, setNotesList] = useState([]);
@@ -32,15 +32,16 @@ const NotesList = (props) => {
         getNotesList();
     }, [notesList]);
 
+    const route = useRoute();
+    const userId = route.params?.userId
+
     return (
         <View>
             <ImageBackground
                 source={backgroundImg}
-                resizeMode="cover"
-                style={styles.image}>
+                style={styles.bg}>
                 <ImageBackground
                     source={categorybar}
-                    resizeMode="cover"
                     style={styles.bar}>
                     <View style={styles.divider}></View>
                     <View style={styles.divider2}></View>
@@ -68,15 +69,11 @@ const NotesList = (props) => {
                             />)}
                     </ScrollView>
                 </View>
-                <View style={styles.return2}>
-                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                        <Text style={styles.magicText3}>Return to previous page
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+
+                <TabNav /> 
+
             </ImageBackground>
         </View>
-
     );
 
 }

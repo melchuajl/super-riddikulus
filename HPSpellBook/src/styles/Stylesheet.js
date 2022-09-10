@@ -76,11 +76,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    image: {
-        flex: 1,
-        height: windowHeight,
-    },
-
     divider: {
         borderBottomWidth: 1,
         borderBottomColor: 'black',
@@ -246,7 +241,7 @@ const styles = StyleSheet.create({
         height: 320,
         width: 311,
         left: 39,
-        top: 300
+        top: "20%"
     },
 
     return: {
@@ -295,9 +290,9 @@ const styles = StyleSheet.create({
     },
 
     welcomeText: {
-        position: 'absolute',
-        top: 681,
-        left: 110,
+        position: 'absolute', 
+        top: windowHeight * 0.82,
+        left: -(windowWidth * 0.2),
         height: 304,
         width: 800,
         fontFamily: "CroissantOne"
@@ -335,7 +330,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 100,
         width: '100%',
-        height: windowHeight - 200,
+        height: windowHeight - 100,
         paddingLeft: "10%",
         paddingTop: "10%",
         paddingBottom: "5%"
@@ -440,9 +435,8 @@ const styles = StyleSheet.create({
     },
 
     houseDetails: {
-        position: 'absolute',
-        top: 310,
-        width: 390,
+        top: 100,
+        width: 390, 
         height: 434
     },
 

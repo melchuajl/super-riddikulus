@@ -71,8 +71,7 @@ const NotesInput = () => {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ImageBackground
                     source={backgroundImg}
-                    resizeMode="cover"
-                    style={styles.image}>
+                    style={styles.bg}>
                     <ImageBackground
                         source={categorybar}
                         resizeMode="cover"
