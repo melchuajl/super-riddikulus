@@ -1,6 +1,5 @@
 import { Dimensions, StyleSheet, } from "react-native";
 const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     containerS: {
@@ -8,6 +7,35 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+
+    contentButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 150,
+        height: 150,
+        left: 72,
+        top: -3,
+        marginBottom: 8.5
+    },
+
+    contentButtonText: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'CroissantOne',
+        fontWeight: '400',
+        fontSize: 16,
+        lineHeight: 23,
+        letterSpacing: -0.3,
+    },
+
+    caret: {
+        left: 15,
+        paddingVertical: 15,
+        paddingHorizontal: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: "center"
     },
 
     bg: {
@@ -18,6 +46,7 @@ const styles = StyleSheet.create({
     },
 
     barTypes: {
+        color: 'white',
         alignItems: 'center',
         justifyContent: 'center',
         width: 211,
@@ -131,11 +160,18 @@ const styles = StyleSheet.create({
         width: 111,
     },
 
-    itemElixir: {
+    itemElixirList: {
         padding: 2,
-        marginVertical: 5,
+        marginVertical: 0,
+        marginHorizontal: 100,
+        width: 200,
+    },
+
+    itemIngredient: {
+        padding: 2,
+        marginVertical: 1,
         marginHorizontal: 20,
-        width: 111
+        width: 120,
     },
 
     text: {
@@ -146,6 +182,46 @@ const styles = StyleSheet.create({
         marginTop: 15,
         fontFamily: "CroissantOne",
         letterSpacing: -0.3
+    },
+
+    elixirHeader: {
+        position: 'absolute',
+        left: 123,
+        top: 39
+    },
+
+    headerText: {
+        fontWeight: '400',
+        fontSize: 15,
+        lineHeight: 21,
+        fontFamily: "CroissantOne",
+        letterSpacing: -0.3,
+        textTransform: 'uppercase'
+    },
+
+    elixirText: {
+        fontWeight: '400',
+        fontSize: 15,
+        lineHeight: 21,
+        color: '#000000',
+        marginTop: 0,
+        fontFamily: "CroissantOne",
+        letterSpacing: -0.3
+    },
+
+    elixirText1: {
+        fontWeight: '400',
+        fontSize: 15,
+        lineHeight: 21,
+        color: '#000000',
+        marginTop: 50,
+        fontFamily: "CroissantOne",
+        letterSpacing: -0.3
+    },
+
+    elixirFlat: {
+        height: 165,
+        top: 80
     },
 
     box: {
@@ -162,7 +238,7 @@ const styles = StyleSheet.create({
 
     scroll: {
         position: 'absolute',
-        height: 500,
+        height: 320,
         width: 311,
         left: 39,
         top: "20%"
@@ -234,6 +310,18 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 108,
         left: 10
+    },
+
+    smoke: {
+        position: 'absolute',
+        width: 280,
+        left: 200,
+        top: -50
+    },
+
+    elixirInnerBg: {
+        position: 'absolute',
+        top: -30
     },
 
     noteContainer: {
@@ -335,7 +423,7 @@ const styles = StyleSheet.create({
         // backgroundColor: "white",
         padding: 30,
         marginLeft: 35,
-        alignItems:'flex-start',
+        alignItems: 'flex-start',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -350,6 +438,61 @@ const styles = StyleSheet.create({
         top: 100,
         width: 390, 
         height: 434
+    },
+
+    elixirDiffHeader: {
+        top: -63
+    },
+
+    elixirDiffHeaderText1: {
+        fontWeight: '400',
+        fontSize: 48,
+        lineHeight: 115,
+        color: 'white',
+        fontFamily: "ParryHotter",
+        left: -20,
+        width: 75
+    },
+
+    elixirDiffHeaderText2: {
+        fontWeight: '400',
+        fontSize: 20,
+        lineHeight: 28,
+        color: 'white',
+        fontFamily: "CroissantOne",
+        left: 10,
+        top: -85
+    },
+
+    elixirBarTypes: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 102,
+        width: 260,
+        height: 75,
+        margin: 18,
+        top: -15
+    },
+
+    elixirBarText: {
+        fontFamily: 'CroissantOne',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        fontSize: 19,
+        lineHeight: 28,
+    },
+
+
+    yellowPotion: {
+        position: 'absolute',
+        top: 215,
+        left: 13
+    },
+
+    greenPotion: {
+        position: 'absolute',
+        top: 436,
+        left: 265
     }
 
 });

@@ -25,6 +25,7 @@ const WelcomeScreen = () => {
     const navigation = useNavigation();
     const [fontsLoaded] = useFonts({
         'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
+        'ParryHotter': require('../../assets/fonts/ParryHotter.ttf')
     });
 
     useEffect(() => {
@@ -73,8 +74,7 @@ const WelcomeScreen = () => {
                 style={[styles.bg, { flex: 1 }]}>
                 <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate('SpellTypes'); { Audio.setIsEnabledAsync(false) }
-                    }}
+                    navigation.navigate('ContentPage');{Audio.setIsEnabledAsync(false)}}}
                     hitSlop={{ top: 1000, bottom: 1000, left: 1000, right: 1000 }}>
                     <Animated.View style={{ opacity: fadeAnim }}>
                         <Text style={styles.welcomeText}>Tap Anywhere To Begin</Text>
