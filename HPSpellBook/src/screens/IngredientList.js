@@ -1,14 +1,14 @@
 import React from 'react';
 import API from "../../API";
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, ImageBackground, Image, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, FlatList } from 'react-native';
 import styles from "../styles/Stylesheet";
-import backgroundImg from '../../assets/bgImage1.png';
-import categorybar from '../../assets/categorybar.png'
-import dividerImg from '../../assets/Divider.png';
+import backgroundImg from '../../assets/ingredients/ingredientsBg.png';
+import ingredientsScroll from '../../assets/ingredients/ingredientsScroll.png';
 import uuid from 'react-native-uuid';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
+import TabNav from '../components/TabNav';
 
 
 const IngredientList = (props) => {
@@ -35,9 +35,9 @@ const IngredientList = (props) => {
     }, []);
 
     const Item = ({ title }) => (
-        <View style={styles.item}>
+        <View style={[styles.item, { height: 19, width: 220 }]}>
             <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualIngredient', { name: title }) }}>
-                <Text style={styles.magicText3}>{title}</Text>
+                <Text style={[styles.magicText3, { color: '#FFFFFF' }]}>&nbsp; &#8226; &nbsp; {title}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -46,35 +46,23 @@ const IngredientList = (props) => {
         <View>
             <ImageBackground
                 source={backgroundImg}
-                resizeMode="cover"
-                style={styles.image}>
+                style={styles.bg}>
+                <Text style={styles.ingredientsHeader}>Ingredients</Text>
                 <ImageBackground
-                    source={categorybar}
-                    resizeMode="cover"
-                    style={styles.bar}>
-                    <View style={styles.divider}></View>
-                    <View style={styles.divider2}></View>
-                    <Text style={styles.header}>Ingredient List</Text>
-                    <View style={styles.divider3}></View>
-                    <View style={styles.divider4}></View>
-                </ImageBackground>
-                <Image style={styles.dividerImg}
-                    source={dividerImg}></Image>
-                <View style={styles.listContainer}>
+                source={ingredientsScroll}
+                style={styles.ingredientsScroll}>
+                <View style={styles.ingredientsList}>
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         data={ingredientList}
                         renderItem={({ item }) => { return <Item title={item.name} /> }}
-                        keyExtractor={item => uuid.v4()}
-                        numColumns={2}>
+                        keyExtractor={item => uuid.v4()}>
                     </FlatList>
                 </View>
-                <View style={styles.return2}>
-                    <TouchableOpacity onPress={() => { navigation.goBack() }}>
-                        <Text style={styles.magicText3}>Return to previous page
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                </ImageBackground>
+
+                <TabNav />
+
             </ImageBackground>
         </View>
 

@@ -1,10 +1,12 @@
 import { View, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
-import elixirsTag from "../../assets/elixirsTag.png";
-import elixirsBg from '../../assets/elixirsBg.png';
-import elixirsYellowPotion from '../../assets/elixirsYellowPotion.png'
-import elixirsGreenPotion from '../../assets/elixirsGreenPotion.png'
+import elixirsTag from "../../assets/elixirs/elixirsTag.png";
+import elixirsBg from '../../assets/elixirs/elixirsBg.png';
+import elixirsYellowPotion from '../../assets/elixirs/elixirsYellowPotion.png';
+import elixirsGreenPotion from '../../assets/elixirs/elixirsGreenPotion.png';
+import elixirsHeader from '../../assets/elixirs/elixirsHeader.png';
 import { useNavigation } from '@react-navigation/native';
 import styles from "../styles/Stylesheet";
+import TabNav from '../components/TabNav';
 
 const ElixirDifficulty = (props) => {
 
@@ -19,12 +21,7 @@ const ElixirDifficulty = (props) => {
                 source={elixirsBg}
             >
                 <View style={styles.elixirDiffHeader}>
-                    <Text style={styles.elixirDiffHeaderText1}>
-                        E
-                    </Text>
-                    <Text style={styles.elixirDiffHeaderText2}>
-                        LIXIRS
-                    </Text>
+                    <Image source={elixirsHeader} style={{ top: '30%' }} />
                 </View>
 
                 <TouchableOpacity
@@ -65,15 +62,17 @@ const ElixirDifficulty = (props) => {
                         <Text style={styles.elixirBarText}>ADVANCED</Text>
                     </ImageBackground>
                 </TouchableOpacity>
+
+                <Image
+                    source={elixirsYellowPotion}
+                    style={styles.yellowPotion} />
+                <Image
+                    source={elixirsGreenPotion}
+                    style={styles.greenPotion} />
+
+                <TabNav />
+
             </ImageBackground>
-
-            <Image
-                source={elixirsYellowPotion}
-                style={styles.yellowPotion} />
-            <Image
-                source={elixirsGreenPotion}
-                style={styles.greenPotion} />
-
         </View>
     )
 }
