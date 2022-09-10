@@ -19,9 +19,9 @@ const NotesList = (props) => {
     const [notesList, setNotesList] = useState([]);
 
     const getNotesList = async () => {
-        const { status, data } = await mongoAPI.get('/note');
+        const { status, data, headers } = await mongoAPI.get('/note');
         const notesList = data.data;
-        const sortedNotesList = notesList.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)); // sorts note list so that most updated is on top
+        const sortedNotesList = notesList.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)); // sorts note list based on most recently updated
 
         if (status === 200) {
             setNotesList(sortedNotesList);
@@ -59,18 +59,22 @@ const NotesList = (props) => {
                     </TouchableOpacity>
 
                     <ScrollView>
-                        {notesList.map(n =>
-                            <NoteCard
-                                key={uuid.v4()}
-                                title={n.title}
-                                date={n.updatedAt}
-                                preview={n.body}
-                                id={n._id}
-                            />)}
+                        {notesList[0] ?
+                            notesList.map(n =>
+                                <NoteCard
+                                    key={uuid.v4()}
+                                    title={n.title}
+                                    date={n.updatedAt}
+                                    preview={n.body}
+                                    id={n._id}
+                                />)
+                            :
+                            <Text>Add your first note</Text>
+                        }
                     </ScrollView>
                 </View>
 
-                <TabNav /> 
+                <TabNav />
 
             </ImageBackground>
         </View>

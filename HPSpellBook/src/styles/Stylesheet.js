@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet, } from "react-native";
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     containerS: {
@@ -41,6 +42,12 @@ const styles = StyleSheet.create({
     bg: {
         alignItems: 'center',
         justifyContent: 'center',
+        height: windowHeight,
+        resizeMode: 'contain'
+    },
+
+    elixirsbg: {
+        alignItems: 'center',
         height: windowHeight,
         resizeMode: 'contain'
     },
@@ -170,8 +177,16 @@ const styles = StyleSheet.create({
     itemIngredient: {
         padding: 2,
         marginVertical: 1,
-        marginHorizontal: 20,
-        width: 120,
+        marginHorizontal: 13,
+        width: 300,
+    },
+
+    ingredientsList: {
+        position: 'absolute',
+        width: 300,
+        height: 380,
+        left: 45,
+        top: 90
     },
 
     text: {
@@ -184,12 +199,6 @@ const styles = StyleSheet.create({
         letterSpacing: -0.3
     },
 
-    elixirHeader: {
-        position: 'absolute',
-        left: 123,
-        top: 39
-    },
-
     headerText: {
         fontWeight: '400',
         fontSize: 15,
@@ -197,6 +206,22 @@ const styles = StyleSheet.create({
         fontFamily: "CroissantOne",
         letterSpacing: -0.3,
         textTransform: 'uppercase'
+    },
+
+    ingredientsHeader: {
+        fontFamily: "CroissantOne",
+        textTransform: 'uppercase',
+        fontSize: 20,
+        color: '#FFFFFF',
+        position: 'absolute',
+        top: 83
+    },
+
+    ingredientsElixirs: {
+        fontSize: 16,
+        color: '#FFFFFF',
+        left: 10, 
+        top: 30
     },
 
     elixirText: {
@@ -219,11 +244,6 @@ const styles = StyleSheet.create({
         letterSpacing: -0.3
     },
 
-    elixirFlat: {
-        height: 165,
-        top: 80
-    },
-
     box: {
         justifyContent: "center",
         alignItems: "center",
@@ -242,6 +262,14 @@ const styles = StyleSheet.create({
         width: 311,
         left: 39,
         top: "20%"
+    },
+
+    ingredientsScroll: {
+        position: 'absolute',
+        width: 390,
+        height: 561,
+        left: 0,
+        top: 107
     },
 
     return: {
@@ -289,8 +317,17 @@ const styles = StyleSheet.create({
         fontFamily: "CroissantOne"
     },
 
+    magicText4: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        letterSpacing: -0.3,
+        fontFamily: "CroissantOne", 
+        height: 100, 
+        width: 250 
+    },
+
     welcomeText: {
-        position: 'absolute', 
+        position: 'absolute',
         top: windowHeight * 0.82,
         left: -(windowWidth * 0.2),
         height: 304,
@@ -304,6 +341,14 @@ const styles = StyleSheet.create({
         height: 70,
         top: 45,
         left: 150,
+    },
+
+    glitter: {
+        position: 'absolute',
+        width: 253,
+        height: 253,
+        left: 67,
+        top: -18
     },
 
     spellScroll: {
@@ -320,8 +365,23 @@ const styles = StyleSheet.create({
     },
 
     elixirInnerBg: {
-        position: 'absolute',
-        top: -30
+        position: 'absolute'
+    },
+
+    elixirHeader: {
+        left: 0,
+        top: 69
+    },
+
+    elixirList: {
+        top: 95,
+        height: 165
+    },
+
+    elixirScroll: {
+        top: 130,
+        width: 277,
+        height: 337
     },
 
     noteContainer: {
@@ -436,7 +496,7 @@ const styles = StyleSheet.create({
 
     houseDetails: {
         top: 100,
-        width: 390, 
+        width: 390,
         height: 434
     },
 

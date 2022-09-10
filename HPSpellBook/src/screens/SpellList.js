@@ -20,7 +20,7 @@ const SpellList = (props) => {
 
     const getSpellList = async () => {
         const { status, data } = await API.get('/Spells');
-        const spellList = data;
+        const spellList = data.filter(spell => spell.effect[0]) // Filters out spells with effect = []
 
         if (status === 200) {
             setSpellList(spellList);

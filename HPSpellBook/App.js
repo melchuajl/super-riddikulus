@@ -25,7 +25,7 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Welcome'>
                 <Stack.Screen name='Welcome' component={WelcomeScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='ContentPage' component={ContentPage} options={{ headerShown: false }} />
+                <Stack.Screen name='ContentPage' component={ContentPage} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='SpellTypes' component={SpellTypeScreen} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='SpellList' component={SpellList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualSpell' component={IndividualSpell} options={{ animation: 'fade', headerShown: false }} />
@@ -36,8 +36,8 @@ export default function App() {
                 <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ animation: 'fade', headerShown: false }} />
-                <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IngredientList' component={IngredientList} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='Houses' component={Houses} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='HouseDetails' component={HouseDetails} options={{ animation:'fade_from_bottom', headerShown: false }} />
             </Stack.Navigator>

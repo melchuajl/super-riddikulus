@@ -39,7 +39,6 @@ const HouseDetails = (props) => {
 
     const route = useRoute();
     const filteredHouse = houseList.filter(h => h.name === house);
-    // console.log("House:", house, "Traits:", filteredHouse[0]?.traits)
 
     return (
         <View>

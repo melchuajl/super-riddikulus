@@ -1,6 +1,6 @@
 import API from '../../API';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { SafeAreaView, Text, View, ScrollView, ImageBackground } from 'react-native';
+import { SafeAreaView, Text, View, ScrollView, ImageBackground, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/Stylesheet';
 import backgroundImg from '../../assets/bgImage1.png';
@@ -15,10 +15,11 @@ const Search = () => {
 
     const getSpells = async () => {
         const { status, data } = await API.get('/Spells');
-        const sortedSpells = data.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
+        const sortedSpells = data.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order
+        const validSpells = sortedSpells.filter(spell => spell.effect[0]) // Filters out spells with effect = [] 
         if (status === 200) {
-            setFilteredData(sortedSpells);
-            setData(sortedSpells);
+            setFilteredData(validSpells);
+            setData(validSpells);
         }
     }
 
@@ -48,7 +49,7 @@ const Search = () => {
                 obscureBackground: false,
                 barTintColor: 'rgba(225, 225, 225, 0.7)',
                 hintTextColor: 'black',
-                placeholder: "Search",
+                placeholder: 'Search',
                 onChangeText: (event) => searchFilterFunction(event.nativeEvent.text),
                 onClear: () => searchFilterFunction(''),
                 value: search
@@ -57,30 +58,32 @@ const Search = () => {
     }, [search])
 
     return (
-        <View style={{ flex: 1 }}>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <ImageBackground
                 source={backgroundImg}
                 style={styles.bg}>
                 <SafeAreaView>
-                    <ScrollView style={{ marginBottom: 70 }}>
-                        {filteredData.map((item, index) => {
-                            return (
-                                <View key={index}>
-                                    <Text
-                                        style={[styles.magicText3, { marginLeft: 75, marginVertical: 10 }]}
-                                        onPress={() => navigation.navigate('IndividualSpell', { name: item.name })}>
-                                        {item.name}
-                                    </Text>
-                                </View>
-                            )
-                        })}
-                    </ScrollView>
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <ScrollView style={{ marginBottom: 70 }}>
+                            {filteredData.map((item, index) => {
+                                return (
+                                    <View key={index} style={{ width: 350 }}>
+                                        <Text
+                                            style={[styles.magicText3, { marginLeft: '15%', marginVertical: 10 }]}
+                                            onPress={() => navigation.navigate('IndividualSpell', { name: item.name })}>
+                                            {item.name}
+                                        </Text>
+                                    </View>
+                                )
+                            })}
+                        </ScrollView>
+                    </TouchableWithoutFeedback>
                 </SafeAreaView>
 
                 <TabNav />
-                
+
             </ImageBackground>
-        </View>
+        </KeyboardAvoidingView>
     );
 };
 

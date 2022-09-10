@@ -13,10 +13,10 @@ const TabNav = () => {
     const navigation = useNavigation();
 
     return (<>
-        <Image source={tabBg} style={{ position: 'absolute', bottom: -45 }} />
+        <Image source={tabBg} style={{ position: 'absolute', bottom: -45, width: '100%' }} />
         <Image source={buttonGlow} style={{ position: 'absolute', bottom: -37, right: -57 }} />
         <View style={{ flexDirection: 'row', position: 'absolute', bottom: 0 }}>
-            <Pressable onPress={() => { }}>
+            <Pressable onPress={() => { navigation.navigate('ContentPage') }}>
                 <Image source={homeIcon} style={{ left: -10 }} />
             </Pressable>
             <Pressable onPress={() => { navigation.goBack() }}>
