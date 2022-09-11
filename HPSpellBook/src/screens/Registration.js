@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState} from "react";
 import { View, TouchableOpacity, ImageBackground, Text, Animated, TextInput, Alert, Touchable } from 'react-native';
 import styles from '../styles/Stylesheet';
-import welcome from '../../assets/welcomeImage.png'
+import imageBg from '../../assets/bgImage1.png'
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import mongoAPI from "../../config/mongoAPI";
@@ -14,8 +14,6 @@ const Registration = () => {
 
 
     const [username, setUsername] = useState(null);
-/*     const [firstName, setFirstName] = useState(null);
-    const [lastName, setLastName] = useState(null); */
     const [email, setEmail] = useState(null);
     const [hiddenEmail, setHiddenEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -72,7 +70,7 @@ const Registration = () => {
     return (
         <View>
             <ImageBackground
-                source={welcome}
+                source={imageBg}
                 style={styles.bg}>   
                 <View style = {styles.inputBox}>
                         <TextInput

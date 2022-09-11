@@ -1,5 +1,5 @@
 import mongoAPI from '../../config/mongoAPI';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
@@ -11,11 +11,12 @@ import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png';
 import NoteCard from '../components/NoteCard';
 import TabNav from '../components/TabNav';
+import { AuthContext } from '../context/AuthContext';
 
 const NotesList = (props) => {
 
     const navigation = useNavigation();
-
+    const {logout} = useContext(AuthContext);
     const [notesList, setNotesList] = useState([]);
 
     const getNotesList = async () => {
@@ -55,6 +56,13 @@ const NotesList = (props) => {
                         onPress={() => { navigation.navigate('NotesInput') }}>
                         <Text style={[styles.search, { marginLeft: -30 }]}>
                             <Icon name='add-circle' size={15} /> Add note
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => {logout()}}>
+                        <Text style={[styles.search, { marginLeft: -30 }]}>
+                            <Icon name='add-circle' size={15} /> Sign Out
                         </Text>
                     </TouchableOpacity>
 
