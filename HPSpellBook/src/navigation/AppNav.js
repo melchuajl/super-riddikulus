@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import WelcomeScreen from '../screens/WelcomeScreen';
 import Login from '../screens/Login';
-import { AuthContext, AuthProvider } from '../context/AuthContext';
+import { AuthContext, AuthProvider } from '../contexts/AuthContext';
 import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 

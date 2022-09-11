@@ -8,7 +8,7 @@ import whiteGlow from '../../assets/whiteglow.png';
 import loginBar from '../../assets/loginBar.png'
 import { useNavigation } from '@react-navigation/native';
 import mongoAPI from "../../config/mongoAPI";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 import TabNav from "../components/TabNav";
 
 const Login = () => {

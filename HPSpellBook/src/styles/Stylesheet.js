@@ -610,21 +610,25 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
 
-    registerHeader: {
-        width: 120,
-        top:3,
-        fontSize: 24,
-    },
 
     bar2: {
         position: 'absolute',
-        justifyContent: 'center',
+        /* justifyContent: 'center', */
         alignItems: "center",
         width: 246,
-        height: 39,
-        left: 89,
-        top: 84,
-        color:'#642210'
+        height: 50,
+        left: 72,
+        top: 78,
+    },
+
+    registerGlow: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 550,
+        height: 160,
+        width: 150,
+        left: 120,
     },
 
 });

@@ -8,13 +8,23 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
 
-    const [test, setTest] = useState ('Test Value')
     const [isLoading, setIsLoading] = useState (false);
     const [userToken, setUserToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
 
     const login = async(details) => {
         setIsLoading(true);
+        console.log(details)
+/*         if (!details.email) {
+            Alert.alert('Please input a name');
+            return;
+        }else if (!details.password) {
+            Alert.alert('Please input password!');
+            return;
+        } */
+
+//lags/hangs if above condition is used
+
        try{ 
         const res = await mongoAPI.post('/user/login', 
             details);

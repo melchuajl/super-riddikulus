@@ -11,7 +11,7 @@ import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png';
 import NoteCard from '../components/NoteCard';
 import TabNav from '../components/TabNav';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 const NotesList = (props) => {
 

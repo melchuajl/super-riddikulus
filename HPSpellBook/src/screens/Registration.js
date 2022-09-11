@@ -1,19 +1,20 @@
 import React, {useRef, useEffect, useState} from "react";
-import { View, TouchableOpacity, ImageBackground, Text, Animated, TextInput, Alert, Touchable } from 'react-native';
+import { View, TouchableOpacity, ImageBackground, Text, Image, TextInput, Alert, Touchable } from 'react-native';
 import styles from '../styles/Stylesheet';
 import imageBg from '../../assets/bgImage1.png'
+import registerImg from '../../assets/registration/Register.png'
+import registerFemale from '../../assets/registration/registerFemale.png'
+import registerMale from '../../assets/registration/registerMale.png'
+import whiteGlow from '../../assets/whiteglow.png'
+import loginBar from '../../assets/loginBar.png'
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import mongoAPI from "../../config/mongoAPI";
-import Login from "./Login";
+import TabNav from "../components/TabNav";
 
 const Registration = () => {
 
-    const [fontsLoaded] = useFonts({
-        'CroissantOne': require('../../assets/fonts/CroissantOne.ttf'),
-    });
-
-
+ 
     const [username, setUsername] = useState(null);
     const [email, setEmail] = useState(null);
     const [hiddenEmail, setHiddenEmail] = useState(null);
@@ -65,9 +66,7 @@ const Registration = () => {
         prepare();
     }, [username, password]);
 
-    if (!fontsLoaded) {
-        return null;
-    }
+
     return (
         <View>
             <ImageBackground
@@ -76,39 +75,90 @@ const Registration = () => {
                     <View style={styles.bar2}>
                     <View style={[styles.divider, {borderBottomColor: '#642210', width:'100%'}]}></View>
                     <View style={[styles.divider2, {borderBottomColor: '#642210', width:'100%'}]}></View>
-                    <Text style={styles.registerHeader}>Register</Text>
+                    <Image 
+                        style={styles.registerHeader}
+                        source={registerImg}>
+                    </Image>
                     <View style={[styles.divider3, {borderBottomColor: '#642210', width:'100%'}]}></View>
                     <View style={[styles.divider4, {borderBottomColor: '#642210', width:'100%'}]}></View>
                     </View>
-                <View style = {styles.inputBox}>
-                        <TextInput
+
+                    <ImageBackground
+                        source = {loginBar}
+                        style = {[styles.loginBar, {marginTop:-100}]}>
+                            <TextInput
                             placeholder = 'Name'
                             value = {username}
-                            onChangeText = {setUsername}></TextInput>
-                        <TextInput 
+                            onChangeText = {setUsername}
+                            style={styles.inputLogin}></TextInput>
+                    </ImageBackground>
+
+                    <Text style={[styles.inputLogin, {left:-102, opacity:0.4, top:1}]}>Gender</Text>
+                    <View style={{flexDirection:'row', height:101, width: 500, marginBottom: 4}}>
+
+                    {/* <TouchableOpacity  */}
+                        
+                            <Image
+                                source={registerMale}
+                                style= {{left: 108+35, width:70, }}></Image>
+                        {/* </TouchableOpacity> */}
+                            <Image
+                                source={registerFemale}
+                                style= {{left: 212, width:70}}></Image>
+                    </View>
+                    
+
+
+                    <ImageBackground
+                        source = {loginBar}
+                        style = {styles.loginBar}>
+                            <TextInput 
                             placeholder = 'Email'
                             value = {email}
-                            onChangeText = {setEmail}></TextInput>
-                        <TextInput 
+                            onChangeText = {setEmail}
+                            style={styles.inputLogin}></TextInput>
+                        </ImageBackground>
+
+                        <ImageBackground
+                        source = {loginBar}
+                        style = {styles.loginBar}>
+                            <TextInput 
                             placeholder = 'Password'
                             value = {password}
                             secureTextEntry
-                            onChangeText = {setPassword}></TextInput>
-                        <TextInput 
-                            placeholder = 'Repeat password'
+                            onChangeText = {setPassword}
+                            style={styles.inputLogin}></TextInput>
+                        </ImageBackground>
+
+                        <ImageBackground
+                        source = {loginBar}
+                        style = {styles.loginBar}>
+                            <TextInput 
+                            placeholder = 'Confirm password'
                             value = {passwordRepeat}
                             secureTextEntry
-                            onChangeText = {setPasswordRepeat}></TextInput>
+                            onChangeText = {setPasswordRepeat}
+                            style={styles.inputLogin}></TextInput>
+                        </ImageBackground>
+                        <View style={{flexDirection: 'row', marginTop:14, left:25}}>
+                        <Text style={[styles.regLogin, ]}>Already a member?</Text>
                         <TouchableOpacity
-                            onPress = {registerOnPress}>
-                                <Text>Register</Text>
+                            onPress ={() => {navigation.navigate('Login')}}
+                            >
+                                <Text style={[styles.regLogin, {color:'#642210', left:2}]}>Back to login page</Text>
+                            </TouchableOpacity> 
+                        </View>
+
+                            <ImageBackground
+                            source = {whiteGlow}
+                            style = {styles.registerGlow}>
+                            <TouchableOpacity
+                            onPress = {registerOnPress}
+                            hitSlop = {{top:20, bottom:30, left:10, right:10}}>
+                                <Text style={styles.loginText}>Sign Up</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity 
-                                onPress= {() => {navigation.navigate('Login')}}>
-                                <Text>Have an account? Sign in</Text>
-                                </TouchableOpacity>
-                            
-                            </View>
+                        </ImageBackground>
+                            <TabNav />
             </ImageBackground>
         </View>
     );

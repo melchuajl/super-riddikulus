@@ -18,7 +18,7 @@ import ElixirList from './src/screens/ElixirList';
 import IndividualElixir from './src/screens/IndividualElixir';
 import Houses from './src/screens/Houses';
 import HouseDetails from './src/components/HouseDetails'; // TEMPORARY till I can fix the Modal function T^T
-import { AuthProvider } from './src/context/AuthContext';
+import { AuthProvider } from './src/contexts/AuthContext';
 import AppNav from './src/navigation/AppNav';
 import MainNav from './src/navigation/MainNav';
 const Stack = createNativeStackNavigator();
