@@ -5,6 +5,7 @@ import imageBg from '../../assets/bgImage1.png'
 import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import mongoAPI from "../../config/mongoAPI";
+import Login from "./Login";
 
 const Registration = () => {
 
@@ -31,7 +32,7 @@ const Registration = () => {
             Alert.alert('Invalid email address');
             return; 
         } else if (!password || password.search(/[A-Z]/) < 0 || password.search(/[0-9]/) < 0 || password.search(/[a-z]/) < 0 || password.length < 8) {
-            Alert.alert('Password needs to minimally have : lowercase and uppercase letter, a number and longer than 7 characters')
+            Alert.alert('Password needs to have : a lowercase and uppercase letter, a number and longer than 7 characters')
             return;
         } else if (passwordRepeat !== password) {
             Alert.alert('Passwords do not match!');
@@ -72,6 +73,13 @@ const Registration = () => {
             <ImageBackground
                 source={imageBg}
                 style={styles.bg}>   
+                    <View style={styles.bar2}>
+                    <View style={[styles.divider, {borderBottomColor: '#642210', width:'100%'}]}></View>
+                    <View style={[styles.divider2, {borderBottomColor: '#642210', width:'100%'}]}></View>
+                    <Text style={styles.registerHeader}>Register</Text>
+                    <View style={[styles.divider3, {borderBottomColor: '#642210', width:'100%'}]}></View>
+                    <View style={[styles.divider4, {borderBottomColor: '#642210', width:'100%'}]}></View>
+                    </View>
                 <View style = {styles.inputBox}>
                         <TextInput
                             placeholder = 'Name'

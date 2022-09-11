@@ -608,7 +608,24 @@ const styles = StyleSheet.create({
         fontFamily: 'CroissantOne',
         fontSize: 18,
         textTransform: 'uppercase',
-    }
+    },
+
+    registerHeader: {
+        width: 120,
+        top:3,
+        fontSize: 24,
+    },
+
+    bar2: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: "center",
+        width: 246,
+        height: 39,
+        left: 89,
+        top: 84,
+        color:'#642210'
+    },
 
 });
 
