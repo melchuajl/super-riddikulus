@@ -56,7 +56,7 @@ const IngredientList = (props) => {
                         showsVerticalScrollIndicator={false}
                         data={ingredientList}
                         renderItem={({ item }) => { return <Item title={item.name} /> }}
-                        keyExtractor={item => uuid.v4()}>
+                        keyExtractor={item => /* uuid.v4() */item.id}> {/* item.id to speed up VirtualizedList updating process */}
                     </FlatList>
                 </View>
                 </ImageBackground>

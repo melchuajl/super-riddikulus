@@ -549,11 +549,87 @@ const styles = StyleSheet.create({
         left: 13
     },
 
-    greenPotion: {
+    books: {
         position: 'absolute',
-        top: 436,
-        left: 265
-    }
+        top: 136,
+        left: 108,
+        height: 175,
+        width: 175,
+    },
+
+    blueLight: {
+        position: 'absolute',
+        left: 169,
+        top: 57,
+        height: 158,
+        width: 66,
+    },
+
+    loginBar: {
+        top: 5,
+        width : 390,
+        height: 61,
+    },
+
+    register: {
+        fontFamily: 'CroissantOne',
+        flexDirection: 'row',
+        /* position : 'absolute', */
+        left: 141,
+        /* top: 444, */
+        width: 199,
+        height: 17,  
+    },
+
+    regLogin: {
+        alignItems: 'center',
+        fontFamily: 'CroissantOne',
+        fontSize:12,
+        letterSpacing: -0.3,
+    },
+
+    inputLogin: {
+        left:66, 
+        top:17,
+        fontFamily: 'CroissantOne',
+    },
+
+    loginGlow: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 495,
+        height: 160,
+        width: 150,
+        left: 126,
+    },
+
+    loginText: {
+        fontFamily: 'CroissantOne',
+        fontSize: 18,
+        textTransform: 'uppercase',
+    },
+
+
+    bar2: {
+        position: 'absolute',
+        /* justifyContent: 'center', */
+        alignItems: "center",
+        width: 246,
+        height: 50,
+        left: 72,
+        top: 78,
+    },
+
+    registerGlow: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 550,
+        height: 160,
+        width: 150,
+        left: 120,
+    },
 
 });
 
