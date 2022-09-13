@@ -638,6 +638,69 @@ const styles = StyleSheet.create({
         left: 120,
     },
 
+    noteslist: {
+        width: windowWidth,
+        height: windowHeight,
+    },
+
+    logout: {
+        position: 'absolute',
+        color: '#642210',
+        left: 151,
+        top: 10,
+        fontFamily: 'CroissantOne',
+        fontSize: 'normal',
+        fontWeight: '400',
+        fontSize: 11,
+        lineHeight: 16,
+        letterSpacing: -0.3
+    },
+    userBar: {
+        position: 'absolute',
+        top: 58,
+        width: 220,
+        height: 36,
+        left: 161
+    },
+    userNotesHeader: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: "center",
+        width: 211,
+        height: 39,
+        left: 89,
+        top: 82,
+    },
+
+    notesheader: {
+        fontWeight: '400',
+        fontSize: 18,
+        lineHeight: 25,
+        fontWeight: 'normal',
+        textTransform: 'uppercase',
+        fontFamily: 'CroissantOne',
+        letterSpacing: -0.3,
+        top: -150
+    },
+
+    blackbar: {
+        position: 'absolute',
+        justifyContent: "center",
+        alignItems: "center",
+        width: windowWidth,
+        height: 59,
+        top: 110
+    },
+
+    blackbarText: {
+        color: 'white',
+        fontWeight: '400',
+        fontSize: 18,
+        lineHeight: 25,
+        fontFamily: "CroissantOne",
+    },
+
+
 });
 
 export default styles; 
