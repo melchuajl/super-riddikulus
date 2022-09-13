@@ -4,7 +4,7 @@ import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image, FlatLi
 import styles from "../styles/Stylesheet";
 import elixirsBg from "../../assets/elixirs/elixirsBg.png";
 import elixirsInnerBg from "../../assets/elixirs/elixirsInnerBg.png";
-import smoke from '../../assets/smoke.gif';
+import smoke from '../../assets/elixirs/smoke.gif';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
 import uuid from 'react-native-uuid';

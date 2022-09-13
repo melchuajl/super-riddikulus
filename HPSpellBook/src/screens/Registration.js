@@ -1,5 +1,5 @@
-import React, {useRef, useEffect, useState} from "react";
-import { View, TouchableOpacity, ImageBackground, Text, Image, TextInput, Alert, Touchable } from 'react-native';
+import React, { useRef, useEffect, useState } from "react";
+import { View, TouchableOpacity, ImageBackground, Text, Image, TextInput, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import styles from '../styles/Stylesheet';
 import imageBg from '../../assets/bgImage1.png'
 import registerImg from '../../assets/registration/Register.png'
@@ -14,7 +14,7 @@ import TabNav from "../components/TabNav";
 
 const Registration = () => {
 
- 
+
     const [username, setUsername] = useState(null);
     const [email, setEmail] = useState(null);
     const [hiddenEmail, setHiddenEmail] = useState(null);
@@ -23,15 +23,15 @@ const Registration = () => {
     const [passwordRepeat, setPasswordRepeat] = useState(null);
     const navigation = useNavigation();
 
-    const registerOnPress = async() => {
+    const registerOnPress = async () => {
         const emailCheck = /\S+@\S+\.\S+/;
 
         if (!username) {
             Alert.alert('Please input a name');
             return;
-        } else if(!emailCheck.test(email)) {
+        } else if (!emailCheck.test(email)) {
             Alert.alert('Invalid email address');
-            return; 
+            return;
         } else if (!password || password.search(/[A-Z]/) < 0 || password.search(/[0-9]/) < 0 || password.search(/[a-z]/) < 0 || password.length < 8) {
             Alert.alert('Password needs to have : a lowercase and uppercase letter, a number and longer than 7 characters')
             return;
@@ -43,7 +43,7 @@ const Registration = () => {
         try {
 
             const res = await mongoAPI.post('/user', details);
-            if(res) {
+            if (res) {
                 Alert.alert(`New student ${username}, welcome!`
                 )
                 navigation.navigate('Login');
@@ -56,7 +56,7 @@ const Registration = () => {
 
     useEffect(() => {
         const prepare = () => {
-          email ? setHiddenEmail(email.toLowerCase()) : null;
+            email ? setHiddenEmail(email.toLowerCase()) : null;
             setDetails(() => ({
                 username: username,
                 email: hiddenEmail,
@@ -69,97 +69,99 @@ const Registration = () => {
 
     return (
         <View>
-            <ImageBackground
-                source={imageBg}
-                style={styles.bg}>   
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <ImageBackground
+                    source={imageBg}
+                    style={styles.bg}>
                     <View style={styles.bar2}>
-                    <View style={[styles.divider, {borderBottomColor: '#642210', width:'100%'}]}></View>
-                    <View style={[styles.divider2, {borderBottomColor: '#642210', width:'100%'}]}></View>
-                    <Image 
-                        style={styles.registerHeader}
-                        source={registerImg}>
-                    </Image>
-                    <View style={[styles.divider3, {borderBottomColor: '#642210', width:'100%'}]}></View>
-                    <View style={[styles.divider4, {borderBottomColor: '#642210', width:'100%'}]}></View>
+                        <View style={[styles.divider, { borderBottomColor: '#642210', width: '100%' }]}></View>
+                        <View style={[styles.divider2, { borderBottomColor: '#642210', width: '100%' }]}></View>
+                        <Image
+                            style={styles.registerHeader}
+                            source={registerImg}>
+                        </Image>
+                        <View style={[styles.divider3, { borderBottomColor: '#642210', width: '100%' }]}></View>
+                        <View style={[styles.divider4, { borderBottomColor: '#642210', width: '100%' }]}></View>
                     </View>
 
                     <ImageBackground
-                        source = {loginBar}
-                        style = {[styles.loginBar, {marginTop:-100}]}>
-                            <TextInput
-                            placeholder = 'Name'
-                            value = {username}
-                            onChangeText = {setUsername}
+                        source={loginBar}
+                        style={[styles.loginBar, { marginTop: -100 }]}>
+                        <TextInput
+                            placeholder='Name'
+                            value={username}
+                            onChangeText={setUsername}
                             style={styles.inputLogin}></TextInput>
                     </ImageBackground>
 
-                    <Text style={[styles.inputLogin, {left:-102, opacity:0.4, top:1}]}>Gender</Text>
-                    <View style={{flexDirection:'row', height:101, width: 500, marginBottom: 4}}>
+                    <Text style={[styles.inputLogin, { left: -102, opacity: 0.4, top: 1 }]}>Gender</Text>
+                    <View style={{ flexDirection: 'row', height: 101, width: 500, marginBottom: 4 }}>
 
-                    {/* <TouchableOpacity  */}
-                        
-                            <Image
-                                source={registerMale}
-                                style= {{left: 108+35, width:70, }}></Image>
+                        {/* <TouchableOpacity  */}
+
+                        <Image
+                            source={registerMale}
+                            style={{ left: 108 + 35, width: 70, }}></Image>
                         {/* </TouchableOpacity> */}
-                            <Image
-                                source={registerFemale}
-                                style= {{left: 212, width:70}}></Image>
+                        <Image
+                            source={registerFemale}
+                            style={{ left: 212, width: 70 }}></Image>
                     </View>
-                    
+
 
 
                     <ImageBackground
-                        source = {loginBar}
-                        style = {styles.loginBar}>
-                            <TextInput 
-                            placeholder = 'Email'
-                            value = {email}
-                            onChangeText = {setEmail}
+                        source={loginBar}
+                        style={styles.loginBar}>
+                        <TextInput
+                            placeholder='Email'
+                            value={email}
+                            onChangeText={setEmail}
                             style={styles.inputLogin}></TextInput>
-                        </ImageBackground>
+                    </ImageBackground>
 
-                        <ImageBackground
-                        source = {loginBar}
-                        style = {styles.loginBar}>
-                            <TextInput 
-                            placeholder = 'Password'
-                            value = {password}
+                    <ImageBackground
+                        source={loginBar}
+                        style={styles.loginBar}>
+                        <TextInput
+                            placeholder='Password'
+                            value={password}
                             secureTextEntry
-                            onChangeText = {setPassword}
+                            onChangeText={setPassword}
                             style={styles.inputLogin}></TextInput>
-                        </ImageBackground>
+                    </ImageBackground>
 
-                        <ImageBackground
-                        source = {loginBar}
-                        style = {styles.loginBar}>
-                            <TextInput 
-                            placeholder = 'Confirm password'
-                            value = {passwordRepeat}
+                    <ImageBackground
+                        source={loginBar}
+                        style={styles.loginBar}>
+                        <TextInput
+                            placeholder='Confirm password'
+                            value={passwordRepeat}
                             secureTextEntry
-                            onChangeText = {setPasswordRepeat}
+                            onChangeText={setPasswordRepeat}
                             style={styles.inputLogin}></TextInput>
-                        </ImageBackground>
-                        <View style={{flexDirection: 'row', marginTop:14, left:25}}>
-                        <Text style={[styles.regLogin, ]}>Already a member?</Text>
+                    </ImageBackground>
+                    <View style={{ flexDirection: 'row', marginTop: 14, left: 25 }}>
+                        <Text style={[styles.regLogin,]}>Already a member?</Text>
                         <TouchableOpacity
-                            onPress ={() => {navigation.navigate('Login')}}
-                            >
-                                <Text style={[styles.regLogin, {color:'#642210', left:2}]}>Back to login page</Text>
-                            </TouchableOpacity> 
-                        </View>
+                            onPress={() => { navigation.navigate('Login') }}
+                        >
+                            <Text style={[styles.regLogin, { color: '#642210', left: 2 }]}>Back to login page</Text>
+                        </TouchableOpacity>
+                    </View>
 
-                            <ImageBackground
-                            source = {whiteGlow}
-                            style = {styles.registerGlow}>
-                            <TouchableOpacity
-                            onPress = {registerOnPress}
-                            hitSlop = {{top:20, bottom:30, left:10, right:10}}>
-                                <Text style={styles.loginText}>Sign Up</Text>
-                            </TouchableOpacity>
-                        </ImageBackground>
-                            <TabNav />
-            </ImageBackground>
+                    <ImageBackground
+                        source={whiteGlow}
+                        style={styles.registerGlow}>
+                        <TouchableOpacity
+                            onPress={registerOnPress}
+                            hitSlop={{ top: 20, bottom: 30, left: 10, right: 10 }}>
+                            <Text style={styles.loginText}>Sign Up</Text>
+                        </TouchableOpacity>
+                    </ImageBackground>
+                    <TabNav />
+                </ImageBackground>
+            </TouchableWithoutFeedback>
         </View>
     );
 }

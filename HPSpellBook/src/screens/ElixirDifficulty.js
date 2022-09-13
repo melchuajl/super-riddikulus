@@ -21,7 +21,7 @@ const ElixirDifficulty = (props) => {
                 source={elixirsBg}
             >
                 <View style={styles.elixirDiffHeader}>
-                    <Image source={elixirsHeader} style={{ top: '30%' }} />
+                    <Image source={elixirsHeader} />
                 </View>
 
                 <TouchableOpacity

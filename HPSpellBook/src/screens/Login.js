@@ -1,5 +1,5 @@
-import React, {useRef, useEffect, useState, useContext} from "react";
-import { View, TouchableOpacity, ImageBackground, Image, Text, Animated, TextInput, Alert } from 'react-native';
+import React, { useRef, useEffect, useState, useContext } from "react";
+import { View, TouchableOpacity, ImageBackground, Image, Text, Animated, TextInput, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import styles from '../styles/Stylesheet';
 import bgImage from '../../assets/bgImage1.png';
 import books from '../../assets/books.png';
@@ -13,10 +13,10 @@ import TabNav from "../components/TabNav";
 
 const Login = () => {
 
-    const {login} = useContext(AuthContext)
+    const { login } = useContext(AuthContext)
 
 
-/*     const [username, setUsername] = useState(null); */
+    /*     const [username, setUsername] = useState(null); */
     const [email, setEmail] = useState(null);
     const [hiddenEmail, setHiddenEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -26,7 +26,7 @@ const Login = () => {
     useEffect(() => {
 
         const prepare = () => {
-            email ? setHiddenEmail(email.toLowerCase()) : null ;
+            email ? setHiddenEmail(email.toLowerCase()) : null;
 
             setDetails(() => ({
                 email: hiddenEmail,
@@ -39,63 +39,67 @@ const Login = () => {
 
     return (
         <View>
-            <ImageBackground
-                source={bgImage}
-                style={styles.bg}> 
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                <Image
-                    source= {books}
-                    style={styles.books}>
-                </Image>
+                <ImageBackground
+                    source={bgImage}
+                    style={styles.bg}>
 
-                <Image 
-                    source= {blueLight}
-                    style={styles.blueLight}>
-                </Image>
+                    <Image
+                        source={books}
+                        style={styles.books}>
+                    </Image>
 
-                <View style = {styles.inputBox}>
-                    <ImageBackground
-                        source = {loginBar}
-                        style = {styles.loginBar}>
-                            <TextInput 
-                            placeholder = 'Email'
-                            value = {email}
-                            onChangeText = {setEmail}
-                            style={styles.inputLogin}></TextInput>
-                        </ImageBackground>
-                        
+                    <Image
+                        source={blueLight}
+                        style={styles.blueLight}>
+                    </Image>
+
+                    <View style={styles.inputBox}>
                         <ImageBackground
-                        source = {loginBar}
-                        style = {styles.loginBar}>
-                            <TextInput 
-                            placeholder = 'Password'
-                            value = {password}
-                            secureTextEntry
-                            onChangeText = {setPassword}
-                            style={styles.inputLogin}></TextInput>
+                            source={loginBar}
+                            style={styles.loginBar}>
+                            <TextInput
+                                placeholder='Email'
+                                autoCapitalize='none'
+                                value={email}
+                                onChangeText={setEmail}
+                                style={styles.inputLogin}></TextInput>
                         </ImageBackground>
 
-                        <View style= {styles.register}>
-                        <Text style={styles.regLogin}>Don't have an account?</Text>
-                        <TouchableOpacity
-                            onPress ={() => {navigation.navigate('Registration')}}
-                            >
-                                <Text style={[styles.regLogin, {color:'#642210', left:2}]}>Register</Text>
-                            </TouchableOpacity> 
-                        </View>
-                        
-                            </View>
-                            <ImageBackground
-                            source = {whiteGlow}
-                            style = {styles.loginGlow}>
-                            <TouchableOpacity
-                            onPress = {() => {login(details)}}>
-                                <Text style={styles.loginText}>Login</Text>
-                            </TouchableOpacity>
+                        <ImageBackground
+                            source={loginBar}
+                            style={styles.loginBar}>
+                            <TextInput
+                                placeholder='Password'
+                                value={password}
+                                secureTextEntry
+                                onChangeText={setPassword}
+                                style={styles.inputLogin}></TextInput>
                         </ImageBackground>
-                            <TabNav />
-                            
-            </ImageBackground>
+
+                        <View style={styles.register}>
+                            <Text style={styles.regLogin}>Don't have an account?</Text>
+                            <TouchableOpacity
+                                onPress={() => { navigation.navigate('Registration') }}
+                            >
+                                <Text style={[styles.regLogin, { color: '#642210', left: 2 }]}>Register</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                    </View>
+                    <ImageBackground
+                        source={whiteGlow}
+                        style={styles.loginGlow}>
+                        <TouchableOpacity
+                            onPress={() => { login(details) }}>
+                            <Text style={styles.loginText}>Login</Text>
+                        </TouchableOpacity>
+                    </ImageBackground>
+                    <TabNav />
+
+                </ImageBackground>
+            </TouchableWithoutFeedback>
         </View>
     );
 }

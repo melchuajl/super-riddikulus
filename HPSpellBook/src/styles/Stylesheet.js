@@ -375,7 +375,9 @@ const styles = StyleSheet.create({
 
     elixirList: {
         top: 95,
-        height: 165
+        height: 165,
+        left: -40,
+        width: 320
     },
 
     elixirScroll: {
@@ -501,7 +503,7 @@ const styles = StyleSheet.create({
     },
 
     elixirDiffHeader: {
-        top: -63
+        top: 63
     },
 
     elixirDiffHeaderText1: {
@@ -531,7 +533,7 @@ const styles = StyleSheet.create({
         width: 260,
         height: 75,
         margin: 18,
-        top: -15
+        top: '30%'
     },
 
     elixirBarText: {
@@ -547,6 +549,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 215,
         left: 13
+    },
+
+    greenPotion: {
+        bottom: 233,
+        left: 120
     },
 
     books: {
@@ -574,9 +581,8 @@ const styles = StyleSheet.create({
     register: {
         fontFamily: 'CroissantOne',
         flexDirection: 'row',
-        /* position : 'absolute', */
         left: 141,
-        /* top: 444, */
+        top: 7, 
         width: 199,
         height: 17,  
     },
@@ -590,15 +596,16 @@ const styles = StyleSheet.create({
 
     inputLogin: {
         left:66, 
-        top:17,
+        top:20,
         fontFamily: 'CroissantOne',
+        textAlignVertical: 'center'
     },
 
     loginGlow: {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        top: 495,
+        top: 515,
         height: 160,
         width: 150,
         left: 126,
@@ -625,7 +632,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        top: 550,
+        top: 573,
         height: 160,
         width: 150,
         left: 120,

@@ -1,4 +1,5 @@
 import mongoAPI from '../../config/mongoAPI';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState, useContext } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -13,15 +14,27 @@ import NoteCard from '../components/NoteCard';
 import TabNav from '../components/TabNav';
 import { AuthContext } from '../contexts/AuthContext';
 
-const NotesList = (props) => {
+const NotesList = () => {
 
     const navigation = useNavigation();
-    const {logout} = useContext(AuthContext);
+    const { logout, userToken } = useContext(AuthContext);
     const [notesList, setNotesList] = useState([]);
+    const [userId, setUserId] = useState('')
+
+    const getUserId = async () => {
+        const res = await AsyncStorage.getItem('userInfo');
+        const user = JSON.parse(res);
+        const id = user.data.id;
+        setUserId(id);
+    }
 
     const getNotesList = async () => {
-        const { status, data, headers } = await mongoAPI.get('/note');
-        const notesList = data.data;
+        const { status, data } = await mongoAPI.get('/note', {
+            headers: {
+                'Authorization': `Bearer ${userToken}`
+            }
+        });
+        const notesList = data.data.filter(n => n.userId === userId);
         const sortedNotesList = notesList.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)); // sorts note list based on most recently updated
 
         if (status === 200) {
@@ -30,11 +43,11 @@ const NotesList = (props) => {
     }
 
     useEffect(() => {
+        getUserId();
         getNotesList();
-    }, [notesList]);
+    }, [userId, notesList]);
 
     const route = useRoute();
-    const userId = route.params?.userId
 
     return (
         <View>
@@ -60,24 +73,21 @@ const NotesList = (props) => {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() => {logout()}}>
+                        onPress={() => { logout() }}>
                         <Text style={[styles.search, { marginLeft: -30 }]}>
                             <Icon name='add-circle' size={15} /> Sign Out
                         </Text>
                     </TouchableOpacity>
 
                     <ScrollView>
-                        {notesList[0] ?
-                            notesList.map(n =>
-                                <NoteCard
-                                    key={uuid.v4()}
-                                    title={n.title}
-                                    date={n.updatedAt}
-                                    preview={n.body}
-                                    id={n._id}
-                                />)
-                            :
-                            <Text>Add your first note</Text>
+                        {notesList.map(n =>
+                            <NoteCard
+                                key={uuid.v4()}
+                                title={n.title}
+                                date={n.updatedAt}
+                                preview={n.body}
+                                id={n._id}
+                            />)
                         }
                     </ScrollView>
                 </View>

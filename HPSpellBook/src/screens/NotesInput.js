@@ -1,26 +1,39 @@
 
 import React from 'react';
 import mongoAPI from '../../config/mongoAPI';
-import { useEffect, useState, useLayoutEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState, useLayoutEffect, useContext } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Alert, ScrollView } from 'react-native';
 import styles from "../styles/Stylesheet";
 import backgroundImg from '../../assets/bgImage1.png';
 import categorybar from '../../assets/categorybar.png'
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
+import { AuthContext } from '../contexts/AuthContext';
 
 const NotesInput = () => {
 
     const route = useRoute();
     const navigation = useNavigation();
+    const { userToken } = useContext(AuthContext);
 
     const [noteTitle, setNoteTitle] = useState(route.params ? route.params.title : '');
     const [noteBody, setNoteBody] = useState(route.params ? route.params.body : '');
+    const [userId, setUserId] = useState('')
     const [note, setNote] = useState({});
 
+    const getUserId = async () => {
+        const res = await AsyncStorage.getItem('userInfo');
+        const user = JSON.parse(res);
+        const id = user.data.id;
+        setUserId(id);
+    }
+
     useEffect(() => {
+        getUserId();
         const prepare = () => {
             setNote(() => ({
+                userId: userId,
                 title: noteTitle,
                 body: noteBody
             }));
@@ -36,7 +49,11 @@ const NotesInput = () => {
 
     const handleAddNote = async () => {
         try {
-            const res = await mongoAPI.post('/note', note);
+            const res = await mongoAPI.post('/note', note, {
+                headers: {
+                    'Authorization': `Bearer ${userToken}`
+                }
+            });
             if (res) {
                 Alert.alert("Success!", "You've added a new note", [
                     {
