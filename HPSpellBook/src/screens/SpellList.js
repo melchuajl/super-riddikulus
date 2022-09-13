@@ -28,7 +28,6 @@ const SpellList = (props) => {
         }
     }
 
-    console.log('spellType 1', spellType);
     spellList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
 
     const filteredList = spellList.filter(spell => {
@@ -45,7 +44,7 @@ const SpellList = (props) => {
         setSpellType(['CounterSpell', 'CounterJinx', 'CounterCharm', 'Untransfiguration'])
     }
 
-    console.log('spellType 2', spellType);
+    console.log('spellType:', spellType);
     const Item = ({ title }) => (
         <View style={styles.item}>
             <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualSpell', { name: title }) }}>
