@@ -47,8 +47,6 @@ const NotesList = () => {
         getNotesList();
     }, [userId, notesList]);
 
-    const route = useRoute();
-
     return (
         <View>
             <ImageBackground
