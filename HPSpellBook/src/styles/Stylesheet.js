@@ -189,6 +189,14 @@ const styles = StyleSheet.create({
         top: 90
     },
 
+    ingredientName: { 
+        color: '#FFFFFF', 
+        textAlign: 'center', 
+        top: 40, 
+        left: 15,
+        width: 280
+    },
+
     text: {
         fontWeight: '400',
         fontSize: 15,
