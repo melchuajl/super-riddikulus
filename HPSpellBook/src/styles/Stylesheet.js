@@ -646,6 +646,102 @@ const styles = StyleSheet.create({
         left: 120,
     },
 
+    changePW: {
+        position: 'absolute',
+        color: '#642210',
+        left: 21,
+        top: 10,
+        fontFamily: 'CroissantOne',
+        fontSize: 'normal',
+        fontWeight: '400',
+        fontSize: 11,
+        lineHeight: 16,
+        letterSpacing: -0.3
+    },
+
+    line: {
+        position: 'absolute',
+        color: '#642210',
+        left: 141,
+        top: 7.5,
+        fontWeight: '400'
+    },
+
+    logout: {
+        position: 'absolute',
+        color: '#642210',
+        left: 161,
+        top: 10,
+        fontFamily: 'CroissantOne',
+        fontSize: 'normal',
+        fontWeight: '400',
+        fontSize: 11,
+        lineHeight: 16,
+        letterSpacing: -0.3
+    },
+
+    userBar: {
+        position: 'absolute',
+        top: 58,
+        width: 220,
+        height: 36,
+        left: 161
+    },
+    userNotesHeader: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: "center",
+        width: 211,
+        height: 39,
+        left: 89,
+        top: 82,
+    },
+
+    noteslist: {
+        width: 320,
+        height: windowHeight,
+        top: 90
+    },
+
+    notesheader: {
+        fontWeight: '400',
+        fontSize: 18,
+        lineHeight: 25,
+        fontWeight: 'normal',
+        fontFamily: 'CroissantOne',
+        letterSpacing: -0.3,
+        top: -170
+    },
+
+    blackbar: {
+        position: 'absolute',
+        justifyContent: "center",
+        alignItems: "center",
+        width: windowWidth,
+        height: 59,
+        top: 110
+    },
+
+    blackbarText: {
+        color: 'white',
+        fontWeight: '400',
+        fontSize: 18,
+        lineHeight: 25,
+        fontFamily: "CroissantOne",
+    },
+
+    wizardGirl: {
+        position: 'absolute',
+        left: 15,
+        top: 60
+    },
+
+    arrows: {
+        position: 'absolute',
+        color: '#642210',
+        left: 300,
+        top: -300,
+          
     saveText: {
         fontFamily: 'CroissantOne',
         fontSize: 15,
