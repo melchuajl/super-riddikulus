@@ -28,8 +28,8 @@ const Registration = () => {
     const [details, setDetails] = useState({});
     const [passwordRepeat, setPasswordRepeat] = useState(null);
     const navigation = useNavigation();
-    const [genderOp, setGenderOp] = useState({male: 1, female:0.4});
-    const [houseOp, setHouseOp] = useState ({gry: 1, huf: 0.4, rav:0.4, sly:0.4})
+    const [genderOp, setGenderOp] = useState({male: 0.4, female:0.4});
+    const [houseOp, setHouseOp] = useState ({gry: 0.4, huf: 0.4, rav:0.4, sly:0.4})
     const registerOnPress = async () => {
         const emailCheck = /\S+@\S+\.\S+/;
 
@@ -145,6 +145,7 @@ const Registration = () => {
                         <TextInput
                             placeholder='Email'
                             value={account.email}
+                            autoCapitalize='none'
                             onChangeText={(text) => setAccount({...account, email:text})}
                             style={styles.inputLogin}></TextInput>
                     </ImageBackground>
