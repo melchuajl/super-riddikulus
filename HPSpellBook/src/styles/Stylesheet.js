@@ -381,9 +381,9 @@ const styles = StyleSheet.create({
     },
 
     elixirScroll: {
-        top: 130,
+        top: 127,
         width: 277,
-        height: 337
+        height: 350
     },
 
     noteContainer: {

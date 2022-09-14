@@ -104,18 +104,11 @@ const IndividualElixir = (props) => {
                         showsVerticalScrollIndicator={true}
                         data={filteredElixir[0]?.ingredients}
                         renderItem={({ item }) => { return <IngredientItem title={item.name} /> }}
-                        keyExtractor={item => /* uuid.v4() */item.id}>
+                        keyExtractor={item => item.id}>
                     </FlatList>
 
 
                 </View>
-
-                <TouchableOpacity 
-                            onPress = {() => {addElixir({
-                                id: filteredElixir[0].id,
-                                name: filteredElixir[0].name})}}>
-                                <Text style={[{top: 160, left:-110}, styles.saveText]}>Save Elixir</Text>
-                        </TouchableOpacity>
 
                 <TabNav />
 

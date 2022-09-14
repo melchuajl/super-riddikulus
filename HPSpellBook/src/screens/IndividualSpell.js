@@ -61,13 +61,6 @@ const IndividualSpell = () => {
                         <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
                     </Text>
 
-                    <TouchableOpacity 
-                            onPress = {() => {addSpell({
-                                id: filteredSpell[0].id,
-                                name: filteredSpell[0].name})}}>
-                                <Text style={[{left: 206}, styles.saveText]}>Save Spell</Text>
-                        </TouchableOpacity>
-
                 </View>
 
                 <TabNav />
