@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AuthContext } from '../contexts/AuthContext';
-import NotesList from '../screens/NotesList';
+import Profile from '../screens/Profile';
 
 
 const Stack = createNativeStackNavigator();
@@ -21,8 +21,8 @@ const AppStack = () => {
     }
 
     return (
-        <Stack.Navigator initialRouteName='NotesList'>
-            <Stack.Screen name='NotesList' component={NotesList} options={{ headerShown: false }} />
+        <Stack.Navigator initialRouteName='Profile'>
+            <Stack.Screen name='Profile' component={Profile} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

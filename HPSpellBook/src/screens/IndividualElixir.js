@@ -59,7 +59,6 @@ const IndividualElixir = (props) => {
         setElixirDifficulty(route.params ? route.params.elixirDifficulty : elixirDifficulty);
         getElixirList();
         getBookmarkedElixirs();
-        setBookmarkStatus(bookmarkedElixirs.some(e => e.name === route.params.name) ? true : false)
     }, [elixirTypeDisplay, bookmarkStatus]);
 
     const ElixirListItem = ({ title }) => (
@@ -136,13 +135,10 @@ const IndividualElixir = (props) => {
                         <Text style={styles.bookmarkText}>&nbsp; Save</Text>
                         {bookmarkedElixirs.some(e => e.name === route.params.name) ?
                             <Pressable onPress={() => {
-                                deleteElixir({
-                                    id: filteredElixir[0].id,
-                                    name: filteredElixir[0].name
-                                });
+                                deleteElixir(filteredElixir[0].id);
                                 setBookmarkStatus(false)
                             }}>
-                                <Image source={bookmark} />
+                                <Image source={bookmark}  />
                             </Pressable>
                             :
                             <Pressable onPress={() => {
