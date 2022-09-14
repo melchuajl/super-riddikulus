@@ -44,8 +44,12 @@ const Registration = () => {
 
             const res = await mongoAPI.post('/user', details);
             if (res) {
-                Alert.alert(`New student ${username}, welcome!`
-                )
+                
+                if (res.data.status == 400) {
+                    Alert.alert('Registration Failed', res.data.message);
+                    return;
+                }
+                Alert.alert(`New student ${username}, welcome!`)
                 navigation.navigate('Login');
                 console.log(`details: email - ${hiddenEmail}, name - ${username}`)
             }
