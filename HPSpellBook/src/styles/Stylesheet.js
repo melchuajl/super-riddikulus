@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     ingredientsElixirs: {
         fontSize: 16,
         color: '#FFFFFF',
-        left: 10, 
+        left: 10,
         top: 30
     },
 
@@ -272,6 +272,14 @@ const styles = StyleSheet.create({
         top: 107
     },
 
+    ingredientName: { 
+        color: '#FFFFFF', 
+        textAlign: 'center', 
+        left: 15, 
+        top: 40, 
+        width: 280
+    },
+
     return: {
         position: 'absolute',
         height: 36,
@@ -321,9 +329,9 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 16,
         letterSpacing: -0.3,
-        fontFamily: "CroissantOne", 
-        height: 100, 
-        width: 250 
+        fontFamily: "CroissantOne",
+        height: 100,
+        width: 250
     },
 
     welcomeText: {
@@ -381,9 +389,9 @@ const styles = StyleSheet.create({
     },
 
     elixirScroll: {
-        top: 130,
+        top: 128,
         width: 277,
-        height: 337
+        height: 350
     },
 
     noteContainer: {
@@ -574,7 +582,7 @@ const styles = StyleSheet.create({
 
     loginBar: {
         top: 5,
-        width : 390,
+        width: 390,
         height: 61,
     },
 
@@ -582,21 +590,21 @@ const styles = StyleSheet.create({
         fontFamily: 'CroissantOne',
         flexDirection: 'row',
         left: 141,
-        top: 7, 
+        top: 7,
         width: 199,
-        height: 17,  
+        height: 17,
     },
 
     regLogin: {
         alignItems: 'center',
         fontFamily: 'CroissantOne',
-        fontSize:12,
+        fontSize: 12,
         letterSpacing: -0.3,
     },
 
     inputLogin: {
-        left:66, 
-        top:20,
+        left: 66,
+        top: 20,
         fontFamily: 'CroissantOne',
         textAlignVertical: 'center'
     },
@@ -638,10 +646,17 @@ const styles = StyleSheet.create({
         left: 120,
     },
 
-    saveText: {
+    bookmarkContainer: {
+        alignItems: 'center',
+        left: 137,
+        top: -233, 
+    },
+
+    bookmarkText: {
         fontFamily: 'CroissantOne',
         fontSize: 15,
-        color: '#642210'
+        color: '#000000', 
+        textAlign: 'center'
     }
 
 });
