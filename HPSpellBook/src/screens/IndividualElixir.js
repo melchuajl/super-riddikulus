@@ -1,5 +1,5 @@
 import API from "../../API";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image, FlatList } from 'react-native';
 import styles from "../styles/Stylesheet";
 import elixirsBg from "../../assets/elixirs/elixirsBg.png";
@@ -9,9 +9,12 @@ import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
 import uuid from 'react-native-uuid';
 import TabNav from "../components/TabNav";
+import { AuthContext } from "../contexts/AuthContext";
+
 
 const IndividualElixir = (props) => {
 
+    const {addElixir} = useContext(AuthContext)
     const navigation = useNavigation();
     const [elixirList, setElixirList] = useState([]);
     const [elixirDifficulty, setElixirDifficulty] = useState('');
@@ -76,7 +79,7 @@ const IndividualElixir = (props) => {
                         showsVerticalScrollIndicator={true}
                         data={filteredList}
                         renderItem={({ item }) => { return <ElixirListItem title={item.name} /> }}
-                        keyExtractor={item => uuid.v4()}
+                        keyExtractor={item => /* uuid.v4() */item.id}
                         numColumns={1}>
                     </FlatList>
                 </View>
@@ -101,8 +104,10 @@ const IndividualElixir = (props) => {
                         showsVerticalScrollIndicator={true}
                         data={filteredElixir[0]?.ingredients}
                         renderItem={({ item }) => { return <IngredientItem title={item.name} /> }}
-                        keyExtractor={item => uuid.v4()}>
+                        keyExtractor={item => item.id}>
                     </FlatList>
+
+
                 </View>
 
                 <TabNav />

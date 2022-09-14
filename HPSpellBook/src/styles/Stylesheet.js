@@ -189,6 +189,14 @@ const styles = StyleSheet.create({
         top: 90
     },
 
+    ingredientName: { 
+        color: '#FFFFFF', 
+        textAlign: 'center', 
+        top: 40, 
+        left: 15,
+        width: 280
+    },
+
     text: {
         fontWeight: '400',
         fontSize: 15,
@@ -381,9 +389,9 @@ const styles = StyleSheet.create({
     },
 
     elixirScroll: {
-        top: 130,
+        top: 127,
         width: 277,
-        height: 337
+        height: 350
     },
 
     noteContainer: {
@@ -732,7 +740,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         color: '#642210',
         left: 300,
-        top: -300
+        top: -300,
+          
+    saveText: {
+        fontFamily: 'CroissantOne',
+        fontSize: 15,
+        color: '#642210'
     }
 
 });

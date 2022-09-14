@@ -72,7 +72,7 @@ const IndividualIngredient = () => {
                 <Image source={ingredientsScroll}
                     style={styles.ingredientsScroll} />
                 <View style={styles.scroll}>
-                    <Text style={[styles.magicText, { color: '#FFFFFF', textAlign: 'center', top: 40 }]}>INGREDIENT:
+                    <Text style={[styles.magicText, styles.ingredientName]}>INGREDIENT:
                         <Text>{"\n"}{filteredIngredient[0] ? filteredIngredient[0].name : null}</Text>
                     </Text>
                     <Text style={[styles.magicText, { color: '#FFFFFF', top: 80, left: 30 }]}>USED IN:</Text>

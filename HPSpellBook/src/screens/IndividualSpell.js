@@ -1,5 +1,5 @@
 import API from "../../API";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import styles from "../styles/Stylesheet";
 import detailsBg from "../../assets/individualSpellBG.png";
@@ -9,10 +9,12 @@ import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
 import TTS from "../components/TTS";
 import TabNav from "../components/TabNav";
+import { AuthContext } from "../contexts/AuthContext";
 
 
 const IndividualSpell = () => {
 
+    const {addSpell} = useContext(AuthContext)
     const navigation = useNavigation();
     const [spellList, setSpellList] = useState([]);
 
@@ -58,6 +60,7 @@ const IndividualSpell = () => {
                     <Text style={styles.text}>Light:
                         <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
                     </Text>
+
                 </View>
 
                 <TabNav />
