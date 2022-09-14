@@ -5,10 +5,12 @@ import { View, Text, TouchableOpacity, ImageBackground, Image, ScrollView } from
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icons from 'react-native-vector-icons/FontAwesome5'
 import uuid from 'react-native-uuid';
 import noteslistBg from '../../assets/notes/noteslistBg.png';
 import userProfileBar from '../../assets/notes/userProfileBar.png';
-import blackbar from '../../assets/notes/blackbar.png'
+import blackbar from '../../assets/notes/blackbar.png';
+import wizardGirl from '../../assets/notes/wizardGirl.png';
 
 import styles from "../styles/Stylesheet";
 import notesBG from '../../assets/notes/notesBG.png';
@@ -61,8 +63,16 @@ const NotesList = () => {
 
                 <ImageBackground
                     source={userProfileBar}
-                    style={styles.userBar}
-                >
+                    style={styles.userBar}>
+
+                    <TouchableOpacity>
+                        <Text style={styles.changePW}>
+                            Change Password
+                        </Text>
+                    </TouchableOpacity>
+
+                    <Text style={styles.line}>|</Text>
+
                     <TouchableOpacity
                         onPress={() => { logout() }}>
                         <Text style={styles.logout}>
@@ -71,11 +81,12 @@ const NotesList = () => {
                     </TouchableOpacity>
                 </ImageBackground>
 
-                    <ImageBackground
+                <ImageBackground
                     style={styles.blackbar}
-                        source={blackbar}>
-                            <Text style={styles.blackbarText}>TESTING 123</Text>
-                    </ImageBackground>
+                    source={blackbar}>
+                    <Text style={styles.blackbarText}>Insert Name?</Text>
+                    <Text style={styles.blackbarText}>Insert Email??</Text>
+                </ImageBackground>
 
                 <ImageBackground>
                     <Text style={styles.notesheader}>Notes List</Text>
@@ -85,8 +96,7 @@ const NotesList = () => {
                     <ScrollView>
                         <ImageBackground
                             source={noteslistBg}
-                            style={styles.noteslist}
-                        >
+                            style={styles.noteslist}>
 
                             <TouchableOpacity
                                 onPress={() => { navigation.navigate('NotesInput') }}>
@@ -107,9 +117,17 @@ const NotesList = () => {
                                 :
                                 <Text>Add your first note</Text>
                             }
+                            <View>
+                                <Icons style={styles.arrows} name='arrows-alt-v' size={30} />
+                            </View>
                         </ImageBackground>
                     </ScrollView>
                 </View>
+
+                <Image
+                    style={styles.wizardGirl}
+                    source={wizardGirl}>
+                </Image>
 
                 <TabNav />
 

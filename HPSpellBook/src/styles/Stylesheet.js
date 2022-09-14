@@ -638,15 +638,10 @@ const styles = StyleSheet.create({
         left: 120,
     },
 
-    noteslist: {
-        width: windowWidth,
-        height: windowHeight,
-    },
-
-    logout: {
+    changePW: {
         position: 'absolute',
         color: '#642210',
-        left: 151,
+        left: 21,
         top: 10,
         fontFamily: 'CroissantOne',
         fontSize: 'normal',
@@ -655,6 +650,28 @@ const styles = StyleSheet.create({
         lineHeight: 16,
         letterSpacing: -0.3
     },
+
+    line: {
+        position: 'absolute',
+        color: '#642210',
+        left: 141,
+        top: 7.5,
+        fontWeight: '400'
+    },
+
+    logout: {
+        position: 'absolute',
+        color: '#642210',
+        left: 161,
+        top: 10,
+        fontFamily: 'CroissantOne',
+        fontSize: 'normal',
+        fontWeight: '400',
+        fontSize: 11,
+        lineHeight: 16,
+        letterSpacing: -0.3
+    },
+
     userBar: {
         position: 'absolute',
         top: 58,
@@ -672,15 +689,20 @@ const styles = StyleSheet.create({
         top: 82,
     },
 
+    noteslist: {
+        width: 320,
+        height: windowHeight,
+        top: 90
+    },
+
     notesheader: {
         fontWeight: '400',
         fontSize: 18,
         lineHeight: 25,
         fontWeight: 'normal',
-        textTransform: 'uppercase',
         fontFamily: 'CroissantOne',
         letterSpacing: -0.3,
-        top: -150
+        top: -170
     },
 
     blackbar: {
@@ -700,6 +722,18 @@ const styles = StyleSheet.create({
         fontFamily: "CroissantOne",
     },
 
+    wizardGirl: {
+        position: 'absolute',
+        left: 15,
+        top: 60
+    },
+
+    arrows: {
+        position: 'absolute',
+        color: '#642210',
+        left: 300,
+        top: -300
+    }
 
 });
 

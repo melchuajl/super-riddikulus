@@ -1,9 +1,11 @@
 import mongoAPI from "../../config/mongoAPI";
-import { useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState, useContext } from "react";
 import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image, Alert } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { AuthContext } from '../contexts/AuthContext';
 
 import styles from "../styles/Stylesheet";
 import detailsBg from "../../assets/individualSpellBG.png";
@@ -14,11 +16,24 @@ import TabNav from "../components/TabNav";
 const IndividualNote = () => {
 
     const navigation = useNavigation();
+    const { userToken } = useContext(AuthContext);
     const [notesList, setNotesList] = useState([]);
+    const [userId, setUserId] = useState('')
+
+    const getUserId = async () => {
+        const res = await AsyncStorage.getItem('userInfo');
+        const user = JSON.parse(res);
+        const id = user.data.id;
+        setUserId(id);
+    }
 
     const getNotesList = async () => {
-        const { status, data } = await mongoAPI.get('/note');
-        const notesList = data.data;
+        const { status, data } = await mongoAPI.get('/note', {
+            headers: {
+                'Authorization': `Bearer ${userToken}`
+            }
+        });
+        const notesList = data.data.filter(n => n.userId === userId);
 
         if (status === 200) {
             setNotesList(notesList);
@@ -29,8 +44,9 @@ const IndividualNote = () => {
     const filteredNote = notesList.filter(n => n._id === route.params.id);
 
     useEffect(() => {
+        getUserId();
         getNotesList();
-    }, [notesList]);
+    }, [userId, notesList]);
 
     const handleDeleteNote = () => {
         const deleteNote = async () => await mongoAPI.delete(`/note/${route.params.id}`);
