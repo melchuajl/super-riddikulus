@@ -5,11 +5,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState, useLayoutEffect, useContext } from "react";
 import { View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform, Alert, ScrollView } from 'react-native';
 import styles from "../styles/Stylesheet";
-import backgroundImg from '../../assets/bgImage1.png';
-import categorybar from '../../assets/categorybar.png'
+import notesBG from '../../assets/notes/notesBG.png';
+import blackbar from '../../assets/notes/blackbar.png';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from "@react-navigation/native";
 import { AuthContext } from '../contexts/AuthContext';
+import TabNav from '../components/TabNav';
 
 const NotesInput = () => {
 
@@ -69,7 +70,11 @@ const NotesInput = () => {
 
     const handleEditNote = async () => {
         try {
-            const res = await mongoAPI.patch(`/note/${route.params.id}`, note);
+            const res = await mongoAPI.patch(`/note/${route.params.id}`, note, {
+                headers: {
+                    'Authorization': `Bearer ${userToken}`
+                }
+            });
             if (res) {
                 Alert.alert("Saved!", "Your note has been edited", [
                     {
@@ -87,19 +92,14 @@ const NotesInput = () => {
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ImageBackground
-                    source={backgroundImg}
+                    source={notesBG}
                     style={styles.bg}>
                     <ImageBackground
-                        source={categorybar}
-                        resizeMode="cover"
-                        style={styles.bar}>
-                        <View style={styles.divider}></View>
-                        <View style={styles.divider2}></View>
-                        <Text style={styles.header}>Add New Note</Text>
-                        <View style={styles.divider3}></View>
-                        <View style={styles.divider4}></View>
+                        style={[styles.blackbar, { top: '8%' }]}
+                        source={blackbar}>
+                        <Text style={styles.profileName}>Add New Note</Text>
                     </ImageBackground>
-                    <View style={[styles.noteContainer, { width: "85%", marginLeft: 12 }]}>
+                    <View style={{ alignItems: 'center', width: "85%" }}>
                         <TextInput
                             style={[styles.inputNote, { height: 40 }]}
                             placeholder='Title'
@@ -109,21 +109,22 @@ const NotesInput = () => {
                             value={noteTitle}
                         />
                         <TextInput
-                            style={[styles.inputNote, { fontSize: 15, height: "80%" }]}
-                            placeholder='Body'
+                            style={[styles.inputNote, { fontSize: 15, height: 427 }]}
+                            placeholder='Start typing your note'
                             multiline
                             selectionColor='black'
                             onChangeText={input => setNoteBody(input)}
                             value={noteBody}
                         />
                         <TouchableOpacity
-                            style={styles.addNote}
+                            style={styles.addNoteButton}
                             onPress={() => route.params ? handleEditNote() : handleAddNote()}>
-                            <Text style={styles.magicText3}>
+                            <Text style={[styles.addNoteText, { margin: 5 }]}>
                                 Save
                             </Text>
                         </TouchableOpacity>
                     </View>
+                    <TabNav />
                 </ImageBackground>
             </TouchableWithoutFeedback>
         </KeyboardAvoidingView>

@@ -36,7 +36,7 @@ export default function MainNav() {
                 <Stack.Screen name='IndividualElixir' component={IndividualElixir} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='Search' component={Search} options={{ animation: 'fade', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
                 <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
-                <Stack.Screen name='NotesInput' component={NotesInput} options={{ title: '', headerTintColor: 'black' }} />
+                <Stack.Screen name='NotesInput' component={NotesInput} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IngredientList' component={IngredientList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ animation: 'fade', headerShown: false }} />

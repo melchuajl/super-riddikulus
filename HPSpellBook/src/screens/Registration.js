@@ -12,7 +12,6 @@ import houseSly from '../../assets/registration/HouseSly.png'
 import whiteGlow from '../../assets/whiteglow.png'
 import loginBar from '../../assets/loginBar.png'
 import { useNavigation } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
 import mongoAPI, { localAPI } from "../../config/mongoAPI";
 import TabNav from "../components/TabNav";
 
@@ -29,8 +28,8 @@ const Registration = () => {
     const [details, setDetails] = useState({});
     const [passwordRepeat, setPasswordRepeat] = useState(null);
     const navigation = useNavigation();
-    const [genderOp, setGenderOp] = useState({male: 0.4, female:0.4});
-    const [houseOp, setHouseOp] = useState ({gry: 0.4, huf: 0.4, rav:0.4, sly:0.4})
+    const [genderOp, setGenderOp] = useState({male: 1, female:0.4});
+    const [houseOp, setHouseOp] = useState ({gry: 1, huf: 0.4, rav:0.4, sly:0.4})
     const registerOnPress = async () => {
         const emailCheck = /\S+@\S+\.\S+/;
 
@@ -115,14 +114,14 @@ const Registration = () => {
                             style={styles.inputLogin}></TextInput>
                     </ImageBackground>
 
-                    <Text style={[styles.inputLogin, { left: -102, opacity: 0.4, top: 1 }]}>Gender</Text>
-                    <View style={{ flexDirection: 'row', height: 101, width: 500, marginBottom: 4 }}>
+                    <Text style={[styles.inputLogin, { left: -107, top: 1 }]}>Gender</Text>
+                    <View style={{ flexDirection: 'row', height: 101, width: 500 }}>
                         <TouchableHighlight
                             onPress = {() => {setAccount({...account, gender:'male'}); setGenderOp({male: 1, female:0.4})}}
                             underlayColor= 'none'>
                         <Image
                             source={registerMale}
-                            style={{ left: 108 + 35, width: 70, opacity:genderOp.male }}>
+                            style={{ left: 143, width: 70, opacity:genderOp.male }}>
                         
                             </Image>
                         </TouchableHighlight>
@@ -172,15 +171,15 @@ const Registration = () => {
                             style={styles.inputLogin}></TextInput>
                     </ImageBackground>
 
-                    <Text style={[styles.inputLogin, { left: -102, opacity: 0.4, top: 1 }]}>House</Text>
-                    <View style={{ flexDirection: 'row', height: 0, width: 295, marginBottom: 4 }}>
+                    <Text style={[styles.inputLogin, { left: -107, top: 4 }]}>House</Text>
+                    <View style={styles.registerHouses}>
 
                         <TouchableOpacity
                             onPress = {() => {setAccount({...account, house:'gryffindor'}), setHouseOp({gry:1, huf:0.4, rav:0.4, sly:0.4})}}>
 
                         <Image
                             source={houseGry}
-                            style={{ left: 0, top: 10, width: 70, opacity:houseOp.gry }}>
+                            style={{ width: 70, opacity:houseOp.gry }}>
                         
                             </Image>
                         </TouchableOpacity>
@@ -189,7 +188,7 @@ const Registration = () => {
                             onPress = {() => {setAccount({...account, house:'hufflepuff'}), setHouseOp({gry:0.4, huf:1, rav:0.4, sly:0.4})}}>
                         <Image
                             source={houseHuf}
-                            style={{ left: 5, top: 10, width: 70, opacity:houseOp.huf}}>
+                            style={{ width: 70, opacity:houseOp.huf}}>
                                 </Image>
                         </TouchableOpacity>
 
@@ -197,7 +196,7 @@ const Registration = () => {
                             onPress = {() => {setAccount({...account, house:'ravenclaw'}), setHouseOp({gry:0.4, huf:0.4, rav:1, sly:0.4})}}>
                         <Image
                             source={houseRav}
-                            style={{ left: 5, top: 10, width: 70, opacity:houseOp.rav }}>
+                            style={{ width: 70, opacity:houseOp.rav }}>
                                 </Image>
                         </TouchableOpacity>
 
@@ -205,7 +204,7 @@ const Registration = () => {
                             onPress = {() => {setAccount({...account, house:'slytherin'}), setHouseOp({gry:0.4, huf:0.4, rav:0.4, sly:1})}}>
                         <Image
                             source={houseSly}
-                            style={{ left:5, top: 10, width: 70, opacity:houseOp.sly }}>
+                            style={{ width: 70, opacity:houseOp.sly }}>
                                 </Image>
                         </TouchableOpacity>
 
@@ -213,7 +212,7 @@ const Registration = () => {
 
 
 
-                    <View style={{ flexDirection: 'row', marginTop: 80, marginBottom: 15, left: 25 }}>
+                    <View style={{ flexDirection: 'row', marginTop: 73, marginBottom: 15, left: 25 }}>
                         <Text style={[styles.regLogin,]}>Already a member?</Text>
                         <TouchableOpacity
                             onPress={() => { navigation.navigate('Login') }}
