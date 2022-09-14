@@ -638,6 +638,12 @@ const styles = StyleSheet.create({
         left: 120,
     },
 
+    saveText: {
+        fontFamily: 'CroissantOne',
+        fontSize: 15,
+        color: '#642210'
+    }
+
 });
 
 export default styles; 

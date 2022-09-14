@@ -30,8 +30,6 @@ export const AuthProvider = ({children}) => {
             details);
             if(res) {
                 let userInfo = res.data;
-               console.log('res.data', res.data);
-               console.log('user info.data:', userInfo.data);
                console.log('user info:', userInfo);          
                setUserInfo(userInfo);
                setUserToken(userInfo.data.token);
@@ -44,6 +42,33 @@ export const AuthProvider = ({children}) => {
         }
         setIsLoading(false);
     }
+
+    const addSpell = async (spell) => {
+        setIsLoading(true);
+        try{
+        const res = await mongoAPI.put('/spells', /* userInfo.data.id */{user:userInfo.data.id, body:spell});
+        if (res){
+            console.log('addSpell data:', res.data)
+        }
+        }  catch (error) {
+            console.log(`save error: ${error}`);
+    }
+    setIsLoading(false);
+}
+
+const addElixir = async (elixir) => {
+    setIsLoading(true);
+    try{
+    const res = await mongoAPI.put('/elixirs', /* userInfo.data.id */{user:userInfo.data.id, body:elixir});
+    if (res){
+        console.log('addElixir data:', res.data)
+    }
+    }  catch (error) {
+        console.log(`save error: ${error}`);
+}
+setIsLoading(false);
+}
+
 
     const logout = () => {
         setIsLoading(true);
@@ -81,7 +106,7 @@ export const AuthProvider = ({children}) => {
     }, [])
 
     return (
-        <AuthContext.Provider value= {{login, logout, isLoading, userToken}}>
+        <AuthContext.Provider value= {{login, logout, addSpell, addElixir, isLoading, userToken}}>
             {children}
         </AuthContext.Provider>
         
