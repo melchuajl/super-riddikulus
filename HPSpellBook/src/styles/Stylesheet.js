@@ -633,7 +633,7 @@ const styles = StyleSheet.create({
         width: 246,
         height: 50,
         left: 72,
-        top: 78,
+        top: 40,
     },
 
     registerGlow: {
@@ -650,7 +650,8 @@ const styles = StyleSheet.create({
         fontFamily: 'CroissantOne',
         fontSize: 15,
         color: '#642210'
-    }
+    },
+
 
 });
 
