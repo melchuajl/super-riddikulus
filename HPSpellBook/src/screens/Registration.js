@@ -78,8 +78,8 @@ const Registration = () => {
                 username: account.username,
                 email: hiddenEmail,
                 password: account.password,
-                gender: account.gender ? account.gender : 'male',
-                house: account.house ? account.house : 'gryffindor'
+                gender: account.gender,
+                house: account.house
             }));
         };
 

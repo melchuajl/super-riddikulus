@@ -649,9 +649,9 @@ const styles = StyleSheet.create({
     },
 
     changePW: {
-        position: 'absolute',
+        // position: 'absolute',
         color: '#642210',
-        left: 21,
+        left: 31,
         top: 10,
         fontFamily: 'CroissantOne',
         fontSize: 'normal',
@@ -662,17 +662,17 @@ const styles = StyleSheet.create({
     },
 
     line: {
-        position: 'absolute',
+        // position: 'absolute',
         color: '#642210',
-        left: 141,
+        left: 50,
         top: 7.5,
         fontWeight: '400'
     },
 
     logout: {
-        position: 'absolute',
+        // position: 'absolute',
         color: '#642210',
-        left: 161,
+        left: 80,
         top: 10,
         fontFamily: 'CroissantOne',
         fontSize: 'normal',
@@ -684,11 +684,14 @@ const styles = StyleSheet.create({
 
     userBar: {
         position: 'absolute',
+        alignItems: 'space-evenly',
+        flexDirection: 'row',
         top: 58,
         width: 220,
         height: 36,
         left: 161
     },
+
     userNotesHeader: {
         position: 'absolute',
         justifyContent: 'center',
@@ -706,14 +709,29 @@ const styles = StyleSheet.create({
         top: 222
     },
 
-    notesheader: {
+    profileNotesList: { 
+        marginHorizontal: 10, 
+        marginVertical: 35, 
+        top: 10, 
+        left: 10, 
+        width: 320 
+    },
+
+    profileTabContainer: {
+        top: -160, 
+        left: 0, 
+        width: windowWidth * 0.88,
+        flexDirection: 'row'
+    },
+
+    profileTabHeader: {
         fontWeight: '400',
         fontSize: 18,
         lineHeight: 25,
         fontWeight: 'normal',
         fontFamily: 'CroissantOne',
-        letterSpacing: -0.3,
-        top: -220
+        letterSpacing: -0.3, 
+        marginHorizontal: 30
     },
 
     blackbar: {
@@ -764,6 +782,26 @@ const styles = StyleSheet.create({
     saveText: {
         fontFamily: 'CroissantOne',
         fontSize: 15,
+        color: '#642210'
+    }, 
+
+    bookmarkContainer: {
+        alignItems: 'center',
+        left: 137,
+        top: -233, 
+    },
+
+    bookmarkText: {
+        fontFamily: 'CroissantOne',
+        fontSize: 15,
+        color: '#000000', 
+        textAlign: 'center'
+    }, 
+
+    bookmarkedItemsProfile: {
+        fontFamily: 'CroissantOne',
+        fontSize: 15,
+        lineHeight: 19, 
         color: '#642210'
     }
 

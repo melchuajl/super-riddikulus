@@ -10,7 +10,7 @@ import ElixirDifficultyScreen from '../screens/ElixirDifficultyScreen';
 import ElixirList from '../screens/ElixirList';
 import IndividualElixir from '../screens/IndividualElixir';
 import Search from '../screens/Search';
-import NotesList from '../screens/NotesList';
+import Profile from '../screens/Profile';
 import NotesInput from '../screens/NotesInput';
 import IndividualNote from '../screens/IndividualNote';
 import IngredientList from '../screens/IngredientList';
@@ -35,7 +35,7 @@ export default function MainNav() {
                 <Stack.Screen name='ElixirList' component={ElixirList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualElixir' component={IndividualElixir} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='Search' component={Search} options={{ animation: 'fade', headerTintColor: 'black', headerTitleStyle: { fontFamily: 'CroissantOne', fontWeight: 'bold' } }} />
-                <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='Profile' component={Profile} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IngredientList' component={IngredientList} options={{ animation: 'fade', headerShown: false }} />
