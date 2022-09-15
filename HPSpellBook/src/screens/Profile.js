@@ -18,6 +18,8 @@ import { AuthContext } from '../contexts/AuthContext';
 import ProfileNotes from '../components/ProfileNotes';
 import ProfileSpells from '../components/ProfileSpells';
 import ProfileElixirs from '../components/ProfileElixirs';
+import { useNavigation } from '@react-navigation/native';
+
 
 const NotesList = () => {
 
@@ -25,28 +27,31 @@ const NotesList = () => {
     const [showNotes, setShowNotes] = useState(true);
     const [showSpells, setShowSpells] = useState(false);
     const [showElixirs, setShowElixirs] = useState(false);
-    const [userInfo, setUserInfo] = useState({
-        id: null,
-        name: null,
-        email: null,
-        gender: null,
-        house: null
-    })
-
-    const getUserInfo = async () => {
-        const res = await AsyncStorage.getItem('userInfo');
-        const user = JSON.parse(res);
-        setUserInfo({
-            id: user.data.id,
-            name: user.data.name,
-            email: user.data.email,
-            gender: user.data.gender,
-            house: user.data.house
-        })
-    }
+    // const [userInfo, setUserInfo] = useState({
+    //     id: null,
+    //     name: null,
+    //     email: null,
+    //     gender: null,
+    //     house: null
+    // })
+    const navigation = useNavigation();
+    const {userInfo} = useContext(AuthContext);
+    // const getUserInfo = async () => {
+    //     const res = await AsyncStorage.getItem('userInfo');
+    //     const user = JSON.parse(res);
+    //     setUserInfo({
+    //         id: user.data.id,
+    //         name: user.data.username,
+    //         email: user.data.email,
+    //         gender: user.data.gender,
+    //         house: user.data.house
+    //     })
+    //     console.log('userInfo profile:', userInfo)
+    // }
 
     useEffect(() => {
-        getUserInfo();
+        // getUserInfo();
+        console.log('profile userInfo:', userInfo)
     }, [showNotes, showSpells, showElixirs]);
 
     return (
@@ -60,7 +65,8 @@ const NotesList = () => {
                     source={userProfileBar}
                     style={styles.userBar}>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress = {() => {navigation.navigate('EditProfile')}}>
                         <Text style={styles.changePW}>
                             Edit Profile
                         </Text>
@@ -79,8 +85,8 @@ const NotesList = () => {
                 <ImageBackground
                     style={styles.blackbar}
                     source={blackbar}>
-                    <Text style={styles.profileName}>{userInfo.name}</Text>
-                    <Text style={styles.profileEmail}>{userInfo.email}</Text>
+                    <Text style={styles.profileName}>{userInfo.data.username}</Text>
+                    <Text style={styles.profileEmail}>{userInfo.data.email}</Text>
                 </ImageBackground>
 
                 {showNotes ? <ProfileNotes userInfo={userInfo} /> : null}
@@ -101,12 +107,12 @@ const NotesList = () => {
 
                 <Image
                     style={styles.wizardGender}
-                    source={userInfo.gender === 'male' ? wizardBoy : wizardGirl} />
+                    source={userInfo.data.gender === 'male' ? wizardBoy : wizardGirl} />
                 <Image
                     style={styles.wizardHouse}
-                    source={userInfo.house === 'gryffindor' ? houseGry
-                        : userInfo.house === 'hufflepuff' ? houseHuf
-                            : userInfo.house === 'slytherin' ? houseSly
+                    source={userInfo.data.house === 'gryffindor' ? houseGry
+                        : userInfo.data.house === 'hufflepuff' ? houseHuf
+                            : userInfo.data.house === 'slytherin' ? houseSly
                                 : houseRav} />
 
                 <TabNav />

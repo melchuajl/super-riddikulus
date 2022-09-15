@@ -15,15 +15,6 @@ export const AuthProvider = ({ children }) => {
     const login = async (details) => {
         setIsLoading(true);
         console.log(details)
-/*         if (!details.email) {
-            Alert.alert('Please input email!');
-            setIsLoading(false);
-            return;
-        }else if (!details.password) {
-            Alert.alert('Please input password!');
-            setIsLoading(false);
-            return;
-        } */
 
         //lags/hangs if above condition is used
 
@@ -105,6 +96,49 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(false);
     }
 
+    const editPassword = async (oldPass, newPass, confirmPass) => {
+        setIsLoading(true);
+        try {
+            const res = await mongoAPI.put('/user/password', {
+                 user: userInfo.data.id, oldPass: oldPass, newPass: newPass, confirmPass: confirmPass }
+            );
+            if (res) {
+                if(res.data.status == 400) {
+                    Alert.alert("Login Failed", res.data.message)
+                    setIsLoading(false);
+                    return;
+                }
+                console.log('editPass data:', res.data);
+                Alert.alert('Password updated!');
+                setIsLoading(false);
+                return;
+            }
+        } catch (error) {
+            console.error(`delete error: ${error}`)
+        }
+        setIsLoading(false);
+    }
+
+    const editAccount = async (details) => {
+        setIsLoading(true);
+        try {
+            const res = await mongoAPI.put('/user/profile', {
+                 user: userInfo.data.id, body: details }
+            );
+            if (res) {
+                console.log('editProfile data:', res.data);
+                setUserInfo({...userInfo, data: {...userInfo.data, ...details}})
+                Alert.alert('Profile updated!');
+            }
+            console.log('userInfo update:', userInfo)
+            AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
+        } catch (error) {
+            console.error(`delete error: ${error}`)
+        }
+        setIsLoading(false);
+    }
+
+
     const logout = () => {
         setIsLoading(true);
         setUserToken(null);
@@ -141,7 +175,7 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ login, logout, addSpell, deleteSpell, addElixir, deleteElixir, isLoading, userToken }}>
+        <AuthContext.Provider value={{ login, logout, addSpell, deleteSpell, addElixir, deleteElixir, editPassword, editAccount, isLoading, userToken, userInfo }}>
             {children}
         </AuthContext.Provider>
 

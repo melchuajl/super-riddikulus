@@ -96,7 +96,8 @@ const IndividualSpell = () => {
                         <Pressable onPress={() => {
                             addSpell({
                                 id: filteredSpell[0].id,
-                                name: filteredSpell[0].name
+                                name: filteredSpell[0].name,
+                                
                             });
                             setBookmarkStatus(true)
                         }}>

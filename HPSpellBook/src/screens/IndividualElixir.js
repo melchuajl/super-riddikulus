@@ -144,7 +144,8 @@ const IndividualElixir = (props) => {
                             <Pressable onPress={() => {
                                 addElixir({
                                     id: filteredElixir[0].id,
-                                    name: filteredElixir[0].name
+                                    name: filteredElixir[0].name,
+                                    difficulty: filteredElixir[0].difficulty
                                 });
                                 setBookmarkStatus(true)
                             }}>
