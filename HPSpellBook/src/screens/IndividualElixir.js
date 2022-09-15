@@ -63,8 +63,8 @@ const IndividualElixir = (props) => {
 
     const ElixirListItem = ({ title }) => (
         <View style={styles.itemElixirList}>
-            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title }) }}>
-                <Text style={styles.magicText3}>{title}</Text>
+            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title.name, elixirDifficulty: title.difficulty }) }}>
+                <Text style={styles.magicText3}>{title.name}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -90,7 +90,7 @@ const IndividualElixir = (props) => {
 
                 {/* Header */}
                 <View style={styles.elixirHeader}>
-                    <Text style={styles.headerText}>{route.params.elixirDifficulty}&nbsp;ELIXIRS</Text>
+                    <Text style={styles.headerText}>{route.params.elixirDifficulty/*  ? route.params.elixirDifficulty : 'BEGINNER' */}&nbsp;ELIXIRS</Text>
                 </View>
 
                 {/* ElixirList */}
@@ -98,7 +98,7 @@ const IndividualElixir = (props) => {
                     <FlatList
                         showsVerticalScrollIndicator={true}
                         data={filteredList}
-                        renderItem={({ item }) => { return <ElixirListItem title={item.name} /> }}
+                        renderItem={({ item }) => { return <ElixirListItem title={item} /> }}
                         keyExtractor={item => item.id}
                         numColumns={1}>
                     </FlatList>

@@ -54,8 +54,8 @@ const IndividualIngredient = () => {
 
     const Item = ({ title }) => (
         <View style={[styles.item, { height: 36 }]}>
-            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title }) }}>
-                <Text style={styles.magicText4}>&#8227; {title}</Text>
+            <TouchableOpacity style={styles.title} onPress={() => { navigation.navigate('IndividualElixir', { name: title.name, elixirDifficulty: title.difficulty }) }}>
+                <Text style={styles.magicText4}>&#8227; {title.name}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -80,7 +80,7 @@ const IndividualIngredient = () => {
                         <FlatList
                             showsVerticalScrollIndicator={true}
                             data={filteredElixir}
-                            renderItem={({ item }) => { return <Item title={item.name} /> }}
+                            renderItem={({ item }) => { return <Item title={item} /> }}
                             keyExtractor={item => uuid.v4()}>
                         </FlatList>
                     </View>
