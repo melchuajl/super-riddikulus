@@ -684,7 +684,7 @@ const styles = StyleSheet.create({
 
     userBar: {
         position: 'absolute',
-        alignItems: 'space-between',
+        alignItems: 'space-evenly',
         flexDirection: 'row',
         top: 58,
         width: 220,
