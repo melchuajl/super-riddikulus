@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from "../styles/Stylesheet";
 import noteslistBg from '../../assets/notes/noteslistBg.png';
 import userProfileBar from '../../assets/notes/userProfileBar.png';
+import logoutBar from '../../assets/logoutBar.png';
 import blackbar from '../../assets/notes/blackbar.png';
 import wizardGirl from '../../assets/notes/wizardGirl.png';
 import wizardBoy from '../../assets/notes/wizardBoy.png';
@@ -73,32 +74,24 @@ const NotesList = () => {
                 style={styles.bg}>
 
                 <ImageBackground
-                    source={userProfileBar}
+                    source={logoutBar}
                     style={styles.userBar}>
 
-                    <TouchableOpacity>
+                    {/* <TouchableOpacity>
                         <Text style={styles.changePW}>
                             Change Password
                         </Text>
                     </TouchableOpacity>
 
-                    <Text style={styles.line}>|</Text>
+                    <Text style={styles.line}>|</Text> */}
 
                     <TouchableOpacity
                         onPress={() => { logout() }}>
-                        <Text style={styles.logout}>
+                        <Text style={[styles.logout, {left: 85, fontSize: 14, lineHeight: 17}]}>
                             Logout
                         </Text>
                     </TouchableOpacity>
                 </ImageBackground>
-
-                {/* <TouchableOpacity
-                    style={styles.userBar}
-                    onPress={() => { logout() }}>
-                    <Text style={styles.logout}>
-                        Logout
-                    </Text>
-                </TouchableOpacity> */}
 
                 <ImageBackground
                     style={styles.blackbar}
