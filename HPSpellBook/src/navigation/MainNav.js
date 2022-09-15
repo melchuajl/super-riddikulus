@@ -18,6 +18,7 @@ import IndividualIngredient from '../screens/IndividualIngredient';
 import Houses from '../screens/Houses';
 import HouseDetails from '../components/HouseDetails';
 import AppNav from './AppNav';
+import NotesList from '../screens/Profile';
 
 
 const Stack = createNativeStackNavigator();
@@ -38,6 +39,7 @@ export default function MainNav() {
                 <Stack.Screen name='Profile' component={Profile} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='NotesInput' component={NotesInput} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualNote' component={IndividualNote} options={{ animation: 'fade', headerShown: false }} />
+                <Stack.Screen name='NotesList' component={NotesList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IngredientList' component={IngredientList} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='IndividualIngredient' component={IndividualIngredient} options={{ animation: 'fade', headerShown: false }} />
                 <Stack.Screen name='Houses' component={Houses} options={{ animation: 'fade', headerShown: false }} />

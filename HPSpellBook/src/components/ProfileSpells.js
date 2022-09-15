@@ -24,11 +24,13 @@ const ProfileSpells = (props) => {
 
         if (status === 200) {
             setBookmarkedSpells(bookmarked)
+            console.log('bookmarked', bookmarkedSpells)
         }
     }
 
     useEffect(() => {
         getBookmarkedSpells();
+        
     }, []);
 
     const Item = ({ title }) => (

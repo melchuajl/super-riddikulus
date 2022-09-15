@@ -20,9 +20,9 @@ const Registration = () => {
     const [account, setAccount] = useState({
         username: null,
         email: null,
-        gender: null,
+        gender: 'male',
         password: null,
-        house:null
+        house: 'gryffindor'
     })
     const [hiddenEmail, setHiddenEmail] = useState(null);
     const [details, setDetails] = useState({});

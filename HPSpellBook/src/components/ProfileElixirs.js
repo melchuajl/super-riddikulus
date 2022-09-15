@@ -29,13 +29,14 @@ const ProfileElixirs = (props) => {
 
     useEffect(() => {
         getBookmarkedElixrs();
+        console.log(bookmarkedElixrs)
     }, []);
 
     const Item = ({ title }) => (
         <View style={{ width: 300, height: 90, marginHorizontal: 20 }}>
-            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={() => { navigation.navigate('IndividualElixir', { name: title }) }}>
+            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={() => { navigation.navigate('IndividualElixir', { name: title.name, elixirDifficulty: title.difficulty }) }}>
                 <Image source={savedElixir} />
-                <Text style={styles.bookmarkedItemsProfile}>&nbsp; &nbsp; {title}</Text>
+                <Text style={styles.bookmarkedItemsProfile}>&nbsp; &nbsp; {title.name}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -49,7 +50,7 @@ const ProfileElixirs = (props) => {
                     <FlatList
                         showsVerticalScrollIndicator={true}
                         data={bookmarkedElixrs}
-                        renderItem={({ item }) => { return <Item title={item.name} /> }}
+                        renderItem={({ item }) => { return <Item title={item} /> }}
                         keyExtractor={item => item.id}>
                     </FlatList>
                     :
