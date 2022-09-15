@@ -1,45 +1,65 @@
 import API from "../../API";
+import mongoAPI from "../../config/mongoAPI";
 import { useContext, useEffect, useState } from "react";
-import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image, FlatList } from 'react-native';
+import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image, FlatList, Pressable } from 'react-native';
 import styles from "../styles/Stylesheet";
 import elixirsBg from "../../assets/elixirs/elixirsBg.png";
 import elixirsInnerBg from "../../assets/elixirs/elixirsInnerBg.png";
 import smoke from '../../assets/elixirs/smoke.gif';
+import bookmark from '../../assets/bookmark.png';
+import bookmarkGrey from '../../assets/bookmarkGrey.png';
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
-import uuid from 'react-native-uuid';
 import TabNav from "../components/TabNav";
 import { AuthContext } from "../contexts/AuthContext";
 
 
 const IndividualElixir = (props) => {
 
-    const {addElixir} = useContext(AuthContext)
+    const { addElixir, deleteElixir, userToken } = useContext(AuthContext)
     const navigation = useNavigation();
     const [elixirList, setElixirList] = useState([]);
     const [elixirDifficulty, setElixirDifficulty] = useState('');
+    const [bookmarkedElixirs, setBookmarkedElixirs] = useState([]);
+    const [bookmarkStatus, setBookmarkStatus] = useState(false);
     const elixirTypeDisplay = props.elixirDifficulty;
 
+    //Data from external API
     const getElixirList = async () => {
         const { status, data } = await API.get('/Elixirs');
-        const elixirList = data.filter(e => e.ingredients[0]) // Filters out elixirs with ingredients = []
+        const elixirList = data.filter(e => e.ingredients[0]); // Filters out elixirs with ingredients = []
+
         if (status === 200) {
-            setElixirList(elixirList)
+            setElixirList(elixirList);
         }
-    }
+    };
 
     const route = useRoute();
     elixirList.sort((a, b) => a.name.localeCompare(b.name));  // Sorting in alphabetical order 
-    const filteredElixir = elixirList.filter(elixir => elixir.name === route.params.name)
-
+    const filteredElixir = elixirList.filter(elixir => elixir.name === route.params.name);
     const filteredList = elixirList.filter(elixir => {
         return elixir.difficulty === elixirDifficulty
     })
 
+    //Data from super-riddikulus-server API
+    const getBookmarkedElixirs = async () => {
+        const { status, data } = await mongoAPI.get('/user/profile', {
+            headers: {
+                'Authorization': `Bearer ${userToken}`
+            }
+        });
+        const bookmarked = data.data.elixirs;
+
+        if (status === 200) {
+            setBookmarkedElixirs(bookmarked)
+        }
+    }
+
     useEffect(() => {
-        getElixirList();
         setElixirDifficulty(route.params ? route.params.elixirDifficulty : elixirDifficulty);
-    }, [elixirTypeDisplay]);
+        getElixirList();
+        getBookmarkedElixirs();
+    }, [elixirTypeDisplay, bookmarkStatus]);
 
     const ElixirListItem = ({ title }) => (
         <View style={styles.itemElixirList}>
@@ -79,14 +99,14 @@ const IndividualElixir = (props) => {
                         showsVerticalScrollIndicator={true}
                         data={filteredList}
                         renderItem={({ item }) => { return <ElixirListItem title={item.name} /> }}
-                        keyExtractor={item => /* uuid.v4() */item.id}
+                        keyExtractor={item => item.id}
                         numColumns={1}>
                     </FlatList>
                 </View>
 
                 {/* ElixirIngredients */}
                 <View style={styles.elixirScroll}>
-                    <Text style={styles.elixirText1}>{filteredElixir[0] ? 'Name:' : 'Select elixir from list'}
+                    <Text style={styles.elixirText1}>{filteredElixir[0] ? 'Name:' : 'Please select elixir from list'}
                         <Text style={{ fontSize: 15 }}>&nbsp;{filteredElixir[0] ? filteredElixir[0].name : null}</Text>
                     </Text>
                     <Text style={styles.elixirText}>{filteredElixir[0] ? 'Effect:' : null}
@@ -109,6 +129,29 @@ const IndividualElixir = (props) => {
 
 
                 </View>
+
+                {filteredElixir[0] ?
+                    <View style={styles.bookmarkContainer}>
+                        <Text style={styles.bookmarkText}>&nbsp; Save</Text>
+                        {bookmarkedElixirs.some(e => e.name === route.params.name) ?
+                            <Pressable onPress={() => {
+                                deleteElixir(filteredElixir[0].id);
+                                setBookmarkStatus(false)
+                            }}>
+                                <Image source={bookmark}  />
+                            </Pressable>
+                            :
+                            <Pressable onPress={() => {
+                                addElixir({
+                                    id: filteredElixir[0].id,
+                                    name: filteredElixir[0].name
+                                });
+                                setBookmarkStatus(true)
+                            }}>
+                                <Image source={bookmarkGrey} />
+                            </Pressable>}
+                    </View>
+                    : null}
 
                 <TabNav />
 

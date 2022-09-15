@@ -77,6 +77,12 @@ const styles = StyleSheet.create({
         color: '#3d3d3d'
     },
 
+    addNoteText: {
+        fontFamily: 'CroissantOne',
+        fontSize: 16,
+        color: '#642210' 
+    },
+
     container: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -394,34 +400,23 @@ const styles = StyleSheet.create({
         height: 350
     },
 
-    noteContainer: {
-        alignItems: 'center',
-        flex: 1,
-        position: 'absolute',
-        top: 100,
-        width: '100%',
-        height: windowHeight - 100,
-        paddingLeft: "10%",
-        paddingTop: "10%",
-        paddingBottom: "5%"
-    },
-
     inputNote: {
         width: '100%',
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        backgroundColor: 'rgba(255,255,255, 0.6)',
+        backgroundColor: '#FFFFFF',
         fontSize: 16,
         fontFamily: "CroissantOne"
     },
 
-    addNote: {
+    addNoteButton: {
         alignItems: 'center',
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        borderColor: 'black'
+        justifyContent: 'center',
+        borderWidth: 1, 
+        borderColor: 'black', 
+        borderRadius: 5, 
+        width: 100
     },
 
     noteCard: {
@@ -581,7 +576,6 @@ const styles = StyleSheet.create({
     },
 
     loginBar: {
-        top: 5,
         width : 390,
         height: 61,
     },
@@ -628,27 +622,186 @@ const styles = StyleSheet.create({
 
     bar2: {
         position: 'absolute',
-        /* justifyContent: 'center', */
-        alignItems: "center",
+        alignItems: 'center',
         width: 246,
         height: 50,
         left: 72,
-        top: 78,
+        top: 58,
     },
+
+    registerHouses: {
+        flexDirection: 'row', 
+        justifyContent: 'space-between',
+        height: 0, 
+        width: 295, 
+        marginVertical: 10 
+    },
+    
 
     registerGlow: {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        top: 573,
+        bottom: 77,
         height: 160,
         width: 150,
         left: 120,
     },
 
+    changePW: {
+        // position: 'absolute',
+        color: '#642210',
+        left: 31,
+        top: 10,
+        fontFamily: 'CroissantOne',
+        fontSize: 'normal',
+        fontWeight: '400',
+        fontSize: 11,
+        lineHeight: 16,
+        letterSpacing: -0.3
+    },
+
+    line: {
+        // position: 'absolute',
+        color: '#642210',
+        left: 50,
+        top: 7.5,
+        fontWeight: '400'
+    },
+
+    logout: {
+        // position: 'absolute',
+        color: '#642210',
+        left: 80,
+        top: 10,
+        fontFamily: 'CroissantOne',
+        fontSize: 'normal',
+        fontWeight: '400',
+        fontSize: 11,
+        lineHeight: 16,
+        letterSpacing: -0.3
+    },
+
+    userBar: {
+        position: 'absolute',
+        alignItems: 'space-evenly',
+        flexDirection: 'row',
+        top: 58,
+        width: 220,
+        height: 36,
+        left: 161
+    },
+
+    userNotesHeader: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: "center",
+        width: 211,
+        height: 39,
+        left: 89,
+        top: 82,
+    },
+
+    noteslist: {
+        width: 358,
+        height: 472,
+        position: 'absolute',
+        top: 222
+    },
+
+    profileNotesList: { 
+        marginHorizontal: 10, 
+        marginVertical: 35, 
+        top: 10, 
+        left: 10, 
+        width: 320 
+    },
+
+    profileTabContainer: {
+        top: -160, 
+        left: 0, 
+        width: windowWidth * 0.88,
+        flexDirection: 'row'
+    },
+
+    profileTabHeader: {
+        fontWeight: '400',
+        fontSize: 18,
+        lineHeight: 25,
+        fontWeight: 'normal',
+        fontFamily: 'CroissantOne',
+        letterSpacing: -0.3, 
+        marginHorizontal: 30
+    },
+
+    blackbar: {
+        position: 'absolute',
+        justifyContent: "center",
+        width: windowWidth,
+        height: 59,
+        top: 110
+    },
+
+    profileName: {
+        color: '#FFFFFF',
+        fontSize: 18,
+        lineHeight: 25,
+        fontFamily: 'CroissantOne',
+        textAlign: 'left', 
+        left: '30%'
+    },
+
+    profileEmail: {
+        color: '#97ABB1',
+        fontSize: 14,
+        lineHeight: 14,
+        fontFamily: 'CroissantOne',
+        textAlign: 'left',
+        left: '30%'
+    },
+
+    wizardGender: {
+        position: 'absolute',
+        left: 15,
+        top: 60
+    },
+    
+    wizardHouse: {
+        position: 'absolute',
+        right: 15,
+        top: 105
+    },
+
+    arrows: {
+        position: 'absolute',
+        color: '#642210',
+        left: 300,
+        top: -300
+    },
+          
     saveText: {
         fontFamily: 'CroissantOne',
         fontSize: 15,
+        color: '#642210'
+    }, 
+
+    bookmarkContainer: {
+        alignItems: 'center',
+        left: 137,
+        top: -233, 
+    },
+
+    bookmarkText: {
+        fontFamily: 'CroissantOne',
+        fontSize: 15,
+        color: '#000000', 
+        textAlign: 'center'
+    }, 
+
+    bookmarkedItemsProfile: {
+        fontFamily: 'CroissantOne',
+        fontSize: 15,
+        lineHeight: 19, 
         color: '#642210'
     }
 

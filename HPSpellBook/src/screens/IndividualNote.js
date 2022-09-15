@@ -49,7 +49,11 @@ const IndividualNote = () => {
     }, [userId, notesList]);
 
     const handleDeleteNote = () => {
-        const deleteNote = async () => await mongoAPI.delete(`/note/${route.params.id}`);
+        const deleteNote = async () => await mongoAPI.delete(`/note/${route.params.id}`, {
+            headers: {
+                'Authorization': `Bearer ${userToken}`
+            }
+        });
         Alert.alert("Delete note", "Are you sure you want to delete this note?", [
             {
                 text: "Cancel",
