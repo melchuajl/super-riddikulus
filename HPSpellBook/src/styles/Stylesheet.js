@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     addNoteText: {
         fontFamily: 'CroissantOne',
         fontSize: 16,
-        color: '#642210' 
+        color: '#642210'
     },
 
     container: {
@@ -195,10 +195,10 @@ const styles = StyleSheet.create({
         top: 90
     },
 
-    ingredientName: { 
-        color: '#FFFFFF', 
-        textAlign: 'center', 
-        top: 40, 
+    ingredientName: {
+        color: '#FFFFFF',
+        textAlign: 'center',
+        top: 40,
         left: 15,
         width: 280
     },
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     ingredientsElixirs: {
         fontSize: 16,
         color: '#FFFFFF',
-        left: 10, 
+        left: 10,
         top: 30
     },
 
@@ -335,9 +335,9 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 16,
         letterSpacing: -0.3,
-        fontFamily: "CroissantOne", 
-        height: 100, 
-        width: 250 
+        fontFamily: "CroissantOne",
+        height: 100,
+        width: 250
     },
 
     welcomeText: {
@@ -413,9 +413,9 @@ const styles = StyleSheet.create({
     addNoteButton: {
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 1, 
-        borderColor: 'black', 
-        borderRadius: 5, 
+        borderWidth: 1,
+        borderColor: 'black',
+        borderRadius: 5,
         width: 100
     },
 
@@ -576,7 +576,7 @@ const styles = StyleSheet.create({
     },
 
     loginBar: {
-        width : 390,
+        width: 390,
         height: 61,
     },
 
@@ -584,21 +584,21 @@ const styles = StyleSheet.create({
         fontFamily: 'CroissantOne',
         flexDirection: 'row',
         left: 141,
-        top: 7, 
+        top: 7,
         width: 199,
-        height: 17,  
+        height: 17,
     },
 
     regLogin: {
         alignItems: 'center',
         fontFamily: 'CroissantOne',
-        fontSize:12,
+        fontSize: 12,
         letterSpacing: -0.3,
     },
 
     inputLogin: {
-        left:66, 
-        top:20,
+        left: 66,
+        top: 20,
         fontFamily: 'CroissantOne',
         textAlignVertical: 'center'
     },
@@ -630,13 +630,13 @@ const styles = StyleSheet.create({
     },
 
     registerHouses: {
-        flexDirection: 'row', 
+        flexDirection: 'row',
         justifyContent: 'space-between',
-        height: 0, 
-        width: 295, 
-        marginVertical: 10 
+        height: 0,
+        width: 295,
+        marginVertical: 10
     },
-    
+
 
     registerGlow: {
         alignItems: 'center',
@@ -649,10 +649,8 @@ const styles = StyleSheet.create({
     },
 
     changePW: {
-        // position: 'absolute',
         color: '#642210',
         left: 31,
-        top: 10,
         fontFamily: 'CroissantOne',
         fontSize: 'normal',
         fontWeight: '400',
@@ -662,18 +660,15 @@ const styles = StyleSheet.create({
     },
 
     line: {
-        // position: 'absolute',
         color: '#642210',
         left: 50,
-        top: 7.5,
+        top: -1,
         fontWeight: '400'
     },
 
     logout: {
-        // position: 'absolute',
         color: '#642210',
         left: 80,
-        top: 10,
         fontFamily: 'CroissantOne',
         fontSize: 'normal',
         fontWeight: '400',
@@ -685,6 +680,8 @@ const styles = StyleSheet.create({
     userBar: {
         position: 'absolute',
         alignItems: 'space-between',
+        flexDirection: 'row',
+        alignItems: 'center',
         flexDirection: 'row',
         top: 58,
         width: 220,
@@ -709,17 +706,17 @@ const styles = StyleSheet.create({
         top: 222
     },
 
-    profileNotesList: { 
-        marginHorizontal: 10, 
-        marginVertical: 35, 
-        top: 10, 
-        left: 10, 
-        width: 320 
+    profileNotesList: {
+        marginHorizontal: 10,
+        marginVertical: 35,
+        top: 10,
+        left: 10,
+        width: 320
     },
 
     profileTabContainer: {
-        top: -160, 
-        left: 0, 
+        top: -160,
+        left: 0,
         width: windowWidth * 0.88,
         flexDirection: 'row'
     },
@@ -730,7 +727,7 @@ const styles = StyleSheet.create({
         lineHeight: 25,
         fontWeight: 'normal',
         fontFamily: 'CroissantOne',
-        letterSpacing: -0.3, 
+        letterSpacing: -0.3,
         marginHorizontal: 30
     },
 
@@ -747,7 +744,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 25,
         fontFamily: 'CroissantOne',
-        textAlign: 'left', 
+        textAlign: 'left',
         left: '30%'
     },
 
@@ -765,7 +762,7 @@ const styles = StyleSheet.create({
         left: 15,
         top: 60
     },
-    
+
     wizardHouse: {
         position: 'absolute',
         right: 15,
@@ -778,44 +775,48 @@ const styles = StyleSheet.create({
         left: 300,
         top: -300
     },
-          
+
     saveText: {
         fontFamily: 'CroissantOne',
         fontSize: 15,
         color: '#642210'
-    }, 
+    },
 
     bookmarkContainer: {
         alignItems: 'center',
         left: 137,
-        top: -233, 
+        top: -233,
     },
 
     bookmarkText: {
         fontFamily: 'CroissantOne',
         fontSize: 15,
-        color: '#000000', 
+        color: '#000000',
         textAlign: 'center'
-    }, 
+    },
 
     bookmarkedItemsProfile: {
         fontFamily: 'CroissantOne',
         fontSize: 15,
-        lineHeight: 19, 
+        lineHeight: 19,
         color: '#642210'
     },
-    
-    
+
+
     inputEditProfile: {
         fontFamily: 'CroissantOne',
-        textAlignVertical: 'center'
+        textAlignVertical: 'center',
+        top: 9
     },
 
-    editProfilePress : {
-        height:25,
-        width:150,
+    editProfilePress: {
+        height: 25,
+        width: 150,
         border: '2px solid black',
         backgroundColor: '#503505',
+        margin: 10,
+        marginBottom: 30,
+        left: 70
     },
 
     editText: {
@@ -823,10 +824,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#FFFFFF',
         alignItems: 'center',
-        borderWidth:1, 
-        borderColor:'black',
+        borderWidth: 1,
+        borderColor: 'black',
         textAlign: 'center'
-    }, 
+    },
 
 });
 

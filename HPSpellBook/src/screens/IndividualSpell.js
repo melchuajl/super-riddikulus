@@ -1,7 +1,7 @@
 import API from "../../API";
 import mongoAPI from "../../config/mongoAPI";
 import { useEffect, useState, useContext } from "react";
-import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image, Pressable } from 'react-native';
+import { View, StatusBar, Text, ImageBackground, TouchableOpacity, Image, Pressable, Alert } from 'react-native';
 import styles from "../styles/Stylesheet";
 import detailsBg from "../../assets/individualSpellBG.png";
 import spellScroll from "../../assets/kraftpaper.png";
@@ -85,24 +85,30 @@ const IndividualSpell = () => {
 
                 <View style={[styles.bookmarkContainer, { top: 70 }]}>
                     <Text style={styles.bookmarkText}>&nbsp; Save</Text>
-                    {bookmarkedSpells.some(spell => spell.name === route.params.name) ?
+                    {userToken && bookmarkedSpells.some(spell => spell.name === route.params.name) ?
                         <Pressable onPress={() => {
-                            deleteSpell(filteredSpell[0].id); 
+                            deleteSpell(filteredSpell[0].id);
                             setBookmarkStatus(false)
                         }}>
                             <Image source={bookmark} />
                         </Pressable>
                         :
-                        <Pressable onPress={() => {
-                            addSpell({
-                                id: filteredSpell[0].id,
-                                name: filteredSpell[0].name,
-                                
-                            });
-                            setBookmarkStatus(true)
-                        }}>
-                            <Image source={bookmarkGrey} />
-                        </Pressable>
+                        userToken ?
+                            <Pressable onPress={() => {
+                                addSpell({
+                                    id: filteredSpell[0].id,
+                                    name: filteredSpell[0].name,
+                                });
+                                setBookmarkStatus(true)
+                            }}>
+                                <Image source={bookmarkGrey} />
+                            </Pressable>
+                            :
+                            <Pressable onPress={() => {
+                                Alert.alert('Please log in', 'Account required to save spells and elixirs', { text: 'OK' })
+                            }}>
+                                <Image source={bookmarkGrey} />
+                            </Pressable>
                     }
                 </View>
 

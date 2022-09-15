@@ -26,9 +26,13 @@ const EditProfile = () => {
         oldPass: null,
         newPass: null,
         confirmPass: null,
-        house: 'gryffindor'
+        house: userInfo.data.house
     })
-    const [houseOp, setHouseOp] = useState ({gry: 1, huf: 0.4, rav:0.4, sly:0.4})
+    const [houseOp, setHouseOp] = useState(
+        userInfo.data.house === 'gryffindor' ? { gry: 1, huf: 0.4, rav: 0.4, sly: 0.4 }
+            : userInfo.data.house === 'hufflepuff' ? { gry: 0.4, huf: 1, rav: 0.4, sly: 0.4 }
+                : userInfo.data.house === 'slytherin' ? { gry: 0.4, huf: 0.4, rav: 0.4, sly: 1 }
+                    : { gry: 0.4, huf: 0.4, rav: 1, sly: 0.4 })
 
 
     useEffect(() => {
@@ -41,54 +45,54 @@ const EditProfile = () => {
                 <ImageBackground
                     source={notesBG}
                     style={styles.bg}>
-                <ImageBackground
-                    source={logoutBar}
-                    style={styles.userBar}>
+                    <ImageBackground
+                        source={logoutBar}
+                        style={styles.userBar}>
 
-                    <TouchableOpacity
-                        onPress={() => { logout() }}>
-                        <Text style={styles.logout}>
-                            Logout
-                        </Text>
-                    </TouchableOpacity>
-                </ImageBackground>
+                        <TouchableOpacity
+                            onPress={() => { logout() }}>
+                            <Text style={[styles.logout, { left: 95 }]}>
+                                Logout
+                            </Text>
+                        </TouchableOpacity>
+                    </ImageBackground>
 
 
-                <ImageBackground
-                    style={styles.blackbar}
-                    source={blackbar}>
-                    <Text style={styles.profileName}>{userInfo.data.username}</Text>
-                    <Text style={styles.profileEmail}>{userInfo.data.email}</Text>
-                </ImageBackground>
-                
+                    <ImageBackground
+                        style={styles.blackbar}
+                        source={blackbar}>
+                        <Text style={styles.profileName}>{userInfo.data.username}</Text>
+                        <Text style={styles.profileEmail}>{userInfo.data.email}</Text>
+                    </ImageBackground>
+
 
                     <ImageBackground
                         source={loginBar}
-                        style={[styles.loginBar, { marginTop: 20}]}>
-                            <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>Display Name</Text>
+                        style={[styles.loginBar, { marginTop: 20 }]}>
+                        <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>Display Name</Text>
                         <TextInput
-                            placeholder= {`${userInfo.data.username}`}
+                            placeholder={`${userInfo.data.username}`}
                             value={account.username}
-                            onChangeText={(text) => setAccount({...account, username:text})}
+                            onChangeText={(text) => setAccount({ ...account, username: text })}
                             style={styles.inputEditProfile}
                             textAlign={'center'}></TextInput>
-                    </ImageBackground>                
+                    </ImageBackground>
 
-                <TouchableOpacity
-                    onPress = {() => {editAccount({username: account.username})}}
-                    style= {[{margin:10, left:70}, styles.editProfilePress]}>
+                    <TouchableOpacity
+                        onPress={() => { editAccount({ username: account.username }) }}
+                        style={styles.editProfilePress}>
                         <Text style={styles.editText}>Change Name</Text>
                     </TouchableOpacity>
 
                     <ImageBackground
                         source={loginBar}
                         style={styles.loginBar}>
-                            <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>Old Password</Text>
-                            <TextInput
+                        <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>Old Password</Text>
+                        <TextInput
                             placeholder='Old Password'
                             value={account.password}
                             secureTextEntry
-                            onChangeText={(text) => setAccount({...account, oldPass:text})}
+                            onChangeText={(text) => setAccount({ ...account, oldPass: text })}
                             style={styles.inputEditProfile}
                             textAlign={'center'}></TextInput>
                     </ImageBackground>
@@ -98,12 +102,12 @@ const EditProfile = () => {
                     <ImageBackground
                         source={loginBar}
                         style={styles.loginBar}>
-                            <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>New Password</Text>
+                        <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>New Password</Text>
                         <TextInput
                             placeholder='New Password'
                             value={account.password}
                             secureTextEntry
-                            onChangeText={(text) => setAccount({...account, newPass:text})}
+                            onChangeText={(text) => setAccount({ ...account, newPass: text })}
                             style={styles.inputEditProfile}
                             textAlign={'center'}></TextInput>
                     </ImageBackground>
@@ -111,84 +115,84 @@ const EditProfile = () => {
                     <ImageBackground
                         source={loginBar}
                         style={styles.loginBar}>
-                            <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>Confirm Password</Text>
+                        <Text style={[styles.inputLogin, { left: 60, top: 10 }]}>Confirm Password</Text>
                         <TextInput
                             placeholder='Confirm Password'
                             value={account.password}
                             secureTextEntry
-                            onChangeText={(text) => setAccount({...account, confirmPass:text})}
+                            onChangeText={(text) => setAccount({ ...account, confirmPass: text })}
                             style={styles.inputEditProfile}
                             textAlign={'center'}></TextInput>
                     </ImageBackground>
 
 
                     <TouchableOpacity
-                    onPress = {() => {editPassword(account.oldPass, account.newPass, account.confirmPass)}}
-                    style= {[{margin:10, left:70}, styles.editProfilePress]}>
+                        onPress={() => { editPassword(account.oldPass, account.newPass, account.confirmPass) }}
+                        style={styles.editProfilePress}>
                         <Text style={styles.editText}>Change Password</Text>
                     </TouchableOpacity>
 
                     <ImageBackground
                         source={loginBar}
-                        style={styles.loginBar}>
- 
+                        style={[styles.loginBar, { marginTop: 10 }]}>
 
-                     <View style={[styles.registerHouses, {left: 50, top:-15, marginTop:15, justifyContent: 'center', alignItems: 'stretch'}]}>
 
-                        <TouchableOpacity
-                            onPress = {() => {setAccount({...account, house:'gryffindor'}), setHouseOp({gry:1, huf:0.4, rav:0.4, sly:0.4})}}>
+                        <View style={[styles.registerHouses, { left: 50, top: -15, justifyContent: 'center', alignItems: 'stretch' }]}>
 
-                        <Image
-                            source={houseGry}
-                            style={{ width: 70, opacity:houseOp.gry }}>
-                        
-                            </Image>
-                        </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => { setAccount({ ...account, house: 'gryffindor' }), setHouseOp({ gry: 1, huf: 0.4, rav: 0.4, sly: 0.4 }) }}>
 
-                        <TouchableOpacity
-                            onPress = {() => {setAccount({...account, house:'hufflepuff'}), setHouseOp({gry:0.4, huf:1, rav:0.4, sly:0.4})}}>
-                        <Image
-                            source={houseHuf}
-                            style={{ width: 70, opacity:houseOp.huf}}>
+                                <Image
+                                    source={houseGry}
+                                    style={{ width: 70, opacity: houseOp.gry }}>
+
                                 </Image>
-                        </TouchableOpacity>
+                            </TouchableOpacity>
 
-                        <TouchableOpacity
-                            onPress = {() => {setAccount({...account, house:'ravenclaw'}), setHouseOp({gry:0.4, huf:0.4, rav:1, sly:0.4})}}>
-                        <Image
-                            source={houseRav}
-                            style={{ width: 70, opacity:houseOp.rav }}>
+                            <TouchableOpacity
+                                onPress={() => { setAccount({ ...account, house: 'hufflepuff' }), setHouseOp({ gry: 0.4, huf: 1, rav: 0.4, sly: 0.4 }) }}>
+                                <Image
+                                    source={houseHuf}
+                                    style={{ width: 70, opacity: houseOp.huf }}>
                                 </Image>
-                        </TouchableOpacity>
+                            </TouchableOpacity>
 
-                        <TouchableOpacity
-                            onPress = {() => {setAccount({...account, house:'slytherin'}), setHouseOp({gry:0.4, huf:0.4, rav:0.4, sly:1})}}>
-                        <Image
-                            source={houseSly}
-                            style={{ width: 70, opacity:houseOp.sly }}>
+                            <TouchableOpacity
+                                onPress={() => { setAccount({ ...account, house: 'ravenclaw' }), setHouseOp({ gry: 0.4, huf: 0.4, rav: 1, sly: 0.4 }) }}>
+                                <Image
+                                    source={houseRav}
+                                    style={{ width: 70, opacity: houseOp.rav }}>
                                 </Image>
-                        </TouchableOpacity>
+                            </TouchableOpacity>
 
-                        
+                            <TouchableOpacity
+                                onPress={() => { setAccount({ ...account, house: 'slytherin' }), setHouseOp({ gry: 0.4, huf: 0.4, rav: 0.4, sly: 1 }) }}>
+                                <Image
+                                    source={houseSly}
+                                    style={{ width: 70, opacity: houseOp.sly }}>
+                                </Image>
+                            </TouchableOpacity>
 
-                    </View>
+
+
+                        </View>
                     </ImageBackground>
 
                     <TouchableOpacity
-                    onPress = {() => editAccount({house: account.house})}
-                    style= {[{margin:15, left:70}, styles.editProfilePress]}>
+                        onPress={() => editAccount({ house: account.house })}
+                        style={[{ margin: 15, left: 70 }, styles.editProfilePress]}>
                         <Text style={styles.editText}>Change House</Text>
                     </TouchableOpacity>
 
                     <Image
-                    style={styles.wizardGender}
-                    source={userInfo.data.gender === 'male' ? wizardBoy : wizardGirl} />
-                <Image
-                    style={styles.wizardHouse}
-                    source={userInfo.data.house === 'gryffindor' ? houseGry
-                        : userInfo.data.house === 'hufflepuff' ? houseHuf
-                            : userInfo.data.house === 'slytherin' ? houseSly
-                                : houseRav} />
+                        style={styles.wizardGender}
+                        source={userInfo.data.gender === 'male' ? wizardBoy : wizardGirl} />
+                    <Image
+                        style={styles.wizardHouse}
+                        source={userInfo.data.house === 'gryffindor' ? houseGry
+                            : userInfo.data.house === 'hufflepuff' ? houseHuf
+                                : userInfo.data.house === 'slytherin' ? houseSly
+                                    : houseRav} />
 
                     <TabNav />
                 </ImageBackground>

@@ -23,16 +23,16 @@ export const AuthProvider = ({ children }) => {
                 details);
             if (res) {
                 let userInfo = res.data;
-               console.log('user info:', userInfo);          
-               setUserInfo(userInfo);
-               setUserToken(userInfo.data.token);
-                if(userInfo.status == 400) {
+                console.log('user info:', userInfo);
+                setUserInfo(userInfo);
+                setUserToken(userInfo.data.token);
+                if (userInfo.status == 400) {
                     Alert.alert("Login Failed", userInfo.message)
                     setIsLoading(false);
                     return;
                 }
-               AsyncStorage.setItem('userToken', userInfo.data.token)
-               AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
+                AsyncStorage.setItem('userToken', userInfo.data.token)
+                AsyncStorage.setItem('userInfo', JSON.stringify(userInfo))
             }
         } catch (error) {
             console.log(`login error ${error}`);
@@ -100,10 +100,11 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true);
         try {
             const res = await mongoAPI.put('/user/password', {
-                 user: userInfo.data.id, oldPass: oldPass, newPass: newPass, confirmPass: confirmPass }
+                user: userInfo.data.id, oldPass: oldPass, newPass: newPass, confirmPass: confirmPass
+            }
             );
             if (res) {
-                if(res.data.status == 400) {
+                if (res.data.status == 400) {
                     Alert.alert("Login Failed", res.data.message)
                     setIsLoading(false);
                     return;
@@ -123,11 +124,12 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true);
         try {
             const res = await mongoAPI.put('/user/profile', {
-                 user: userInfo.data.id, body: details }
+                user: userInfo.data.id, body: details
+            }
             );
             if (res) {
                 console.log('editProfile data:', res.data);
-                setUserInfo({...userInfo, data: {...userInfo.data, ...details}})
+                setUserInfo({ ...userInfo, data: { ...userInfo.data, ...details } })
                 Alert.alert('Profile updated!');
             }
             console.log('userInfo update:', userInfo)
