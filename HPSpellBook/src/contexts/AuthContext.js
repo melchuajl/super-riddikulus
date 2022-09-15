@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     const login = async (details) => {
         setIsLoading(true);
         console.log(details)
-        if (!details.email) {
+/*         if (!details.email) {
             Alert.alert('Please input email!');
             setIsLoading(false);
             return;
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
             Alert.alert('Please input password!');
             setIsLoading(false);
             return;
-        }
+        } */
 
         //lags/hangs if above condition is used
 

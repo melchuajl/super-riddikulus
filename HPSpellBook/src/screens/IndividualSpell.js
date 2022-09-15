@@ -81,6 +81,7 @@ const IndividualSpell = () => {
                     <Text style={styles.text}>Light:
                         <Text style={{ fontSize: 17 }}>{"\n"}{filteredSpell[0] ? filteredSpell[0].light : 'Nil'}</Text>
                     </Text>
+                </View>
 
                 <View style={[styles.bookmarkContainer, { top: 70 }]}>
                     <Text style={styles.bookmarkText}>&nbsp; Save</Text>
